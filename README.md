@@ -1,7 +1,7 @@
 Music Free
 ===========================
 
-An awsome free responsive Joomla! 2.5 template
+An awesome free responsive Joomla! 2.5 template
 -------------------------
 
 _Template DEMO: [VIEW DEMO](http://demo.gavick.com/free/may2012/)_
