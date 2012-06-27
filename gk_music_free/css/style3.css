@@ -1,0 +1,188 @@
+/*
+#------------------------------------------------------------------------
+# Music Free - #1 Free Joomla! template (for Joomla 2.5)
+#
+# Copyright (C) 2007-2012 Gavick.com. All Rights Reserved.
+# License:  Copyrighted Commercial Software
+# Website:  http://www.gavick.com
+# Support:  support@gavick.com
+ */
+ 
+/* Style 1 */
+
+/* template.css */
+::selection {
+	background: #8d9274;
+}
+a {
+	color: #8d9274;
+}
+#gkLogo.cssLogo { /* You can specify there logo size and background */
+	background: url('../images/style3/logo.png') no-repeat 0 0;
+}
+#gkTools a:hover {
+	border-color: #8d9274;
+}
+.box.color1 h3.header {
+	background: #8d9274;
+	border-color: #8d9274;
+}
+.box.color1 h3.header + .content {
+	border-top-color: #8d9274;
+}
+.box.color2 h3.header {
+	background: #6e725a;
+	border-color: #6e725a;
+}
+.box.color2 h3.header + .content {
+	border-top-color: #a0a585;
+}
+.box.color2 div.content {
+	background: #8d9274;
+	border-color: #8d9274;
+	color: #fbffe5;
+}
+.box.color2 ul li {
+	border-top: 1px solid #a5aa8a;
+}
+.box.color2 a:active,
+.box.color2 a:focus,
+.box.color2 a:hover {
+	color: #fbffe5;
+}
+.box.color2 b,
+.box.color2 strong {
+	color: #fbffe5;
+}
+.box.dark a:active,
+.box.dark a:focus,
+.box.dark a:hover {
+	color: #8d9274;
+}
+.box.hot:before,
+.box.top:before,
+.box.new:before {
+	background-image: url('../images/style3/badges.png');
+}
+.gkUsermenu li {
+	background-image: url("../images/style3/typography/bullet-square2.png");
+}
+/* joomla.css */
+button:hover,
+input.button:hover,
+span.button:hover,
+button.button:hover,
+div.button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+.pagenav-prev a:hover,
+.pagenav-next a:hover,
+a:hover.readon,
+.itemReadMore:hover {
+	background: #8d9274;
+}
+article header h1 a:hover,
+article header h2 a:hover {
+	color: #8d9274;
+}
+article header li a:hover {
+	color: #8d9274;
+}
+p.img_caption {
+	background: #8d9274;
+}
+.tip-title {
+	background: #8d9274;
+}
+#system-message dd.error {
+	background: #8d9274;
+}
+#article-index li a:hover {
+	color: #8d9274;
+}
+.autocompleter-queried {
+	color: #8d9274 !important;
+}
+#gkPageContent .menu li a:hover,
+#gkPageContent .level0 li a:hover {
+	color: #8d9274;
+}
+#gkPageContent .box.color2 .menu li,
+#gkPageContent .box.color2 .level0 li {
+	border-top: 1px solid #a5aa8a;
+	background: #8d9274
+}
+/* gk_stuff.css */
+.nspPagination li:hover,
+.nspPagination li.active {
+	background: #8d9274;
+}
+.nspNext,
+.nspPrev {
+	background-image: url('../images/style3/nsp_interface.png');
+}
+.nspArt h4.nspHeader a:active,
+.nspArt h4.nspHeader a:focus,
+.nspArt h4.nspHeader a:hover {
+	color: #8d9274;
+}
+.color2 .nspArt h4.nspHeader a:active,
+.color2 .nspArt h4.nspHeader a:focus,
+.color2 .nspArt h4.nspHeader a:hover {
+	color: #fbffe5;
+}
+.color2 .nspArt p.nspInfo {
+	color: #fbffe5;
+}
+.color2 .readon {
+	background: #A5AA8A
+}
+.color2 .nspPagination li {
+	background: #a8ad8e;
+}
+
+.gkTabsWrap.vertical ol li:hover,
+.gkTabsWrap.horizontal ol li:hover {
+	color: #8d9274;
+}
+/* k2.css */
+.k2FeedIcon a,
+a.k2FeedIcon {
+	background-image: url('../images/style3/rss.png');
+}
+ul li.itemResizer a {
+	background-image: url('../images/style3/fonts.png');
+}
+.itemExtraFields {
+	border-top: 4px solid #F89A4F;
+}
+.itemRatingForm .formLogLoading {
+	background-image: url('../images/style3/loading.gif');
+}
+.itemRatingList,
+.itemRatingList a:hover,
+.itemRatingList .itemCurrentRating {
+	background-image: url('../images/style3/star.png');
+}
+.itemAuthorBlock {
+	background-image: url('../images/style3/pattern.png');
+}
+.itemAuthorContent div ul li a,
+.itemNavigation {
+	color: #7D7B7A;
+}
+#itemListLinks li {
+	background-image: url('../images/style3/typography/bullet-square2.png');
+}
+.k2CalendarBlock table.calendar tr td.calendarTodayLinked {
+	background: #8d9274;
+}
+.k2CalendarBlock table.calendar tr td.calendarToday {
+	background: #8d9274;
+}
+.k2TagCloudBlock a {
+	background: #8d9274;
+}
+.k2CommentItem span a {
+	color: #8d9274;
+}

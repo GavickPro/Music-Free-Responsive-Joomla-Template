@@ -1,0 +1,94 @@
+/*
+#------------------------------------------------------------------------
+# Music Free - #1 Free Joomla! template (for Joomla 2.5)
+#
+# Copyright (C) 2007-2012 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com 
+*/
+
+body {
+	color: #444;
+	font: 12px/1.8 Arial, Verdana;	
+	line-height: 1.8;
+}
+h2 {
+	color: #333;
+	font: normal 28px/1.5 Arial, Verdana, sans-serif;
+}
+a {
+	color: #000;
+	text-decoration: none;
+	transition: color 0.15s linear;
+}
+a > img {
+	display: none!important;
+}
+#mailto-window {
+	padding: 0 20px;
+}
+div.formelm {
+	margin: 6px 0;
+}
+form div input {
+	border: none;
+	border: 1px solid #ddd;
+	font-family: Arial, Helvetica, sans-serif;
+	width: 96%;
+}
+#mailtoForm p button {
+	float: right!important;
+}
+#mailtoForm p button:first-child {
+	float: left!important;
+}
+label {
+	float: left;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 1.8;
+	margin: 4px 0;
+	width: 20%;
+}
+input {
+	border: 1px solid #e7e7e7;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #aaa;
+	font-weight: 300;
+	height: 32px;
+	line-height: 33px;
+	padding: 0 10px;
+	width: 80%!important;
+}
+input:focus {
+	background: #fffef4;
+}
+button,
+.button,
+input[type="submit"],
+input[type="button"] {	
+	background: #33353A; 
+	border: none; 
+	border-radius: 2px;
+	color: #fff; 
+	cursor: pointer; 
+	display: inline-block; 
+	font-size: 13px; 
+	font-weight: bold;
+	height: 32px; 
+	margin: 1px 5px 2px 2px; 
+	padding: 0 12px; 
+	text-align: center; 
+	transition: background-color 0.12s ease-out;
+}
+button:hover,
+.button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+	background: #7cadde;
+	color: #fff;
+}

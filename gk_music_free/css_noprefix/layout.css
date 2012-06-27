@@ -1,0 +1,112 @@
+/*
+#------------------------------------------------------------------------
+# Music Free - #1 Free Joomla! template (for Joomla 2.5)
+#
+# Copyright (C) 2007-2012 Gavick.com. All Rights Reserved.
+# License:  Copyrighted Commercial Software
+# Website:  http://www.gavick.com
+# Support:  support@gavick.com
+ */
+ 
+/* Base elements and classes */
+html {
+	border-bottom: 1px solid transparent;
+	min-height: 100%;
+}
+body > div > footer,
+body > div > header,
+body > div > section,
+body > footer,
+body > header,
+body > section {
+	/* class used in the full template-width containers */
+	clear: both;
+	margin: 0 auto;
+}
+section#gkPageTop, 
+section#gkToolbar{
+	overflow: visible; /* Necessary to make menu working */
+	width: 100%; /* Necessary to achieve full background width */
+}
+#gkTop,
+#gkBottom {
+	/* Positions blocks -clearing */
+	clear: both;
+}
+
+/* clearfix */
+footer:after,
+header:after,
+section:after,
+aside:after {
+	clear: both;
+	content: "";
+	display: table;
+}
+
+/* Columns */
+section#gkContent,
+section#gkComponentWrap,
+aside#gkRight {
+	/* Main columns */
+	box-sizing: border-box;
+	float: left;
+}
+#gkTop > div,
+#gkBottom > div,
+#gkPage .box {
+	/* Columns in the positions blocks */
+	box-sizing: border-box;
+	float: left;
+}
+
+/* Joomla columns */
+.cols-2 .column-1,
+.cols-2 .column-2 {
+	width: 50%;
+}
+.cols-3 .column-1,
+.cols-3 .column-2,
+.cols-3 .column-3 {
+	float: left;
+	width: 33.3%;
+}
+.column-1,
+.column-2,
+.column-3 {
+	box-sizing: border-box;
+	float: left;
+}
+
+/*
+Layout calculations
+*/
+ 
+/* base spaces */
+body > footer:first-child,
+body > header:first-child,
+body > section:first-child,
+section#gkPage > section:first-child,
+section#gkContent > section:first-child,
+section#gkComponentWrap > section:first-child {
+	margin-top: 0;
+}
+
+/* Joomla columns */
+.cols-2 .column-1,
+.cols-3 .column-1 {
+	padding-right: 10px;
+}
+.cols-2 .column-2,
+.cols-3 .column-3 {
+	padding-left: 10px;
+}
+.cols-3 .column-2 {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+/* columns fix */
+aside#gkRight,#gkContent {
+	overflow: hidden;
+}

@@ -1,0 +1,184 @@
+/*
+#------------------------------------------------------------------------
+# Music Free - #1 Free Joomla! template (for Joomla 2.5)
+#
+# Copyright (C) 2007-2012 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com 
+*/
+
+body { 
+	background: #fff; 
+	color:#444;
+	font:normal 14px/18px Tahoma, sans-serif;  
+	max-width: 665px;
+}
+a { 
+	border-bottom: 1px dotted #000;
+	color: #000; 
+	text-decoration: none;
+}
+#gkPrintTop { 
+	border-bottom: 3px solid #eee;
+	margin: 0 0 10px 0; 
+	padding: 10px 0;
+}
+#gkPrintBottom { 
+	border-top: 3px solid #eee;
+	font: italic 11px/14px Veradna, Arial, sans-serif; 
+	margin: 10px 0 0 0;
+	padding: 10px 0 20px 0;
+}
+h1 { 
+	font: normal 250%/120% "Lucida Sans Unicode", "Lucida Grande", sans-serif; 
+	margin-bottom: 32px; 
+}
+dt.article-info-term,
+ul.actions { 
+	display: none; 
+}
+.articleContent img { 
+	display: block; 
+	margin: 20px auto; 
+}
+dd {
+	border-right: 1px solid #E0E0E0;
+	display: inline; 
+	margin: 0 5px 0 0; 
+	padding: 0 5px 0 0;
+}
+dd:last-child {
+	border-right: none;
+}
+dl.article-info {
+	clear: both; 
+	display: block; 
+	margin: 10px 0;
+	width: 100%; 
+}
+.articleContent img { 
+	background: #fff;
+	display: block;
+	float: left;
+	margin: 0 10px 10px 0;
+	padding: 0;
+}
+img.caption { 
+	margin-top:5px; 
+}
+.img_caption { 
+	background: #fff; 
+	border: 1px solid #e0e0e0;
+	margin-bottom:10px; 
+	padding:3px; 
+}
+.article-content img { 
+	margin:5px; 
+}
+.img_caption img { 
+	margin:0; 
+}
+p.img_caption { 
+	border: none;
+	margin:0 10px; 
+	padding:6px 6px 0; 
+	text-align:center;
+}
+.img_caption.left { 
+	float:left; 
+	margin-right: 1.5em; 
+}
+.img_caption.right { 
+	float:right; 
+	margin-left: 1.5em; 
+}
+#printBtn { 
+	background-color:#ededed; 
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px; 
+	border-radius:6px;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fff; 
+	-moz-box-shadow:inset 0px 1px 0px 0px #fff; 
+	box-shadow:inset 0px 1px 0px 0px #fff; 
+	border:1px solid #dcdcdc; 
+	color: #777;
+	display:inline-block;  
+	font-family:Arial; 
+	font-size:21px; 
+	font-weight:bold; 
+	margin: 0 auto;
+	padding:6px 24px; 
+	text-decoration:none; 
+	text-shadow:1px 1px 0px #fff; 
+}
+#printBtn:hover { 
+	background-color: #dfdfdf; 
+}
+#printBtn:active { 
+	position:relative; 
+	top:1px; 
+}
+div#btnWrapper {
+	margin: 0 auto; 
+	text-align: center;
+}
+
+/* K2 code hide */
+.itemComments,
+article time,
+.itemBottom,
+.itemLinks,
+.itemExtraFields,
+.itemResizer,
+.itemAuthorContent { 
+	display: none; 
+}
+.itemAuthorBlock > .gkAvatar { 
+	max-height: 80px; 
+	padding: 12px 32px 32px 12px; 
+}
+
+/* latest improvements */
+article.item-page > header h1 { 
+	font-family: Georgia, serif;
+	font-size: 32px; 
+	font-weight: normal;
+	line-height: 1.2; 
+}
+article.item-page > header h1 a { 
+	border-bottom: none!important; 
+}
+article.item-page > header > ul { 
+	border: 3px solid #ccc; 
+	border-left: none; 
+	border-right: none;
+	margin: 10px 0; 
+	overflow: hidden; 
+	padding: 10px 0; 
+}
+article.item-page > header > ul li { 
+	display: none; 
+}
+article.itemView img,
+article.item-page img { 
+	display: block;
+	height: auto;
+	margin: 20px 0;
+	max-width: 100%;
+	min-width: 100%; 
+}
+li.category-name,
+li.createdby,
+li.hits { 
+	display: block!important; 
+	float: left; 
+	margin-right: 20px; 
+}
+#gkPrintBottom { 
+	text-align: center; 
+}
+#gkPrintTop > img { 
+	display: block; 
+	margin: 0 auto; 
+}
