@@ -1,0 +1,242 @@
+/*
+#------------------------------------------------------------------------
+# Music Free - #1 Free Joomla! template (for Joomla 2.5)
+#
+# Copyright (C) 2007-2012 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com 
+*/
+
+/* Basic elements */
+::selection {
+	background: #bd5532;
+	color: #fff;
+}
+::-moz-selection {
+	background: #bd5532;
+	color: #fff;
+}
+::-webkit-selection {
+	background: #bd5532;
+	color: #fff;
+}
+body,
+html {
+	margin: 0;
+	min-height: 100%;
+	padding: 0;
+}
+body {
+	background: #222;
+	color: #7d7b7a;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 2;
+	min-height: 100%;
+	padding: 0 15px;
+}
+a {
+	color: #bbb;
+	text-decoration: none;
+	-webkit-transition: color 0.15s linear;
+	-moz-transition: color 0.15s linear;
+	-o-transition: color 0.15s linear;
+	transition: color 0.15s linear;
+}
+a:hover,
+a:active,
+a:focus {
+	color: #bd5532;
+}
+
+/* containers */
+#gkPage {
+	margin: 60px auto;
+	width: 600px;
+}
+#gkPageWrap {
+	padding: 0 0 30px;
+	width: 100%;
+}
+#left {
+	float: left;
+	width: 20%
+}
+#right {
+	float: right;
+	margin: 27px 0 0;
+	width: 60%;
+}
+
+/* Logo  */
+#gkLogo {
+	display: block;
+	float: none;
+	margin: 0 auto 30px auto;
+	padding: 12px 0 0 0;
+	text-indent: -999em;
+	text-shadow: none;
+}
+#gkLogo img {
+	display: block;
+	margin: 0;
+}
+#gkLogo.cssLogo {
+	background: transparent url('../../images/style2/logo.png') no-repeat 0 center; /* You can specify there logo size and background */
+	height: 66px;
+	width: 210px;
+}
+#gkLogo.text {
+	color: #fff;
+	text-indent: 0;
+	text-transform: uppercase;
+}
+#gkLogo.text > span {
+	display: block;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 20px;
+	margin-top: 9px;
+	text-align: center;
+}
+#gkLogo.text .gkLogoSlogan {
+	color: #ddd;
+	display: block;
+	font-size: 9px;
+	line-height: 9px;
+}
+
+/* Other elements */
+h2 {
+	border-bottom: 1px solid #353535;
+	border-top: 1px solid #353535;
+	color: #bbb;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0 0 32px;
+	padding: 24px 0;
+	text-align: center;
+}
+h2 br {
+	display: none;
+}
+fieldset {
+	border: none;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 0;
+	width: 250px;
+}
+p#username,
+p#password,
+p#remember {
+	float: left;
+	margin: 0 0 10px 0;
+	width: 250px;
+}
+p#remember,
+#form-login ul {
+	clear: both
+}
+label {
+	display: block;
+	font: 16px;
+	line-height: 1.2;
+	margin: 0 0 10px 0;
+}
+input[type="checkbox"] {
+	margin: 5px 5px 0 0;
+}
+input[type="text"],
+input[type="password"],
+input[type="url"],
+input[type="email"] {
+	background: #fff;
+	border: 1px solid #e7e7e7;
+	box-sizing: border-box;
+	color: #aaa;
+	font-weight: 100;
+	height: 38px;
+	line-height: 39px;
+	padding: 0 10px;
+	width: 246px;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="url"]:focus,
+input[type="email"]:focus {
+	background: #fafafa;
+}
+div.buttons {
+	border-top: 1px solid #353535  clear: both;
+	padding: 24px 0 0;
+}
+button,
+.button,
+input[type="submit"],
+input[type="button"] {
+	background: #bd5532;
+	border-radius: 1px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	float: left;
+	font-size: 13px;
+	font-weight: bold;
+	height: 32px;
+	line-height: 32px;
+	margin: 0 5px 20px 2px;
+	padding: 0 16px;
+	text-align: center;
+	transition: background-color 0.15s ease-out;
+}
+button:hover,
+.button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+	background: #444;
+	color: #fff;
+}
+#remember {
+	float: left;
+	width: auto;
+}
+label[for="remember"] {
+	float: left;
+	line-height: 21px;
+}
+/* messages */
+#system-message dt {
+	display: none;
+}
+#system-message {
+	margin: 0 0 10px 0;
+}
+#system-message dd ul {
+	list-style: none !important;
+	margin: 0;
+	padding: 0;
+}
+#system-message dd {
+	background: #353535;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 300;
+	margin: 0 auto;
+	padding: 6px 12px;
+	text-align: center;
+}
+#system-message dd.error {
+	background: #db6161;
+	color: #fff;
+}
+#system-message dd.notice {
+	background: #fff;
+	color: #333;
+}
+#system-message-container {
+	margin: 0;
+	padding: 0;
+}

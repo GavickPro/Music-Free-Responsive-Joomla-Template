@@ -1,0 +1,126 @@
+/*
+#------------------------------------------------------------------------
+# Music Free - #1 Free Joomla! template (for Joomla 2.5)
+#
+# Copyright (C) 2007-2012 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com 
+*/
+
+/* Basic elements */
+::selection {
+	background: #bd5532;
+	color: #fff;
+}
+ 
+::-moz-selection {
+	background: #bd5532;
+	color: #fff;
+}
+ 
+::-webkit-selection {
+	background: #bd5532;
+	color: #fff;
+}
+body,
+html {
+	margin: 0;
+	min-height: 100%;
+	padding: 0;
+}
+body {
+	background: #222;
+	color: #7d7b7a;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 2;
+	min-height: 100%;
+	padding: 0 15px;
+}
+a {
+	color: #bbb;
+	text-decoration: none;
+	-webkit-transition: color 0.15s linear;
+	-moz-transition: color 0.15s linear;
+	-o-transition: color 0.15s linear;
+	transition: color 0.15s linear;
+}
+a:hover,
+a:active,
+a:focus {
+	color: #bd5532;
+}
+
+/* containers */
+#gkPage {
+	margin: 120px auto;
+	width: 600px;
+}
+#left {
+	float: left;
+	width: 20%
+}
+#right {
+	float: right;
+	margin: 0 0 32px;
+	width: 60%;
+}
+
+/* Logo  */
+#gkLogo {
+	display: block;
+	float: none;
+	margin: 0 auto;
+	text-indent: -999em;
+	text-shadow: none;
+}
+#gkLogo img {
+	display: block;
+	margin: 0;
+}
+#gkLogo.cssLogo {
+	background: transparent url('../../images/style2/logo.png') no-repeat 0 center; /* You can specify there logo size and background */
+	height: 66px;
+	width: 210px;
+}
+#gkLogo.text {
+	color: #fff;
+	text-indent: 0;
+	text-transform: uppercase;
+}
+#gkLogo.text > span {
+	display: block;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 20px;
+	margin-top: 9px;
+	text-align: center;
+}
+#gkLogo.text .gkLogoSlogan {
+	color: #ddd;
+	display: block;
+	font-size: 9px;
+	line-height: 9px;
+}
+
+/* Other elements */
+h2 {
+	color: #bd5532;
+	font-size: 220px;
+	font-weight: bold;
+	line-height: 1;
+	margin: 0 0 6px;
+	padding: 0;
+}
+p.errorboxbody {
+	border-bottom: 1px solid #353535;
+	border-top: 1px solid #353535;
+	clear: both;
+	margin: 0;
+	padding: 24px 0;
+	text-align: right
+}
+#gkPage p + p {
+	border-top: none
+}
