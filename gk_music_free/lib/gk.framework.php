@@ -173,7 +173,7 @@ class GKTemplate {
 
 	// function to get page suffix
 	public function getModuleStylesOverride() {
-	    if(isset($this->module_styles)) {
+	    if(is_array($this->module_styles)) {
 		    $keys = array_keys($this->module_styles);
 		    $module_override = $this->config->get('module_override');
 		    
