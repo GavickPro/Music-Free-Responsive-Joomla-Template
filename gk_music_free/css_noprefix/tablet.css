@@ -146,7 +146,7 @@
 	background: transparent url('../images/style1/mobile_menu.png') no-repeat 0 9px;
 	float: left;
 	padding-top: 42px!important;
-	width: 100px!important;
+	width: 50px!important;
 }
 #gkFooter ul.menu li {
 	display: none!important;
@@ -158,6 +158,7 @@
 	opacity: 0;
 	position: absolute;
 	top: 4px;
+	width: 50px!important;
 }
 
 /* fix for the footer menu */
