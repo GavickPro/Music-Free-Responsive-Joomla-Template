@@ -826,3 +826,24 @@ span#fb-auth:hover {
 #gkPage > .box.gkPreloaderFullWidth {
 	width: 100%;
 }
+
+/* fix for the footer menu in the tablet devices */
+html body[data-tablet="true"] {
+	padding-bottom: 0!important;
+}
+body[data-tablet="true"] #gkFooter {
+	bottom: 0!important;
+	-webkit-box-sizing: content-box!important;
+	-moz-box-sizing: content-box!important;
+	-ms-box-sizing: content-box!important;
+	-o-box-sizing: content-box!important;
+	box-sizing: content-box!important;
+	left: 0!important;
+	margin: 0 0 -1px -16px!important;
+	max-height: 41px;
+	overflow: hidden;
+	padding: 0 16px!important;
+	position: relative!important;
+	right: 0!important;
+	top: 0!important;
+}

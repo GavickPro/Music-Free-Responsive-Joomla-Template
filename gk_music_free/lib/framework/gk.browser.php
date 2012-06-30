@@ -46,12 +46,15 @@ class GKBrowser {
                 	if(preg_match('/opera\smobi/i', $browser->getAgentString())) {
                 		$this->result->set('browser', 'handheld');
                 		$this->result->set('mobile', true);
+                	} else if(preg_match('/opera\stablet/i', $browser->getAgentString())) {	
+                		$this->result->set('browser', 'handheld');
+                		$this->result->set('tablet', true);
                 	} else {
-                    	$this->result->set('browser', 'opera');
-                    	$this->result->set('mobile', false);
-                    	$this->result->set('css3', true);
-                    }
-                    break;
+                		$this->result->set('browser', 'opera');
+                		$this->result->set('mobile', false);
+                		$this->result->set('css3', true);
+                	}
+                	break;
                 case 'safari':
                 case 'konqueror':
                     if (preg_match('/chrome/i', $browser->getAgentString())) {
