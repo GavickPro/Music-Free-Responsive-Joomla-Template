@@ -163,3 +163,20 @@
 	position: absolute;
 	top: 4px;
 }
+
+/* fix for the footer menu */
+html body {
+	padding-bottom: 0!important;
+}
+#gkFooter {
+	bottom: 0!important;
+	box-sizing: content-box!important;
+	left: 0!important;
+	margin: 0 0 -1px 0!important;
+	max-height: 41px;
+	overflow: hidden;
+	padding: 0 16px!important;
+	position: relative!important;
+	right: 0!important;
+	top: 0!important;
+}
