@@ -160,3 +160,14 @@ fieldset {
         width: 420px!important;
     }
 }
+
+/* Fix for the search */
+fieldset.word #search-searchword,
+fieldset.word .inputbox {
+    width: 50%;
+}
+fieldset.phrases .ordering-box,
+fieldset.only input[type="checkbox"],
+fieldset.phrases input[type="radio"] {
+    clear: both;
+}
