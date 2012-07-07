@@ -117,25 +117,46 @@
 }
 
 /* Fix for tables */
+fieldset {
+    box-sizing: border-box!important;
+    max-width: 100%!important;
+    width: 100%!important;
+    overflow: hidden;
+}
 #gkMainbody table:before {
-	content: "Scroll horizontally to view the whole table";
-	display: block;
-	font-family: Arial, sans-serif;
-	font-size: 10px;
-	height: 14px;
-	margin-top: -30px;
-	margin-bottom: 10px;
-	width: 100%;
+    content: "Scroll horizontally to view the whole table";
+    height: 14px;
+    width: 100%;
+    display: block;
+    font-size: 10px;
+    margin-top: -30px;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
 }
+
 #gkMainbody table {
-	display: block;
-	overflow: scroll;
-	padding: 30px 0 20px 0; /* padding for the scrollbars and the top message */
-	width: 100%!important;
+    width: 540px!important;
+    display: block!important;
+    padding: 30px 0 20px 0; /* padding for the scrollbars and the top message */
+    overflow:scroll;
+    -webkit-overflow-scrolling:touch;
 }
+
 #gkMainbody table tbody,
 #gkMainbody table thead,
 #gkMainbody table tfoot {
-	display: table;
-	width: 540px!important;
+    width: 540px!important;
+    display: table;
+}
+
+@media only screen and (max-width: 320px), only screen and (max-device-width: 320px) and (-moz-max-device-pixel-ratio: 1.5), only screen and (max-device-width: 320px) and (-o-max-device-pixel-ratio: 1.5/1), only screen  and (max-device-width: 320px) and (-webkit-max-device-pixel-ratio: 1.5), only screen and (max-device-width: 320px) and (max-device-pixel-ratio: 1.5), only screen and (max-device-width: 640px) and (-moz-min-device-pixel-ratio: 2), only screen and (max-device-width: 640px) and (-o-min-device-pixel-ratio: 2/1), only screen and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-device-width: 640px) and (min-device-pixel-ratio: 2) {
+    #gkMainbody table {
+        width: 260px!important;
+    }
+}
+
+@media only screen and (max-width: 480px) and (orientation:landscape), only screen and (max-device-width: 480px) and (-moz-max-device-pixel-ratio: 1.5) and (orientation:landscape), only screen and (max-device-width: 480px) and (-o-max-device-pixel-ratio: 1.5/1) and (orientation:landscape), only screen  and (max-device-width: 480px) and (-webkit-max-device-pixel-ratio: 1.5) and (orientation:landscape), only screen and (max-device-width: 480px) and (max-device-pixel-ratio: 1.5) and (orientation:landscape), only screen and (max-device-width: 960px) and (-moz-min-device-pixel-ratio: 2) and (orientation:landscape), only screen and (max-device-width: 960px) and (-o-min-device-pixel-ratio: 2/1) and (orientation:landscape), only screen and (max-device-width: 960px) and (-webkit-min-device-pixel-ratio: 2) and (orientation:landscape), only screen and (max-device-width: 960px) and (min-device-pixel-ratio: 2) and (orientation:landscape) {
+    #gkMainbody table {
+        width: 420px!important;
+    }
 }
