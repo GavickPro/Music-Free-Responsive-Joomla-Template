@@ -46,12 +46,10 @@ while($this->API->get('font_name_group'.$font_iter, 'gkFontNull') !== 'gkFontNul
 			} elseif($font_type == 'google') {
 				$font_link = $font_data[2];
 				$font_family = $font_data[3];
-					
-				echo '<link href="'.$font_link.'" rel="stylesheet" type="text/css" />';
-					
+				$this->API->addCSS($font_link);
 				$this->API->addCSSRule($this->API->get('font_rules_group'.$font_iter, '') . ' { font-family: \''.$font_family.'\', Arial, sans-serif; }'."\n");
 			} elseif($font_type == 'squirrel') {
-				echo '<link href="'. $this->API->URLtemplate() . '/fonts/' . $font_name . '/stylesheet.css" rel="stylesheet" type="text/css" />';
+				$this->API->addCSS($this->API->URLtemplate() . '/fonts/' . $font_name . '/stylesheet.css');
 				$this->API->addCSSRule($this->API->get('font_rules_group'.$font_iter, '') . ' { font-family: ' . $font_name . ', Arial, sans-serif; }'."\n");
 			}
 		}
