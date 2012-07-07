@@ -120,10 +120,12 @@ if (!defined('_GK_MENU_CLASS')) {
 
         function beginMenuItem($mitem = null, $level = 0, $pos = '') {
             $active = trim($this->genClass($mitem, $level, $pos));
+            if($mitem->gkparams->get('desc') != '' && $level == 0) $active .= ' hasDesc';
             if ($active) $active = " class=\"$active\"";
             echo "<li $active>";
             if ($mitem->gkparams->get('group')) echo "<div class=\"group\">";
         }
+        
         function endMenuItem($mitem = null, $level = 0, $pos = '') {
             if ($mitem->gkparams->get('group')) echo "</div>";
             echo "</li>";
