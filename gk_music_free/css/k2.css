@@ -693,6 +693,31 @@ a:hover.moduleItemComments {
 	font-weight: bold;
 	font-size: 14px;
 }
+.k2LoginBlock ul li {
+	font-size: 11px;
+}
+.k2UserBlock .k2UserBlockActions li,
+.k2UsersBlock .ubUserItems li,
+.k2UsersBlock .ubUserAdditionalInfo a {
+	background: url("../images/style1/typography/bullet-square1.png") no-repeat 0 4px;
+	font-size: 12px;
+	padding-left: 16px;
+}
+.k2UserBlock .k2UserBlockActions {
+	margin-bottom: 10px;
+}
+.k2UserBlock .ubAvatar {
+	margin-right: 12px;
+}
+.k2UserBlock .ubName {
+	font-size: 13px;
+}
+.k2UserBlock .k2UserBlockDetails > span {
+	display: block;
+	font-size: 11px;
+	line-height: 16px;
+	margin: 3px 0;
+}
 
 /* ---Modules:  mod_k2_tools ---*/
 /* ---Breadcrumbs ---*/
@@ -826,7 +851,8 @@ table.calendar tr td.calendarTodayLinked a {
 }
 
 /* ---Modules:  mod_k2_users ---*/
-a.ubUserFeedIcon,a.ubUserFeedIcon:hover {
+/*a.ubUserFeedIcon,
+a.ubUserFeedIcon:hover {
 	display: inline-block;
 	height: 16px;
 	margin: 0 2px 0 0;
@@ -837,7 +863,6 @@ a.ubUserFeedIcon span,
 a.ubUserFeedIcon:hover span {
 	display: none;
 }
-
 a.ubUserURL,
 a.ubUserURL:hover {
 	display: inline-block;
@@ -849,6 +874,12 @@ a.ubUserURL:hover {
 a.ubUserURL span,
 a.ubUserURL:hover span {
 	display: none;
+}*/
+a.ubUserURL,
+a.ubUserFeedIcon {
+	clear: both;
+	display: block;
+	font-size: 12px;
 }
 span.ubUserEmail {
 	display: inline-block;
@@ -870,6 +901,22 @@ span.ubUserEmail a {
 	clear: both;
 	margin: 8px 0 0 0;
 	padding: 0;
+}
+.k2UsersBlock .ubUserDescription p {
+	font-size: 12px;
+}
+.k2UsersBlock .ubUserAvatar {
+	margin-right: 12px;
+}
+.k2UsersBlock .ubUserName {
+	display: block;
+	line-height: 11px;
+}
+.k2UsersBlock h3 {
+	font-size: 16px;
+}
+.k2UsersBlock .ubUserItems {
+	font-size: 12px;
 }
 .catCounter {
 	font-size: 11px;
