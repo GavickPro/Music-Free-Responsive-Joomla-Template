@@ -186,6 +186,7 @@
 										<option value="1">TPL_GK_LANG_ENABLED</option>
 										<option value="0">TPL_GK_LANG_DISABLED</option>
 								</field>
+								<field name="zoom_scale" type="text" default="1.0" label="TPL_GK_LANG_ZOOM_SCALE" description="TPL_GK_LANG_ZOOM_SCALE_DESC" />
 						</fieldset>
 						
 						<!-- Layout settings -->
