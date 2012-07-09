@@ -40,7 +40,7 @@ $tpl_page_suffix = $this->page_suffix != '' ? ' class="'.$this->page_suffix.'"' 
 <?php if($this->API->get("chrome_frame_support", '0') == '1' && ($this->browser->get('browser') == 'ie8' || $this->browser->get('browser') == 'ie7' || $this->browser->get('browser') == 'ie6')) : ?>
 <meta http-equiv="X-UA-Compatible" content="chrome=1"/>
 <?php endif; ?>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=<?php echo $this->API->get("zoom_scale", "1.0"); ?>">
 <jdoc:include type="head" />
 <?php $this->layout->loadBlock('head'); ?>
 <?php $this->layout->loadBlock('cookielaw'); ?>
