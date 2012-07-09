@@ -17,9 +17,14 @@ defined('_JEXEC') or die;
 	<?php endif; ?>
 	
 	<?php if($this->API->get('copyrights', '') !== '') : ?>
-	<p><?php echo $this->API->get('copyrights', ''); ?></p>
+	<p>
+		<?php echo $this->API->get('copyrights', ''); ?> 
+		<a href="http://www.gavick.com" title="Joomla Templates">Free Responsive Joomla! Template</a>
+	</p>
 	<?php else : ?>
-	<p>Template Design &copy; <a href="http://www.gavick.com" title="Joomla Templates">Free Responsive Joomla! Template</a> GavickPro</p>
+	<p>
+		Template Design &copy; <a href="http://www.gavick.com" title="Joomla Templates">Free Responsive Joomla! Template</a> GavickPro
+	</p>
 	<?php endif; ?>
 	
 	<?php if($this->API->get('stylearea', '0') == '1') : ?>
