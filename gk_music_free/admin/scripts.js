@@ -7,6 +7,10 @@ window.addEvent('domready', function(){
 	generateFormElements();
 	// create help icons
 	generateHelpIcons();
+	// create the top banner
+	if(document.id('jform_params_top_banner').get('value') == 1) {
+		createTopBanner();
+	}
 	// get translations
 	var $lang = getTranslations();
 	// fix the width of the options when the browser window is too small
@@ -416,4 +420,10 @@ function loadSaveOperation(type) {
           current_url = current_url + '&gk_template_task='+type+'&gk_template_file=' + document.id('config_manager_'+type+'_filename').value;
      }
      window.location = current_url;
+}
+// generate top banner
+function createTopBanner() {
+	var banner = new Element('div', {'id': 'gkTopBanner'});
+	banner.innerHTML = '<h3><a href="https://github.com/GavickPro/Music-Free-Responsive-Joomla-Template/issues?state=open">We are waiting for your feedback!</a></h3><p><a href="https://github.com/GavickPro/Music-Free-Responsive-Joomla-Template/">Music Free on github</a><a href="https://github.com/GavickPro/Music-Free-Responsive-Joomla-Template/commits/master">Latest commits</a></p>';
+	banner.inject($$('div[id^="template-sliders-"]')[0], 'before');
 }

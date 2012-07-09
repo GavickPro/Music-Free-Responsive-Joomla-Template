@@ -466,6 +466,10 @@
 										<option value="1">TPL_GK_LANG_ENABLED</option>
 										<option value="0">TPL_GK_LANG_DISABLED</option>
 								</field>
+								<field name="top_banner" type="list" class="gk_switch" default="1" label="TPL_GK_LANG_TOP_BANNER" description="TPL_GK_LANG_TOP_BANNER_DESC">
+										<option value="1">TPL_GK_LANG_ENABLED</option>
+										<option value="0">TPL_GK_LANG_DISABLED</option>
+								</field>
 						</fieldset>
 						
 						<!-- Updates -->

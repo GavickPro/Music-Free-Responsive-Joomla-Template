@@ -142,3 +142,13 @@ span.gk_update_link a:hover { background: #222; text-decoration: none; }
 #config_manager_load_filename { width: 137px; }
 
 div.media-preview {border-radius: 5px; border: 1px solid #eee; line-height: 16px; margin-top: 6px; padding: 3px 5px}
+
+/* Top banner */
+#gkTopBanner { background: #146295; border: 1px solid #025073; border-radius: 3px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; color: #fff; margin-top: 18px; min-width: 360px; overflow: hidden; padding: 10px; width: 100%; }
+#gkTopBanner h3 { font-size: 16px; margin: 0; padding: 0; text-transform: uppercase; }
+#gkTopBanner p { margin: 10px 0 0 0; }
+#gkTopBanner h3 a { color: #fff; }
+#gkTopBanner p a { background: #3684b7; border: 1px solid #035184; border-radius: 3px; color: #fff; display: inline-block; float: left; font-weight: bold; margin: 0 10px 0 0; padding: 3px 5px; text-transform: uppercase; }
+#gkTopBanner p a:active,
+#gkTopBanner p a:focus,
+#gkTopBanner p a:hover { background: #fff; color: #146295; text-decoration: none; }
