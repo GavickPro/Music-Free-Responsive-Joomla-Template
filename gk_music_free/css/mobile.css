@@ -87,9 +87,12 @@
 	background-position: 11px -253px!important;
 }
 #gkUserLinks {
-	position: absolute;
-	right: 16px;
+	float: left!important;
+	position: relative;
 	z-index: 10;
+}
+#gkLogo {
+	margin-right: 20px!important;
 }
 
 /* Fix for the user profile */
