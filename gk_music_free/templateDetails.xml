@@ -2,13 +2,13 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 1.6//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
 <extension version="1.6" type="template" client="site" method="update">
 		<name>gk_music_free</name>
-		<creationDate>30 June 2012</creationDate>
+		<creationDate>12 July 2012</creationDate>
 		<author>GavickPro</author>
 		<authorEmail>support@gavick.com</authorEmail>
 		<authorUrl>http://gavick.com</authorUrl>
 		<copyright>Copyright (C) 2007 - 2012 GavickPro. All rights reserved.</copyright>
 		<license></license>
-		<version>3.3.1</version>
+		<version>3.3.2</version>
 		<description>
 				<![CDATA[<link rel="stylesheet" type="text/css" href="../templates/gk_music_free/admin/style.css" />
 						<style type="text/css" media="all">
