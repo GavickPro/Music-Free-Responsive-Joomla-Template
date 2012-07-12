@@ -191,13 +191,17 @@
 	}
  	#gkMainMenu {
  		background: transparent url('../../images/style1/mobile_menu.png') no-repeat right center;
+ 		clear: none!important;
  		color: #AAA;
+ 		float: right!important;
  		height: 40px;
  		left: 10px;
  		line-height: 40px;
+ 		margin-right: 7px;
+ 		padding-top: 15px;
  		position: relative;
  		text-indent: 5px;
- 		width: 100%;
+ 		width: 50px;
  	}
  	#gkMainMenu select {
  		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -214,5 +218,15 @@
 		display: block;
 		position: relative;
 		width: 100%;
+	}
+	#gkUserLinks {
+		float: left!important;
+		position: relative;
+		z-index: 10;
+	}
+	#gkUserLinks a {
+		padding-left: 0!important;
+		text-indent: -9999px;
+		width: 24px!important;
 	}
 }

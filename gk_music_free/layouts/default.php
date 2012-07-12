@@ -61,7 +61,7 @@ $tpl_page_suffix = $this->page_suffix != '' ? ' class="'.$this->page_suffix.'"' 
 		<?php if($this->API->modules('login') || ($this->API->get('register_link', 1) && $userID == 0) ) : ?>
 		<div id="gkUserLinks">
 			<?php if($this->API->get('register_link', 1) && $userID == 0) : ?>
-			<a href="<?php echo $this->API->URLbase(); ?>index.php?option=com_users&amp;view=registration"><?php echo JText::_('TPL_GK_LANG_REGISTER'); ?></a>
+			<a id="btnRegister" href="<?php echo $this->API->URLbase(); ?>index.php?option=com_users&amp;view=registration"><?php echo JText::_('TPL_GK_LANG_REGISTER'); ?></a>
 			<?php endif; ?>
 			
 			<?php if($this->API->modules('login')) : ?>
@@ -75,7 +75,7 @@ $tpl_page_suffix = $this->page_suffix != '' ? ' class="'.$this->page_suffix.'"' 
 				$this->mainmenu->loadMenu($this->API->get('menu_name','mainmenu')); 
 			    $this->mainmenu->genMenu($this->API->get('startlevel', 0), $this->API->get('endlevel',-1));
 			?>
-			<div id="gkMobileMenu"> <?php echo JText::_('TPL_GK_LANG_MOBILE_MENU'); ?>
+			<div id="gkMobileMenu">
 				<select onChange="window.location.href=this.value;">
 				<?php 
     	    		$this->mobilemenu->loadMenu($this->API->get('menu_name','mainmenu')); 
