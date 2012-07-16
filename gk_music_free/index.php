@@ -6,6 +6,7 @@
  *
  * @version             3.0.0
  * @package             Gavern Framework
+ * @license				GPL v.2.0
  * @copyright			Copyright (C) 2010 - 2012 GavickPro. All rights reserved.
  *               
  */
