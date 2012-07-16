@@ -7,7 +7,7 @@
 		<authorEmail>support@gavick.com</authorEmail>
 		<authorUrl>http://gavick.com</authorUrl>
 		<copyright>Copyright (C) 2007 - 2012 GavickPro. All rights reserved.</copyright>
-		<license></license>
+		<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 		<version>3.3.2</version>
 		<description>
 				<![CDATA[<link rel="stylesheet" type="text/css" href="../templates/gk_music_free/admin/style.css" />
