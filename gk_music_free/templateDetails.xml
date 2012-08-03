@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install PUBLIC "-//Joomla! 1.6//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
-<extension version="1.6" type="template" client="site" method="update">
+<extension version="1.6" type="template" client="site" method="upgrade">
 		<name>gk_music_free</name>
-		<creationDate>12 July 2012</creationDate>
+		<creationDate>03 Aug 2012</creationDate>
 		<author>GavickPro</author>
 		<authorEmail>support@gavick.com</authorEmail>
 		<authorUrl>http://gavick.com</authorUrl>
 		<copyright>Copyright (C) 2007 - 2012 GavickPro. All rights reserved.</copyright>
 		<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-		<version>3.3.2</version>
+		<version>3.4</version>
 		<description>
 				<![CDATA[<link rel="stylesheet" type="text/css" href="../templates/gk_music_free/admin/style.css" />
 						<style type="text/css" media="all">
@@ -41,7 +41,7 @@
 						
 						<p>Even more, this free template supports the mooMasonry script which blocks modules to be positioned such that the available space is optimized for the target device.</p>
 						
-						<p class="livedemo">View Music Free in action <a href="http://demo.gavick.com/index.php?month=May&year=2012&type=free" target="_blank">here</a>...</p><small>Gavern v.3.3</small></div>
+						<p class="livedemo">View Music Free in action <a href="http://demo.gavick.com/index.php?month=May&year=2012&type=free" target="_blank">here</a>...</p><small>Gavern v.3.4</small></div>
 						</div>
 						</div>]]>
 		</description>
@@ -237,7 +237,11 @@
 										<option value="0">TPL_GK_LANG_DISABLED</option>
 								</field>
 								<field name="copyrights" type="textarea" rows="3" cols="40" filter="raw" label="TPL_GK_LANG_COPYRIGHTS" description="TPL_GK_LANG_COPYRIGHTS_DESC" />
-								<field name="webmaster_contact" type="text" default="" label="TPL_GK_LANG_WEBMASTER_CONTACT" description="TPL_GK_LANG_WEBMASTER_CONTACT_DESC" />
+								<field name="webmaster_contact_type" type="list" default="1" label="TPL_GK_LANG_WEBMASTER_CONTACT_TYPE" description="TPL_GK_LANG_WEBMASTER_CONTACT_TYPE_DESC">                                                  <option value="email">TPL_GK_LANG_WEBMASTER_CONTACT_TYPE_EMAIL</option>
+										  <option value="url">TPL_GK_LANG_WEBMASTER_CONTACT_TYPE_URL</option>
+										  <option value="none">TPL_GK_LANG_WEBMASTER_CONTACT_TYPE_NONE</option>
+								</field>
+                                <field name="webmaster_contact" type="text" default="" label="TPL_GK_LANG_WEBMASTER_CONTACT" description="TPL_GK_LANG_WEBMASTER_CONTACT_DESC" />
 								<field name="typography" type="list" class="gk_switch" default="0" label="TPL_GK_LANG_TYPO" description="TPL_GK_LANG_TYPO_DESC">
 										<option value="1">TPL_GK_LANG_ENABLED</option>
 										<option value="0">TPL_GK_LANG_DISABLED</option>
@@ -349,6 +353,27 @@
 								</field>
 								<field name="google_plus_lang" type="text" default="en-GB" label="TPL_GK_LANG_GOOGLE_PLUS_LANG" description="TPL_GK_LANG_GOOGLE_PLUS_LANG_DESC" />
 								
+								<!-- GOOGLE+ SHARE BUTTON -->
+								<field name="gk_line_28" type="line" text="TPL_GK_LANG_TEXT_GOOGLE_PLUS_SHARE_LINE" desc="TPL_GK_LANG_TEXT_GOOGLE_PLUS_SHARE_LINE_DESC" />
+							   
+								<field name="google_plus_share" type="list" class="gk_switch" default="1" label="TPL_GK_LANG_GOOGLE_PLUS_SHARE" description="TPL_GK_LANG_GOOGLE_PLUS_SHARE_DESC">
+									 <option value="1">TPL_GK_LANG_ENABLED</option>
+									 <option value="0">TPL_GK_LANG_DISABLED</option>
+								</field>    
+									
+								<field name="google_plus_share_annotation" type="list" default="vertical-bubble" label="TPL_GK_LANG_GOOGLE_PLUS_ANNOTATION" description="TPL_GK_LANG_GOOGLE_PLUS_ANNOTATION">
+									 <option value="none">none</option>
+									 <option value="inline">inline</option>
+									 <option value="vertical-bubble">bubble (vertical)</option>
+									<option value="bubble">bubble (horizontal)</option>
+								</field>
+									
+								<field name="google_plus_share_size" type="list" default="20" label="TPL_GK_LANG_GOOGLE_PLUS_SHARE_SIZE" description="TPL_GK_LANG_GOOGLE_PLUS_SHARE_SIZE_DESC">
+									 <option value="15">small</option>
+									 <option value="20">medium</option>
+									 <option value="24">large</option>
+								</field>
+
 								<!-- TWEET BTN -->
 								<field name="gk_line_6" type="line" text="TPL_GK_LANG_TEXT_TWITTER" desc="TPL_GK_LANG_TEXT_TWITTER_DESC" />
 								<field name="tweet_btn" type="list" class="gk_switch" default="0" label="TPL_GK_LANG_TWEET_BTN" description="TPL_GK_LANG_TWEET_BTN_DESC">
@@ -452,6 +477,11 @@
 										<option value="1">TPL_GK_LANG_ENABLED</option>
 										<option value="0">TPL_GK_LANG_DISABLED</option>
 								</field>
+								<field name="js_compression" type="list" class="gk_switch" default="0" label="TPL_GK_LANG_JS_COMPRESSION" description="TPL_GK_LANG_JS_COMPRESSION_DESC">
+									 <option value="1">TPL_GK_LANG_ENABLED</option>
+									 <option value="0">TPL_GK_LANG_DISABLED</option>
+								</field>
+								<field name="jscss_excluded" type="textarea" rows="3" cols="30" default="js/mootools-core.js,js/moo.masonry.js" label="TPL_GK_LANG_EXCLUDEJSCSS" description="TPL_GK_LANG_EXCLUDEJSCSS_DESC" />
 								<field name="css_override" type="list" class="gk_switch" default="0" label="TPL_GK_LANG_CSS_OVERRIDE" description="TPL_GK_LANG_CSS_OVERRIDE_DESC">
 										<option value="1">TPL_GK_LANG_ENABLED</option>
 										<option value="0">TPL_GK_LANG_DISABLED</option>

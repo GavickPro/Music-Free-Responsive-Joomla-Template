@@ -691,9 +691,13 @@ div.bannerfooter {
 	clear: both;
 }
 #gkSocialAPI > iframe,
-#gkSocialAPI > #___plusone_0 {
+#gkSocialAPI > #___plusone_0,
+#gkSocialAPI > #___plus_0  {
 	position: relative;
 	top: -5px;
+}
+#gkSocialAPI > #___plus_0 {
+	margin-right: 15px;
 }
 
 /* reCAPTCHA */

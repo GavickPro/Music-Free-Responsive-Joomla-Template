@@ -10,7 +10,7 @@ $view = JRequest::getCmd('view', '');
 
 <?php if($this->API->get('fb_login', '0') == 1 || $this->API->get('fb_like', '0') == 1) : ?>
 <gavern:social>
-<div id="fb-root"></div>
+<div id="gkfb-root"></div>
 <?php if($this->API->get('cookie_consent', '0') == 0) : ?>
 <script type="text/javascript">
 <?php else : ?>
@@ -71,21 +71,26 @@ $view = JRequest::getCmd('view', '');
 	  <?php endif; ?>
 	};
     //      
-    window.addEvent('load', function(){
-    	(function(){
-    		var e = document.createElement('script');
-    		e.src = document.location.protocol + '//connect.facebook.net/<?php echo $this->API->get('fb_lang', 'en_US'); ?>/all.js';
-            e.async = true;
-    		document.getElementById('fb-root').appendChild(e);
-    	}()); 
-    }); 
+   window.addEvent('load', function(){        (function(){
+                if(!document.getElementById('fb-root')) {
+                     var root = document.createElement('div');
+                     root.id = 'fb-root';
+                     document.getElementById('gkfb-root').appendChild(root);
+                     var e = document.createElement('script');
+                 e.src = document.location.protocol + '//connect.facebook.net/<?php echo $this->API->get('fb_lang', 'en_US'); ?>/all.js';
+                     e.async = true;
+                 document.getElementById('fb-root').appendChild(e);   
+                }
+        }());
+    });
+
     //]]>
 </script>
 </gavern:social>
 <?php endif; ?>
 
 <!-- +1 button -->
-<?php if($this->API->get('google_plus', '1') == 1 && $option == 'com_content' && $view == 'article') : ?>
+<?php if(($this->API->get('google_plus', '1') || $this->API->get('google_plus_share', '1') == 1) == 1 && $option == 'com_content' && $view == 'article') : ?>
 <gavern:social>
 <?php if($this->API->get('cookie_consent', '0') == 0) : ?>
 <script type="text/javascript">

@@ -18,14 +18,18 @@ $uri = JURI::getInstance();
 // get the template params
 $templateParams = JFactory::getApplication()->getTemplate(true)->params; 
 // get the webmaster e-mail value
-$webmaster_email = $templateParams->get('webmaster_contact', '');
-// e-mail cloak
-$searchEmail = '([\w\.\-]+\@(?:[a-z0-9\.\-]+\.)+(?:[a-z0-9\-]{2,4}))';
-$searchText = '([\x20-\x7f][^<>]+)';
-$pattern = '~(?:<a [\w "\'=\@\.\-]*href\s*=\s*"mailto:' . $searchEmail . '"[\w "\'=\@\.\-]*)>' . $searchText . '</a>~i';    
-preg_match($pattern, '<a href="mailto:'.$webmaster_email.'">'.JText::_('TPL_GK_LANG_CONTACT_WEBMASTER').'</a>', $regs, PREG_OFFSET_CAPTURE);
-$replacement = JHtml::_('email.cloak', $regs[1][0], 1, $regs[2][0], 0);
-$webmaster_contact_email = substr_replace($webmaster_email, $replacement, $regs[0][1], strlen($regs[0][0]));
+if($templateParams->get('webmaster_contact_type') != 'none') {     // get the webmaster e-mail value
+     $webmaster_contact = $templateParams->get('webmaster_contact', '');
+     if($templateParams->get('webmaster_contact_type') == 'email') {
+          // e-mail cloak
+          $searchEmail = '([\w\.\-]+\@(?:[a-z0-9\.\-]+\.)+(?:[a-z0-9\-]{2,4}))';
+          $searchText = '([\x20-\x7f][^<>]+)';
+          $pattern = '~(?:<a [\w "\'=\@\.\-]*href\s*=\s*"mailto:' . $searchEmail . '"[\w "\'=\@\.\-]*)>' . $searchText . '</a>~i';   
+          preg_match($pattern, '<a href="mailto:'.$webmaster_contact.'">'.JText::_('TPL_GK_LANG_CONTACT_WEBMASTER').'</a>', $regs, PREG_OFFSET_CAPTURE);
+          $replacement = JHtml::_('email.cloak', $regs[1][0], 1, $regs[2][0], 0);
+          $webmaster_contact_email = substr_replace($webmaster_contact, $replacement, $regs[0][1], strlen($regs[0][0]));
+     }
+}
 
 // get necessary template parameters
 $templateParams = JFactory::getApplication()->getTemplate(true)->params;
@@ -72,7 +76,11 @@ $logo_slogan = $templateParams->get('logo_slogan', '');
 	<?php echo JText::_('TPL_GK_LANG_ERROR_INFO'); ?> <?php echo JText::_('TPL_GK_LANG_ERROR_DESC'); ?>
 	</p>
 	<p class="errorboxbody"><a href="<?php echo $this->baseurl; ?>/index.php" title="<?php echo JText::_('JERROR_LAYOUT_GO_TO_THE_HOME_PAGE'); ?>"><?php echo JText::_('JERROR_LAYOUT_HOME_PAGE'); ?></a> <span> | </span>
-			<?php  echo $webmaster_contact_email; ?>
+			<?php if($templateParams->get('webmaster_contact_type') == 'email') : echo $webmaster_contact_email; ?>
+			 <?php elseif($templateParams->get('webmaster_contact_type') == 'url') : ?>
+				  <a href="<?php echo $webmaster_contact; ?>"><?php  echo JText::_('TPL_GK_LANG_CONTACT_WEBMASTER'); ?></a>
+			 <?php endif; ?>
+
 	</p>
 </div>
 </body>
