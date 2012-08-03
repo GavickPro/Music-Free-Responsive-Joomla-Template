@@ -86,6 +86,18 @@ class GKTemplateSocial {
     		// clear G+ button
     		GKParser::$customRules['/<gavern:social><g:plusone(.*?)g:plusone><\/gavern:social>/mi'] = '';
     	}
+	   // G+ Share button
+	  if($this->parent->API->get('google_plus_share', '1') == 1 && !$is_excluded) {
+			$google_plus_share_attributes = ''; 
+		 	$google_plus_share_attributes .= ' annotation="'.$this->parent->API->get('google_plus_share_annotation', 'vertical-bubble').'"';
+			if($this->parent->API->get('google_plus_share_annotation', 'vertical-bubble') != 'vertical-bubble') {
+					 $google_plus_share_attributes .= ' height="'.$this->parent->API->get('google_plus_share_size', '20').'"';
+			}		   
+			GKParser::$customRules['/GK_GOOGLE_PLUS_SHARE_SETTINGS/'] = $google_plus_share_attributes;
+	   } else {
+			// clear G+ share button
+		  GKParser::$customRules['/<gavern:social><g:plus(.*?)g:plus><\/gavern:social>/mi'] = '';
+	   }
     	// Twitter
     	if($this->parent->API->get('tweet_btn', '0') == 1 && !$is_excluded && $option == 'com_content' && $view == 'article') {
     		// configure Twitter buttons    		  

@@ -2,7 +2,9 @@ window.addEvent('domready', function(){
     // enable config manager
     initConfigManager();
 	// load the template updates
-	getUpdates();
+	document.id('UPDATES-options').addEvent('click', function(){
+          getUpdates();
+     });
 	// generate switchers
 	generateFormElements();
 	// create help icons
@@ -316,23 +318,51 @@ function getTranslations() {
 	return translations;
 }
 // function to generate the updates list
-function getUpdates() {	
-	document.id('jform_params_template_updates-lbl').destroy(); // remove unnecesary label
-	var update_url = 'https://www.gavick.com/updates/json/tmpl,component/query,product/product,gk_music_free_j16';
-	var update_div = document.id('gk_template_updates');
-	update_div.innerHTML = '<div id="gk_update_div"><span id="gk_loader"></span>Loading update data from GavicPro Update service...</div>';
-	
-	new Asset.javascript(update_url,{
-		id: "new_script",
-		onload: function(){
-			content = '';
-			$GK_UPDATE.each(function(el){
-				content += '<li><span class="gk_update_version"><strong>Version:</strong> ' + el.version + ' </span><span class="gk_update_data"><strong>Date:</strong> ' + el.date + ' </span><span class="gk_update_link"><a href="' + el.link + '" target="_blank">Download</a></span></li>';
-			});
-			update_div.innerHTML = '<ul class="gk_updates">' + content + '</ul>';
-			if(update_div.innerHTML == '<ul class="gk_updates"></ul>') update_div.innerHTML = '<p>There is no available updates for this template</p>';	
-		}
-	});
+// function to generate the updates list
+function getUpdates() {    
+     document.id('jform_params_template_updates-lbl').destroy(); // remove unnecesary label
+     var update_url = 'https://www.gavick.com/updates/json/tmpl,component/query,product/product,gk_appsprotech_j16';
+     var update_div = document.id('gk_template_updates');
+     update_div.innerHTML = '<div id="gk_update_div"><span id="gk_loader"></span>Loading update data from GavickPro Update service...</div>';
+    
+     new Asset.javascript(update_url,{
+          id: "new_script",
+          onload: function(){
+               content = '';
+             var templateVersion = document.id('gk_template_updates').getAttribute("data-gktplversion").split('.');
+             templateVersion = templateVersion.map(function(version, i) { return version.toInt(); });
+              
+               $GK_UPDATE.each(function(el){
+                    var updateVersion = el.version.split('.');
+                 updateVersion = updateVersion.map(function(version, i) { return version.toInt(); });
+                 var isNewer = false;
+    
+               if(updateVersion[0] > templateVersion[0]) {
+                isNewer = true;
+            } else if((updateVersion[0] >= templateVersion[0]) && (updateVersion[1] > templateVersion[1])) {
+                isNewer = true;
+            } else if(updateVersion.length > 2) {
+                if(templateVersion.length > 2) {
+                    if(updateVersion[0] >= templateVersion[0] && updateVersion[1] >= templateVersion[1] && updateVersion[2] > templateVersion[2]) {
+                        isNewer = true;
+                    }
+                } else {
+                         if(updateVersion[1] >= templateVersion[1]) {
+                    isNewer = true;
+                         }
+                }
+            }
+            //
+            if(isNewer) {
+                    content += '<li><span class="gk_update_version"><strong>Version:</strong> ' + el.version + ' </span><span class="gk_update_data"><strong>Date:</strong> ' + el.date + ' </span><span class="gk_update_link"><a href="' + el.link + '" target="_blank">Download</a></span></li>';
+                    }
+               });
+               update_div.innerHTML = '<ul class="gk_updates">' + content + '</ul>';
+               if(update_div.innerHTML == '<ul class="gk_updates"></ul>') {
+            update_div.innerHTML = '<p>Your template is up to date</p>'; 
+        }
+          }
+     });
 }
 // function to generate the additional elements
 function generateFormElements() {
@@ -381,10 +411,9 @@ function generateHelpIcons() {
           'http://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/gavern-3-0/responsive-layout/',
           'http://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-fonts/',
           'http://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-features/',
-          'http://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-refreshed-typography/',
           'http://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-menu/',
-          'http://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-mobile-version/',
           'http://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-social-api/',
+		  'https://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/cookie-law/',
           'http://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-advanced-settings/',
           'http://www.gavick.com/support/updates.html'
      ]

@@ -31,7 +31,12 @@ if($this->API->get("css_override", '0')) {
 }
 
 $this->API->addCSSRule($this->API->get('css_custom', ''));
-$this->cache->useCache($this->API->get('css_compression', '0'), $this->API->get('css_cache', '0'));
+if($this->API->get('css_compression', '0') == 1 || $this->API->get('css_cache', '0') == 1) {
+	  $this->cache->registerCache();
+ }
+ if($this->API->get('js_compression', '0') == 1 ) {
+	  $this->cache->registerJSCompression();
+ }
 // include fonts
 $font_iter = 1;
 
