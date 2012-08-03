@@ -321,7 +321,7 @@ function getTranslations() {
 // function to generate the updates list
 function getUpdates() {    
      document.id('jform_params_template_updates-lbl').destroy(); // remove unnecesary label
-     var update_url = 'https://www.gavick.com/updates/json/tmpl,component/query,product/product,gk_appsprotech_j16';
+     var update_url = 'https://www.gavick.com/updates/json/tmpl,component/query,product/product,gk_music_free_j16';
      var update_div = document.id('gk_template_updates');
      update_div.innerHTML = '<div id="gk_update_div"><span id="gk_loader"></span>Loading update data from GavickPro Update service...</div>';
     
