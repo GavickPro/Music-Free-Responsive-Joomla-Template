@@ -71,6 +71,7 @@
 				<position>usermenu</position>
 				<position>social</position>
 				<position>toolbar</position>
+				<position>top_toolbar</position>
 				<position>login</position>
 				<position>footer_nav</position>
 				

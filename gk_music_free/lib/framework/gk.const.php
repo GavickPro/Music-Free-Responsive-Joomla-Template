@@ -21,6 +21,7 @@ $GK_TEMPLATE_MODULE_STYLES = array(
 	'login' => 'none',
 	'footer_nav' => 'none',
 	'toolbar' => 'none',
+	'top_toolbar' => 'none',
 	
 	'mainbody' => 'gk_style',
 	'mainbody_top' => 'gk_style',

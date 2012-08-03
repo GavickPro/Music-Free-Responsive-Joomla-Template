@@ -58,8 +58,14 @@ $tpl_page_suffix = $this->page_suffix != '' ? ' class="'.$this->page_suffix.'"' 
 	<section id="gkPageTop">
 		<?php $this->layout->loadBlock('logo'); ?>
 		
-		<?php if($this->API->modules('login') || ($this->API->get('register_link', 1) && $userID == 0) ) : ?>
+		<?php if($this->API->modules('login or top_toolbar') || ($this->API->get('register_link', 1) && $userID == 0) ) : ?>
 		<div id="gkUserLinks">
+			<?php if($this->API->modules('top_toolbar')) : ?>
+			<div id="gkTopToolbar">
+				<jdoc:include type="modules" name="top_toolbar" style="<?php echo $this->module_styles['top_toolbar']; ?>" />
+			</div>
+			<?php endif; ?>
+		
 			<?php if($this->API->get('register_link', 1) && $userID == 0) : ?>
 			<a id="btnRegister" href="<?php echo $this->API->URLbase(); ?>index.php?option=com_users&amp;view=registration"><?php echo JText::_('TPL_GK_LANG_REGISTER'); ?></a>
 			<?php endif; ?>
