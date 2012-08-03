@@ -173,6 +173,9 @@ p {
 #gkUserLinks a:hover {
 	color: #fff;
 }
+#gkTopToolbar {
+	float: left;
+}
 
 /* Toolbar */
 #gkToolbar a {
