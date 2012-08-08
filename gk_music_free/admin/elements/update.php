@@ -9,7 +9,10 @@ class JFormFieldUpdate extends JFormField {
 
 	protected function getInput() {
 	
+		if (DIRECTORY_SEPARATOR=='/')
 		$base_path = str_replace('admin/elements', '', dirname(__FILE__)).'templateDetails.xml';
+		else
+		$base_path = str_replace('admin/elements', '', str_replace('\\', '/', dirname(__FILE__))).'/templateDetails.xml';
 		$file_handle = fopen($base_path, "r");
 		$data = fread($file_handle, 2048);
 		preg_match('/<version>.*<\/version>/i', $data, $version);
