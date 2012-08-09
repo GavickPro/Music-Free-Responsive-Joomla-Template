@@ -9,7 +9,7 @@ class JFormFieldUpdate extends JFormField {
 
 	protected function getInput() {
 	
-		$base_path = str_replace('admin/elements', '', dirname(__FILE__)).'templateDetails.xml';
+		$base_path = str_replace('admin'.DS.'elements', '', dirname(__FILE__)).'templateDetails.xml';
 		$file_handle = fopen($base_path, "r");
 		$data = fread($file_handle, 2048);
 		preg_match('/<version>.*<\/version>/i', $data, $version);
@@ -21,4 +21,4 @@ class JFormFieldUpdate extends JFormField {
 	}
 }
 
-?>
+// EOF
