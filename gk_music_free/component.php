@@ -18,6 +18,7 @@ $option = JRequest::getCmd('option');
 $view = JRequest::getCmd('view');
 // include framework classes and files
 require_once('lib/gk.framework.php');
+require_once('lib/framework/gk.const.php');
 // run the framework
 $tpl = new GKTemplate($this, $GK_TEMPLATE_MODULE_STYLES, true);
 
