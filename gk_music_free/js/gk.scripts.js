@@ -114,7 +114,7 @@ window.addEvent('domready', function(){
 		});
 	}
 	// toolbar action
-	if(document.id('gkToolbar').getElement('ul')) {
+	if(document.id('gkToolbar') && document.id('gkToolbar').getElement('ul')) {
 		var el = document.id('gkToolbar').getElement('ul');
 		el.addEvent('click', function() {
 			if(el.hasClass('hover')) {
