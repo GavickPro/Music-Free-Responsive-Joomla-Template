@@ -154,9 +154,9 @@ $tpl_page_suffix = $this->page_suffix != '' ? ' class="'.$this->page_suffix.'"' 
 		<jdoc:include type="modules" name="bottom" style="<?php echo $this->module_styles['bottom']; ?>" />
 	</section>
 	<?php endif; ?>
-	
-	<?php $this->layout->loadBlock('footer'); ?>
 </div>
+
+<?php $this->layout->loadBlock('footer'); ?>
 
 <?php $this->layout->loadBlock('tools/login'); ?>
 <div id="gkPopupOverlay"></div>
