@@ -142,7 +142,9 @@ ul li.itemResizer #fontIncrease {
 }
 .itemSocialSharing {
 	border-top: 1px solid #e5e5e5;
+	min-height: 38px;
 	margin: 42px 0 0 !important;
+	overflow: visible!important;
 	padding: 20px 0 0 0;
 }
 .itemExtraFields {
