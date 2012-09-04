@@ -75,9 +75,36 @@ class GKTemplateLayout {
     		$min_content_width = $min_tablet_width;
     	}
     	
-    	$this->API->addCSS($this->API->URLtemplate() . '/css/tablet.css','text/css','only screen and (max-width: '.$min_content_width.'px), only screen and (max-device-width: '.$min_content_width.'px) and (-moz-max-device-pixel-ratio: 1.5), only screen and (max-device-width: '.$min_content_width.'px) and (-o-max-device-pixel-ratio: 1.5/1), only screen  and (max-device-width: '.$min_content_width.'px) and (-webkit-max-device-pixel-ratio: 1.5), only screen and (max-device-width: '.$min_content_width.'px) and (max-device-pixel-ratio: 1.5), only screen and (max-device-width: '.$min_content_width.'px) and (-moz-min-device-pixel-ratio: 2), only screen and (max-device-width: '.$min_content_width.'px) and (-o-min-device-pixel-ratio: 2/1), only screen and (max-device-width: '.$min_content_width.'px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-device-width: '.$min_content_width.'px) and (min-device-pixel-ratio: 2)');
+    	// it is iPad, iPod or iPhone?
+    	$iPod = stripos($_SERVER['HTTP_USER_AGENT'],"iPod");
+    	$iPhone = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
+    	$iPad = stripos($_SERVER['HTTP_USER_AGENT'],"iPad");
+    	$tablet_width = $min_content_width;
+    	$mobile_width = 480;
+    	// set media query for the tablet.css
+    	if($iPod || $iPhone || $iPad) {
+    		$this->API->addCSS($this->API->URLtemplate() . '/css/tablet.css','text/css','only screen and (max-width: '.$tablet_width.'px), only screen and (max-device-width: '.$tablet_width.'px)');	
+    	} else {
+    		$this->API->addCSS($this->API->URLtemplate() . '/css/tablet.css','text/css','only screen and (max-width: '.$tablet_width.'px), only screen and (max-device-width: '.$tablet_width.'px) and (-moz-max-device-pixel-ratio: 1.5), only screen and (max-device-width: '.$tablet_width.'px) and (-o-max-device-pixel-ratio: 1.5/1), only screen  and (max-device-width: '.$tablet_width.'px) and (-webkit-max-device-pixel-ratio: 1.5), only screen and (max-device-width: '.$tablet_width.'px) and (max-device-pixel-ratio: 1.5), only screen and (max-device-width: '.($tablet_width * 2).'px) and (-moz-min-device-pixel-ratio: 2), only screen and (max-device-width: '.($tablet_width * 2).'px) and (-o-min-device-pixel-ratio: 2/1), only screen and (max-device-width: '.($tablet_width * 2).'px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-device-width: '.($tablet_width * 2).'px) and (min-device-pixel-ratio: 2)');
+    	}
+    	// set media query for the mobile.css
+    	if($iPod || $iPhone || $iPad) {
+    		$this->API->addCSS($this->API->URLtemplate() . '/css/mobile.css','text/css','
+    		only screen and (max-width: '.$mobile_width.'px), only screen and (max-device-width: '.$mobile_width.'px)');
+    	} else {
+	    	$this->API->addCSS($this->API->URLtemplate() . '/css/mobile.css','text/css','
+	    	only screen and (max-width: '.$mobile_width.'px),
+	    	only screen and (max-device-width: '.$mobile_width.'px) and (-moz-max-device-pixel-ratio: 1.5), 
+	    	only screen and (max-device-width: '.$mobile_width.'px) and (-o-max-device-pixel-ratio: 1.5/1), 
+	    	only screen and (max-device-width: '.$mobile_width.'px) and (-webkit-max-device-pixel-ratio: 1.5),
+	    	only screen and (max-device-width: '.$mobile_width.'px) and (max-device-pixel-ratio: 1.5), 
+	    	only screen and (max-device-width: '.($mobile_width * 2).'px) and (-webkit-min-device-pixel-ratio: 2), 
+	    	only screen and (max-device-width: '.($mobile_width * 2).'px) and (-moz-min-device-pixel-ratio: 2),
+	    	only screen and (max-device-width: '.($mobile_width * 2).'px) and (-o-min-device-pixel-ratio: 2/1),
+	    	only screen and (max-device-width: '.($mobile_width * 2).'px) and (min-device-pixel-ratio: 2)');
+    	}
     	
-    	$this->API->addCSS($this->API->URLtemplate() . '/css/mobile.css','text/css',' screen and (max-width: 480px), screen and (max-device-width: 480px)');
+    	
     	
     	// CSS to add spaces between modules on the mainbody postion
     	$this->API->addCSSRule('#gkContent .box { padding: '.(2* $grid_spaces).'px 0 0 0!important; }');
