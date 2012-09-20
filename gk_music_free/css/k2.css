@@ -952,3 +952,9 @@ article header .itemRatingBlock > div {
 	display: inline-block;
 	width: 100%;
 }
+
+#k2Container article header h2 {
+	line-height: 46px; 
+	clear: both;
+	font-size: 46px;
+}

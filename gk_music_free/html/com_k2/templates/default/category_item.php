@@ -22,7 +22,7 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 				<?php endif; ?>
 		
 				<?php if($this->item->params->get('catItemTitle')): ?>
-				<h1>
+				<h2>
 						<?php if ($this->item->params->get('catItemTitleLinked')): ?>
 						<a href="<?php echo $this->item->link; ?>"><?php echo $this->item->title; ?></a>
 						<?php else: ?>
@@ -31,7 +31,7 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 						<?php if($this->item->params->get('catItemFeaturedNotice') && $this->item->featured): ?>
 						<sup><?php echo JText::_('K2_FEATURED'); ?></sup>
 						<?php endif; ?>
-				</h1>
+				</h2>
 				<?php endif; ?>
 				<ul>
 						<?php if($this->item->params->get('catItemDateCreated')): ?>

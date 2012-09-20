@@ -351,27 +351,34 @@ if (!defined('_GK_BASE_MENU_CLASS')) {
                 else $tmp->url = $alias_item->link;
             }
 
+            $rel = "";
+            if ($tmp->gkparams->get('gk_rel')) {
+                $rel = " rel=\"nofollow\"";
+            }
             if ($txt != '') {
                 if ($tmp->type == 'separator') {
-                    $data = '<a href="#" '.$active.' '.$id.' '.$title.'>'.$txt.'</a>';
+                    $data = '<a href="#" ' . $active . ' ' . $id . ' ' . $title . ' ' . $rel . '>' . $txt . '</a>';
                 } else {
                     if ($tmp->url != null) {
                         switch ($tmp->browserNav) {
                             default:
                             case 0:
                                 // _top
-                                $data = '<a href="'.$tmp->url.'" '.$active.' '.$id.' '.$title.'>'.$txt.'</a>';
+                                $data = '<a href="' . $tmp->url . '" ' . $active . ' ' . $id . ' ' . $title .
+                                    ' ' . $rel . '>' . $txt . '</a>';
                                 break;
                             case 1:
                                 // _blank
-                                $data = '<a href="'.$tmp->url.'" target="_blank" '.$active.' '.$id.' '.$title.'>'.$txt.'</a>';
+                                $data = '<a href="' . $tmp->url . '" target="_blank" ' . $active . ' ' . $id .
+                                    ' ' . $title . ' ' . $rel . '>' . $txt . '</a>';
                                 break;
                             case 2:
-                                $data = '<a href="'.$tmp->url.'" target="_blank" '.$active.' '.$id.' '.$title.'>'.$txt.'</a>';
+                                $data = '<a href="' . $tmp->url . '" target="_blank" ' . $active . ' ' . $id .
+                                    ' ' . $title . ' ' . $rel . '>' . $txt . '</a>';
                                 break;
                         }
                     } else {
-                        $data = '<a '.$active.' '.$id.' '.$title.'>'.$txt.'</a>';
+                        $data = '<a ' . $active . ' ' . $id . ' ' . $title . ' ' . $rel . '>' . $txt . '</a>';
                     }
                 }
             }

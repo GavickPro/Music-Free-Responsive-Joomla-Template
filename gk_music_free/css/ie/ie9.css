@@ -7,3 +7,10 @@
 # Website: http://www.gavick.com
 # Support: support@gavick.com 
 */
+table,
+table tr,
+table td,
+table tbody,
+table thead {
+     vertical-align: top!important;
+}

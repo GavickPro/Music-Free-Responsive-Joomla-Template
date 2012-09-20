@@ -58,14 +58,18 @@ $tpl_page_suffix = $this->page_suffix != '' ? ' class="'.$this->page_suffix.'"' 
 	<section id="gkPageTop">
 		<?php $this->layout->loadBlock('logo'); ?>
 		
-		<?php if($this->API->modules('login or top_toolbar') || ($this->API->get('register_link', 1) && $userID == 0) ) : ?>
+		<?php if($this->API->modules('login or top_toolbar or lang') || ($this->API->get('register_link', 1) && $userID == 0) ) : ?>
 		<div id="gkUserLinks">
 			<?php if($this->API->modules('top_toolbar')) : ?>
 			<div id="gkTopToolbar">
 				<jdoc:include type="modules" name="top_toolbar" style="<?php echo $this->module_styles['top_toolbar']; ?>" />
 			</div>
 			<?php endif; ?>
-		
+						
+			<?php if($this->API->modules('lang')) : ?>
+				<jdoc:include type="modules" name="lang" style="<?php echo $this->module_styles['lang']; ?>" />
+			<?php endif; ?>
+				
 			<?php if($this->API->get('register_link', 1) && $userID == 0) : ?>
 			<a id="btnRegister" href="<?php echo $this->API->URLbase(); ?>index.php?option=com_users&amp;view=registration"><?php echo JText::_('TPL_GK_LANG_REGISTER'); ?></a>
 			<?php endif; ?>
@@ -73,9 +77,11 @@ $tpl_page_suffix = $this->page_suffix != '' ? ' class="'.$this->page_suffix.'"' 
 			<?php if($this->API->modules('login')) : ?>
 			<a href="<?php echo $this->API->URLbase(); ?>index.php?option=com_users&amp;view=login" id="btnLogin"><?php echo $btn_login_text; ?></a>
 			<?php endif; ?>
+
+
 		</div>
 		<?php endif; ?>
-		
+		<?php if($this->API->get('show_menu',1) == 1) : ?>
 		<div id="gkMainMenu">
 			<?php
 				$this->mainmenu->loadMenu($this->API->get('menu_name','mainmenu')); 
@@ -90,6 +96,7 @@ $tpl_page_suffix = $this->page_suffix != '' ? ' class="'.$this->page_suffix.'"' 
 				</select>
 			</div>
 		</div>
+		<?php endif; ?>
 	</section>
 	
 	<?php if($this->API->modules('social + toolbar')) : ?>

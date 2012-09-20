@@ -21,3 +21,10 @@
 #ieToolbar a { 
 	text-decoration: underline;
 }
+table,
+table tr,
+table td,
+table tbody,
+table thead {
+     vertical-align: top!important;
+}

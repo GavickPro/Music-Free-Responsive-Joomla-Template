@@ -22,13 +22,13 @@ defined('_JEXEC') or die('Restricted access');
 				<article>
 						<header>
 								<?php if($item->params->get('genericItemTitle')): ?>
-								<h1>
+								<h2>
 										<?php if ($item->params->get('genericItemTitleLinked')): ?>
 										<a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a>
 										<?php else: ?>
 										<?php echo $item->title; ?>
 										<?php endif; ?>
-								</h1>
+								</h2>
 								<?php endif; ?>
 								<?php if($item->params->get('genericItemCategory') || $item->params->get('genericItemDateCreated')): ?>
 								<ul>

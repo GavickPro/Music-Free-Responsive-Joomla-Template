@@ -2,13 +2,13 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 1.6//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
 <extension version="1.6" type="template" client="site" method="upgrade">
 		<name>gk_music_free</name>
-		<creationDate>03 Sep 2012</creationDate>
+		<creationDate>20 Sep 2012</creationDate>
 		<author>GavickPro</author>
 		<authorEmail>support@gavick.com</authorEmail>
 		<authorUrl>http://gavick.com</authorUrl>
 		<copyright>Copyright (C) 2007 - 2012 GavickPro. All rights reserved.</copyright>
 		<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-		<version>3.4.1</version>
+		<version>3.5</version>
 		<description>
 				<![CDATA[<link rel="stylesheet" type="text/css" href="../templates/gk_music_free/admin/style.css" />
 						<style type="text/css" media="all">
@@ -41,7 +41,7 @@
 						
 						<p>Even more, this free template supports the mooMasonry script which blocks modules to be positioned such that the available space is optimized for the target device.</p>
 						
-						<p class="livedemo">View Music Free in action <a href="http://demo.gavick.com/index.php?month=May&year=2012&type=free" target="_blank">here</a>...</p><small>Gavern v.3.4</small></div>
+						<p class="livedemo">View Music Free in action <a href="http://demo.gavick.com/index.php?month=May&year=2012&type=free" target="_blank">here</a>...</p><small>Gavern v.3.5</small></div>
 						</div>
 						</div>]]>
 		</description>
@@ -74,6 +74,7 @@
 				<position>top_toolbar</position>
 				<position>login</position>
 				<position>footer_nav</position>
+				<position>lang</position>
 				
 				<!-- STANDARD Module Positions -->
 				<position>sidebar</position>
@@ -268,6 +269,10 @@
 						
 						<!-- Menu settings -->
 						<fieldset name="MENU_SETTINGS" addfieldpath="/templates/gk_music_free/admin/elements">
+								<field name ="show_menu" type="list" class="gk_switch" default="1" label="TPL_GK_LANG_SHOW_MENU" description="TPL_GK_LANG_SHOW_MENU_DESC">
+                                     <option value="1">TPL_GK_LANG_ENABLED</option>
+                                     <option value="0">TPL_GK_LANG_DISABLED</option>
+                                </field>
 								<field name="menu_name" type="menu" label="TPL_GK_LANG_MENU_NAME" description="TPL_GK_LANG_MENU_NAME_DESC" />
 								<field name="startlevel" type="text" default="0" label="TPL_GK_LANG_START_ITEM" description="TPL_GK_LANG_START_ITEM_DESC" />
 								<field name="endlevel" type="text" default="-1" label="TPL_GK_LANG_END_ITEM" description="TPL_GK_LANG_END_ITEM_DESC" />

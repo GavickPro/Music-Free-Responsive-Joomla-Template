@@ -29,7 +29,7 @@ $view = JRequest::getCmd('view', '');
 	  	function updateButton(response) {
 	    	var button = document.getElementById('fb-auth');
 		
-			if(button) {	
+			if(button) {
 	    		if (response.authResponse) {
 	      		// user is already logged in and connected
 				button.onclick = function() {
@@ -37,10 +37,10 @@ $view = JRequest::getCmd('view', '');
 						$('modlgn-username').set('value','Facebook');
 						$('modlgn-passwd').set('value','Facebook');
 						$('login-form').submit();
-					} else if($('com-login-form')) {
+					} else if($$('.login form')[0]) {
 					   $('username').set('value','Facebook');
 					   $('password').set('value','Facebook');
-					   $('com-login-form').submit();
+					   $$('.login form')[0].submit();
 					}
 				}
 			} else {
@@ -52,10 +52,10 @@ $view = JRequest::getCmd('view', '');
 					      	$('modlgn-username').set('value','Facebook');
 					      	$('modlgn-passwd').set('value','Facebook');
 					      	$('login-form').submit();
-					      } else if($('com-login-form')) {
+					      } else if($$('.login form')[0]) {
 					         $('username').set('value','Facebook');
 					         $('password').set('value','Facebook');
-					         $('com-login-form').submit();
+					         $$('.login form')[0].submit();
 					      }
 					  } else {
 					    //user cancelled login or did not grant authorization

@@ -38,3 +38,10 @@ body #gkPage img {
 .nspImage {
     width: auto!important;
 }
+table,
+table tr,
+table td,
+table tbody,
+table thead {
+     vertical-align: top!important;
+}
