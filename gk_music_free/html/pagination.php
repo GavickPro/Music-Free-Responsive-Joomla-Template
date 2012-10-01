@@ -11,34 +11,9 @@ function pagination_list_render($list) {
 	$html .= '<li class="pagination-start">'.$list['start']['data'].'</li>';
 	$html .= '<li class="pagination-prev">'.$list['previous']['data'].'</li>';
 	
-	if(count($list['pages']) >= 7) {
-		$founded = false;
-		
-		for($i = 1; $i <= count($list['pages']); $i++) {
-			if($list['pages'][$i]['active'] != 1) {
-				$founded = $i;
-				break;
-			}
+		foreach($list['pages'] as $page) {
+			$html .= '<li>'.$page['data'].'</li>';
 		}
-		
-		for($i = 1; $i <= count($list['pages']); $i++) {
-			if($i == 1 && $founded > $i + 2) {
-				$html .= '<li><span>&hellip;</span></li>';
-			}
-			
-			if($i == count($list['pages']) && $founded < $i - 2) {
-				$html .= '<li><span>&hellip;</span></li>';
-			}
-			
-			if($i >= $founded - 2 && $i <= $founded + 2) {
-				$html .= '<li>'.$list['pages'][$i]['data'].'</li>';
-			}
-		}
-	} else {
-		for($i = 1; $i <= count($list['pages']); $i++) {
-			$html .= '<li>'.$list['pages'][$i]['data'].'</li>';
-		}
-	}
 	
 	$html .= '<li class="pagination-next">'. $list['next']['data'].'</li>';
 	$html .= '<li class="pagination-end">'. $list['end']['data'].'</li>';
