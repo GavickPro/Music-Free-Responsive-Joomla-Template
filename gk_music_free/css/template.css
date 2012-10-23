@@ -617,10 +617,10 @@ div.content {
 
 /* tablet/mobile suffixes */
 .notablet {
-	display: none;
+	display: block;
 }
 .nomobile {
-	display: none;
+	display: block;
 }
 .onlytablet {
 	display: none;
