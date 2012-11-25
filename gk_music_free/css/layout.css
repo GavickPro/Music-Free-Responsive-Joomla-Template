@@ -35,13 +35,19 @@ section#gkToolbar{
 }
 
 /* clearfix */
-footer:after,
-header:after,
-section:after,
-aside:after {
+footer::after,
+header::after,
+section::after,
+aside::after,
+#gkContent::after,
+.itemSocialSharing::after {
 	clear: both;
 	content: "";
 	display: table;
+}
+
+.itemLinks .itemSocialSharing {
+	overflow: visible!important;
 }
 
 /* Columns */
@@ -115,9 +121,4 @@ section#gkComponentWrap > section:first-child {
 .cols-3 .column-2 {
 	padding-left: 10px;
 	padding-right: 10px;
-}
-
-/* columns fix */
-#gkContent {
-	overflow: hidden;
 }
