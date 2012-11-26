@@ -21,7 +21,7 @@ class JFormFieldLayoutOverride extends JFormField
 		$html .= '<input type="text" id="layout_override_input" />';
 		$html .= '<div class="label">' . JText::_('TPL_GK_LANG_ADD_RULE_LAYOUT') . '</div>';
 		$html .= JHtml::_('select.genericlist', $options, 'name', '', 'value', 'text', 'default', 'layout_override_select');
-		$html .= '<input type="button" value="'.JText::_('TPL_GK_LANG_ADD_RULE').'" id="layout_override_add_btn" />';
+		$html .= '<input class="btn" type="button" value="'.JText::_('TPL_GK_LANG_ADD_RULE').'" id="layout_override_add_btn" />';
 		$html .= '<textarea name="'.$this->name.'" id="'.$this->id.'">' . htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '</textarea>';
 		$html .= '<div id="layout_override_rules"></div>';
 		$html .= '</div>';

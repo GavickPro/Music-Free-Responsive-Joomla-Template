@@ -41,7 +41,7 @@ class JFormFieldContentWidthOverride extends JFormField
 		$html .= '<input type="text" id="content_width_for_pages_input" />';
 		$html .= '<div class="label">' . JText::_('TPL_GK_LANG_ADD_RULE_STATE') . '</div>';
 		$html .= JHtml::_('select.genericlist', $options, 'name', '', 'value', 'text', 'default', 'content_width_for_pages_select');
-		$html .= '<input type="button" value="'.JText::_('TPL_GK_LANG_ADD_RULE').'" id="content_width_for_pages_add_btn" />';
+		$html .= '<input class="btn" type="button" value="'.JText::_('TPL_GK_LANG_ADD_RULE').'" id="content_width_for_pages_add_btn" />';
 		$html .= '<textarea name="'.$this->name.'" id="'.$this->id.'">' . htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '</textarea>';
 		$html .= '<div id="content_width_for_pages_rules"></div>';
 		$html .= '</div>';

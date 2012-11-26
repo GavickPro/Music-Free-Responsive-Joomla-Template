@@ -77,6 +77,8 @@ input[type="submit"]:hover,
 input[type="button"]:hover,
 .pagenav-prev a:hover,
 .pagenav-next a:hover,
+.pager .previous a:hover,
+.pager .next a:hover,
 a:hover.readon,
 .itemReadMore:hover {
 	background: #8d9274;
@@ -97,7 +99,7 @@ p.img_caption {
 #system-message dd.error {
 	background: #8d9274;
 }
-#article-index li a:hover {
+.article-index li a:hover {
 	color: #8d9274;
 }
 .autocompleter-queried {

@@ -1,5 +1,13 @@
 /* hide specific elements - JS/CSS/translations/labels */
 
+.gkHelpLink { float: right !important; width: 22px; height: 22px; cursor: pointer; margin: -31px 15px 0 0; background: transparent url('interface.png') repeat-x 0 100% !important;  position: relative; 
+}
+a:hover.gkHelpLink { background-position: 0 -47px !important }
+
+ul.nav-tabs li a.gkHelpLink{
+	display: none
+}
+
 #jform_params_js_translations-lbl,
 #template_options_translations,
 #jform_params_asset_css-lbl,
@@ -9,117 +17,64 @@
 #jform_params_suffix_override,
 #jform_params_tools_for_pages,
 #jform_params_mootools_for_pages,
-#jform_params_content_width_for_pages,
+#jform_params_sidebar_width_for_pages,
 #jform_params_menu_override,
-#jform_params_google_analytics,
-.gkFormLine,
-label[id^=jform_params_gk_line_] { display: none; }
-div.button2-left { margin-top: 7px; }
+#jform_params_google_analytics {
+	clear: both;
+	margin-left: 38px;
+	display: block;
+}
+#jform_params_font_name_group1,
+#jform_params_font_name_group2,
+#jform_params_font_name_group3,
+#jform_params_font_name_group4 {
+	display: none;
+}
 /* specific form elements */
-
-.width-40 > div { padding: 8px 0; }
-.width-40 > div > div.panel { margin: 2px 10px; }
+a:hover { text-decoration: none;}
 .gkFormHide { display: none; }
-span.label { width:100%!important; clear: both; display: block; }
-span.label > strong { max-width: 30%!important; min-width: 30%!important; padding: 0 20px 0 10px; text-align: right; float: left; }
-span.label > input { width: 50%; }
-.gkFormLine { background:#eee; clear:both; display:block; height:5px; }
+.accordion-heading .accordion-toggle {
+	padding: 0;
+}
+.gkFormLine { background:#eee; clear:both; display:block; height:5px; margin-bottom: -5px }
 .gkFormLine.hasText { border-top: 10px solid #fff; border-bottom: 5px solid #fff; color: #999; font-size: 10px; line-height:1px; padding-left: 25px; cursor: pointer; }
 .gkFormLine.hasText span { padding: 3px; background: #fff; }
-.adminformlist li { border-top: 1px solid #eee; overflow:hidden; }
-.adminformlist li:first-child { border-top: none; }
 .gkFormLine + .gkFormThinLine { display: none; }
 .gkFormSuffixPx,
 .gkFormSuffixPercents,
 .gkFormSuffixPxOrPercents { color: #333; display: block; float: left; font-weight: bold; height: 36px; line-height:36px; }
 .gkFormLink { display: block; float: left; height: 34px; line-height:34px; }
-.switcher-on,
-.switcher-off { width:94px; height:27px; background:transparent url('switcher.png') no-repeat 0 0; cursor:pointer; float: left; margin-top: 3px; }
-.switcher-off { background-position:-94px 0; }
-span.unit { line-height:34px; }
-.input-pixels { text-align: right; width: 30px; }
-div.panel > h3 > a { float: left; display: block; }
-.gkHelpLink { float: right !important; width: 22px; height: 22px; cursor: pointer; margin: 11px 12px 0 10px; background: transparent url('interface.png') repeat-x 0 100% !important; }
-a:hover.gkHelpLink { background-position: 0 -47px !important }
+span.unit { float: left; line-height:34px; margin-right: 10px; }
+.input-pixels,
+.input-percents,
+.input-ms { text-align: right; width: 40px; }
 /* togglers */
-
 .pane-sliders .panel { border: none !important; }
-div.panel > h3 { height: 43px; background: transparent url('interface.png') repeat-x 0 0 !important; border: 1px solid #d8d8d8; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; font: bold 12px/43px Arial, Helvetica, sans-serif; text-transform: uppercase; }
-div.panel > h3 a { color: #333; text-shadow: 0 1px 1px #fff; }
-div.panel > h3 a:hover { color: #146295 }
-div.panel h3.pane-toggler-down a { color: #146295 }
-div.panel h3.pane-toggler-down { border-bottom: 4px solid #03a0da !important }
-.pane-toggler span { background: transparent url('j_arrow.png') no-repeat 5px 50% !important; }
-.pane-toggler-down span { background: transparent url('j_arrow_down.png') no-repeat 5px 50% !important; }
-.pane-sliders .content { margin: 4px auto; width: 99%; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
-/* container for groups of elements */
+div.accordion-group > div.accordion-heading { height: 43px; line-height: 43px }
+a.accordion-toggle { margin-left: 15px }
+.form-horizontal .control-group { margin: 0 }
+.control-label { padding-bottom: 5px }
+.form-horizontal .control-label { min-width: 195px; padding-top: 11px}
+.form-horizontal .controls {padding: 5px 0; }
+div.label { background: #fafafa; color: #444; text-shadow: none; float: left; display: block}
+div.controls > div > div.label:first-child {
+	margin-top: -25px !important
+}
+div.gkfont_form span.label {
+	background: none;
+}
+#sidebar_width_for_pages_select + span.unit,
+#google_analytics_form > label {display: none}
+div.label,
+div.label + select,
+div.label + input,
+input#content_width_for_pages_add_btn + textarea,
+div.label + div.input-prepend { float: left; display: block; clear: both; margin: 0 0 4px 38px}
+input + input.btn,
+select + input.btn { display: inline-block; float: left; }
+select + input.btn,
+input + input.btn { margin-left: 3px; }
 
-fieldset.panelform { margin: 0!important; padding: 0!important; }
-/* form elements in the container */
-
-.panel fieldset.panelform label { color: #444; font-size: 11px; font-weight: bold; height: 24px; line-height: 24px; padding: 0 20px 0 10px; text-align: right; max-width: 30%!important; min-width: 30%!important; }
-fieldset.panelform input { height: 16px; color: #555; line-height: 16px; padding: 4px; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; }
-fieldset.panelform input.small { width: 40px; }
-fieldset.panelform input.tright { text-align: right; }
-fieldset.panelform input[type=button], fieldset.panelform button { height: 27px;  background: #03A0DA; color: #fff; border-color: #03A0DA; font: bold 11px/25px Arial, Helvetica, sans-serif; cursor: pointer; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px;}
-fieldset.panelform input[type=button]:hover, fieldset.panelform button:hover { background: #333; border-color: #333}
-fieldset.panelform select { height: 26px; color: #555; line-height: 24px; padding: 4px; font-size:11px; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; }
-fieldset.panelform select.position { width: 80px!important; }
-fieldset.panelform textarea { padding: 4px; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; }
-fieldset.panelform select[multiple=multiple] { height: 150px; }
-/* lists */
-
-#tools_for_pages_rules,
-#mootools_for_pages_rules,
-#google_analytics_rules,
-#menu_override_rules,
-#suffix_override_rules,
-#module_override_rules,
-#layout_override_rules,
-#content_width_for_pages_rules { clear: both; padding: 10px 0; border-top: 3px solid #eee; }
-#tools_for_pages_input,
-#mootools_for_pages_input,
-#google_analytics_input,
-#menu_override_input,
-#suffix_override_input,
-#suffix_override_select,
-#layout_override_input,
-#content_width_for_pages_input,
-#content_width_for_pages_select { width: 80px; }
-#tools_for_pages_rules > div,
-#mootools_for_pages_rules > div,
-#google_analytics_rules > div,
-#menu_override_rules > div,
-#suffix_override_rules > div,
-#module_override_rules > div,
-#layout_override_rules > div,
-#content_width_for_pages_rules > div  { background: #f5f5f5; border-bottom: 1px solid #eee; padding: 7px 10px; margin-bottom: 2px; }
-.tools_for_pages_remove_rule,
-.mootools_for_pages_remove_rule,
-.google_analytics_remove_rule,
-.menu_override_remove_rule,
-.suffix_override_remove_rule,
-.module_override_remove_rule,
-.layout_override_remove_rule,
-.content_width_for_pages_remove_rule { float: right; }
-#tools_for_pages_form,
-#mootools_for_pages_form,
-#google_analytics_form,
-#menu_override_form,
-#suffix_override_form,
-#module_override_form,
-#layout_override_form,
-#content_width_for_pages_form { clear: both; color: #555; margin: 10px 20px; border-top: 3px solid #eee; }
-#jform_params_tools_for_pages-lbl,
-#jform_params_content_width_for_pages-lbl,
-#jform_params_mootools_for_pages-lbl,
-#jform_params_google_analytics-lbl,
-#jform_params_menu_override-lbl,
-#jform_params_suffix_override-lbl,
-#jform_params_module_override-lbl,
-#jform_params_layout_override-lbl { padding-left: 25px!important; text-align: left; }
-fieldset.panelform .label { font-size: 11px; font-weight: bold; width: auto; float: left; padding: 0 5px; line-height:34px; }
-fieldset.panelform .desc { font-size: 11px; font-weight: normal; width: auto; float: left; padding: 10px; }
 /* Updates */
 
 #gk_template_updates { margin: 20px 10px; border-right: 1px solid #eee }
@@ -131,20 +86,28 @@ span.gk_update_data { width: 150px; background: #f9f9f9; }
 span.gk_update_link a { padding: 4px 12px; -moz-border-radius: 26px; background: #03a0da; text-transform: uppercase; font: bold 10px Arial, Helvetica, sans-serif; color: #fff; line-height: 34px; }
 span.gk_update_link a:hover { background: #222; text-decoration: none; }
 #gk_template_updates p { color: #555 }
+
 /* Config manager */ 
 
 #jform_params_config_manager-lbl { display: none; }
-#config_manager_form { clear: both; color: #555; margin: 16px 20px; border: 3px solid #eee; padding: 10px; overflow: hidden; }
-#config_manager_form > div { clear: both; overflow: hidden; padding: 2px 0; }
-#config_manager_form span { float: left; line-height: 36px; margin-right: 10px; margin-left: -3px; }
-#config_manager_form input[type="text"] { text-align: right; }
-#config_manager_form button { margin-top: 7px; }
-#config_manager_load_filename { width: 137px; }
+.gk-no-left-margin { margin-left: 0!important; }
+#config_manager_form { margin-bottom: 15px!important; word-wrap: break-word!important; }
+.control-label { max-width: 140px; }
 
-div.media-preview {border-radius: 5px; border: 1px solid #eee; line-height: 16px; margin-top: 6px; padding: 3px 5px}
+/* Updates */
+#gk_template_updates { margin: 20px 10px; border-right: 1px solid #eee; }
+.gk_updates { list-style-type: none; margin: 0!important; }
+#gk_template_updates li { margin: 0; padding: 0; border: none; line-height: 34px; color: #555; border-top: 1px solid #eee }
+#gk_template_updates li span strong { padding: 0 12px 0 0 }
+#gk_template_updates li span { display: block; float: left; height: 34px; line-height: 34px; padding: 0 0 0 20px; border-left: 1px solid #eee }
+span.gk_update_version { width: 110px; background: #fff9f6; }
+span.gk_update_data { width: 150px; background: #f9f9f9; }
+span.gk_update_link a { padding: 4px 12px; -moz-border-radius: 26px; background: #03a0da; text-transform: uppercase; font: bold 10px Arial, Helvetica, sans-serif; color: #fff; line-height: 34px; }
+span.gk_update_link a:hover { background: #222; text-decoration: none; }
+#gk_template_updates p { color: #555 }
 
 /* Top banner */
-#gkTopBanner { background: #146295; border: 1px solid #025073; border-radius: 3px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; color: #fff; margin-top: 18px; min-width: 360px; overflow: hidden; padding: 10px; width: 100%; }
+#gkTopBanner { background: #146295; border: 1px solid #025073; border-radius: 3px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -o-box-sizing: border-box; box-sizing: border-box; color: #fff; margin: 18px 0 20px 0; min-width: 360px; overflow: hidden; padding: 10px; width: 100%; }
 #gkTopBanner h3 { font-size: 16px; margin: 0; padding: 0; text-transform: uppercase; }
 #gkTopBanner p { margin: 10px 0 0 0; }
 #gkTopBanner h3 a { color: #fff; }
@@ -152,3 +115,9 @@ div.media-preview {border-radius: 5px; border: 1px solid #eee; line-height: 16px
 #gkTopBanner p a:active,
 #gkTopBanner p a:focus,
 #gkTopBanner p a:hover { background: #fff; color: #146295; text-decoration: none; }
+
+/* Support for mobile */
+@media (max-width: 480px) {
+	.form-horizontal .controls { clear: both!important; }
+	.form-horizontal .control-label { width: 100%!important; }
+}

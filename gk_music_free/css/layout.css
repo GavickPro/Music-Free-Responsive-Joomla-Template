@@ -1,6 +1,6 @@
 /*
 #------------------------------------------------------------------------
-# Music Free - #1 Free Joomla! template (for Joomla 2.5)
+# Music Free - #1 Free Joomla! template (for Joomla 3.0)
 #
 # Copyright (C) 2007-2012 Gavick.com. All Rights Reserved.
 # License:  GPL v.2.0
@@ -35,13 +35,19 @@ section#gkToolbar{
 }
 
 /* clearfix */
-footer:after,
-header:after,
-section:after,
-aside:after {
+footer::after,
+header::after,
+section::after,
+aside::after,
+#gkContent::after,
+.itemSocialSharing::after {
 	clear: both;
 	content: "";
 	display: table;
+}
+
+.itemLinks .itemSocialSharing {
+	overflow: visible!important;
 }
 
 /* Columns */
@@ -115,9 +121,4 @@ section#gkComponentWrap > section:first-child {
 .cols-3 .column-2 {
 	padding-left: 10px;
 	padding-right: 10px;
-}
-
-/* columns fix */
-#gkContent {
-	overflow: hidden;
 }

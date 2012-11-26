@@ -28,6 +28,7 @@ a {
 	-ms-transition: color 0.2s linear;
 	-o-transition: color 0.2s linear;
 	transition: color 0.2s linear;
+	-webkit-transform: translateZ(0);
 }
 a:hover,
 a:active,
@@ -216,7 +217,10 @@ p {
 	overflow: inherit;
 	padding: 2px 0 2px 24px;	
 }
-
+#gkMainbody article  ul.pager li {
+	background-image:  none!important;	
+	padding: 0;
+}
 /* standard breadcrumb */
 #gkBreadcrumb {
 	border-bottom: 1px solid #ddd;
@@ -685,7 +689,7 @@ label#jform_spacer-lbl {
 	font-size: 11px;
 	font-weight: normal;
 }
-.logout-button .login-greeting {
+#loginForm .login-greeting {
 	float: left;
 	font-size: 14px;
 	margin-right: 32px;

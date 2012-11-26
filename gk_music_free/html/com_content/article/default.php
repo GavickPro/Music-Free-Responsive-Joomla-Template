@@ -4,6 +4,7 @@
 defined('_JEXEC') or die;
 
 JHtml::addIncludePath(JPATH_COMPONENT .'/helpers');
+JHtml::_('behavior.caption'); 
 
 // Create shortcuts to some parameters.
 $params = $this->item->params;

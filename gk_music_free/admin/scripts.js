@@ -1,458 +1,493 @@
-window.addEvent('domready', function(){
-    // enable config manager
-    initConfigManager();
-	// load the template updates
-	document.id('UPDATES-options').addEvent('click', function(){
-          getUpdates();
-     });
-	// generate switchers
-	generateFormElements();
-	// create help icons
-	generateHelpIcons();
-	// create the top banner
-	if(document.id('jform_params_top_banner').get('value') == 1) {
+jQuery.noConflict();
+
+jQuery(document).ready(function() {
+	
+	// enable config manager
+	initConfigManager();
+	if(jQuery('#jform_params_top_banner0').attr('value') == 1) {          
 		createTopBanner();
 	}
+	
+	// help icons
+	generateHelpIcons();
+	generateFormElements();
+	// load the template updates
+	jQuery('a[data-parent*="#templatestyleOptions"]').click(function(){
+		getUpdates();
+	});	
 	// get translations
 	var $lang = getTranslations();
-	// fix the width of the options when the browser window is too small
-	$$('div[id^="template-sliders-"]').getParent().setStyle('position','relative');
-	var baseW = $$('div[id^="template-sliders-"]')[0].getSize().x;
-	var minW = 640;
 	
-	if(baseW < minW) {
-		$$('div[id^="template-sliders-"]')[0].setStyles({
-			"position": "absolute",
-			"background": "white",
-			"width": baseW + "px",
-			"-webkit-box-shadow": "-8px 0 15px #aaa",
-			"-moz-box-shadow": "-8px 0 15px #aaa",
-			"box-shadow": "-8px 0 15px #aaa"
-		});
-
-		var WidthFX = new Fx.Morph($$('div[id^="template-sliders-"]')[0], {duration: 150});
-		var mouseOver = false;
-
-		$$('div[id^="template-sliders-"]')[0].addEvent('mouseenter', function() {
-			mouseOver = true;
-			WidthFX.start({
-				'width': minW,
-				'margin-left': (-1 * (minW - baseW))
-			});
-		});
-
-		$$('div[id^="template-sliders-"]')[0].addEvent('mouseleave', function() {
-			mouseOver = false;
-			(function() {
-				if(!mouseOver) {
-					WidthFX.start({
-						'width': baseW,
-						'margin-left': 0
-					});
-				}
-			}).delay(750);
-		});
-	}
-	// fix the Joomla!1.6 behaviour
-	$$('.panel h3.title').each(function(panel) {
-		panel.addEvent('click', function(){
-			if(panel.hasClass('pane-toggler')) {
-				(function(){ 
-					panel.getParent().getElement('.pane-slider').setStyle('height', 'auto'); 
-				}).delay(750);
-
-				(function() {
-					var myFx = new Fx.Scroll(window, { duration: 150 }).toElement(panel);
-				}).delay(250);
-			}
-		});
-	});
-    // tools forms
-    if(document.id('jform_params_tools').value != 'selected' && document.id('jform_params_tools').value != 'selected_disabled') document.id('jform_params_tools_for_pages-lbl').getParent().setStyle('display','none');
-    	document.id('jform_params_tools').addEvents({
-               'change' : function() {
-            if(document.id('jform_params_tools').value == 'selected' || document.id('jform_params_tools').value == 'selected_disabled') document.id('jform_params_tools_for_pages-lbl').getParent().setStyle('display','block');
-            else document.id('jform_params_tools_for_pages-lbl').getParent().setStyle('display','none');
-        }
-    });
 	// fonts forms
-	$$('.gkfont_form').each(function(el) {
-		var base_id = el.getElement('input').getProperty('id');
-		var base_el = document.id(base_id);
-		if(base_el.value == '') base_el.value = 'standard;Arial, Helvetica, sans-serif';
-		var values = (base_el.value).split(';');
+	jQuery('.gkfont_form').each(function(i, el) {
+		el = jQuery(el);
+		
+		var base_id = el.find('input');
+		base_id = jQuery(base_id).attr('id');
+		
+		var base_el = jQuery('#' + base_id);
+		if(base_el.val() == '') base_el.attr('value','standard;Arial, Helvetica, sans-serif');
+		var values = (base_el.val()).split(';');
 		// id of selectbox are different from input id
 		base_id = base_id.replace('jform_params_font_', 'jformparamsfont_');
-		document.id(base_id + '_type').set('value', values[0]);
+		jQuery('#'+base_id + '_type').attr('value', values[0]);
 		
 		if(values[0] == 'standard') {
-			document.id(base_id + '_normal').set('value', values[1]);
-			document.id(base_id + '_google_own_link').setStyle('display', 'none');
-			document.id(base_id + '_google_own_font').setStyle('display', 'none');
-			document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
-			document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
-			document.id(base_id + '_squirrel').setStyle('display', 'none');
+			jQuery('#' + base_id + '_normal').attr('value', values[1]);
+			jQuery('#' + base_id + '_google_own_link').fadeOut();
+			jQuery('#' + base_id + '_google_own_font').fadeOut();
+			jQuery('#' + base_id + '_google_own_link_label').fadeOut();
+			jQuery('#' + base_id + '_google_own_font_label').fadeOut();
+			jQuery('#' + base_id + '_squirrel').fadeOut();
+			jQuery('#' + base_id + '_adobe_edge_url_label').fadeOut();
 		} else if(values[0] == 'google') {
-			document.id(base_id + '_google_own_link').set('value', values[2]);
-			document.id(base_id + '_google_own_font').set('value', values[3]);
-			document.id(base_id + '_normal').setStyle('display', 'none');
-			document.id(base_id + '_squirrel').setStyle('display', 'none');
+			jQuery('#' + base_id + '_google_own_link').attr('value', values[2]);
+			jQuery('#' + base_id + '_google_own_font').attr('value', values[3]);
+			jQuery('#' + base_id + '_normal').fadeOut();
+			jQuery('#' + base_id + '_squirrel').fadeOut();
+			jQuery('#' + base_id + '_adobe_edge_url_label').fadeOut();
 		} else if(values[0] == 'squirrel') {
-			document.id(base_id + '_squirrel').set('value', values[1]);
-			document.id(base_id + '_normal').setStyle('display', 'none');
-			document.id(base_id + '_google_own_link').setStyle('display', 'none');
-			document.id(base_id + '_google_own_font').setStyle('display', 'none');
-			document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
-			document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
+			jQuery('#' + base_id + '_squirrel').attr('value', values[1]);
+			jQuery('#' + base_id + '_normal').fadeOut();
+			jQuery('#' + base_id + '_google_own_link').fadeOut();
+			jQuery('#' + base_id + '_google_own_font').fadeOut();
+			jQuery('#' + base_id + '_google_own_link_label').fadeOut();
+			jQuery('#' + base_id + '_google_own_font_label').fadeOut();
+			jQuery('#' + base_id + '_adobe_edge_url_label').fadeOut();
+		} else if(values[0] == 'adobe') {
+			jQuery('#' + base_id + '_adobe_edge_url').attr('value', values[1]);
+			jQuery('#' + base_id + '_adobe_edge_url_label').fadeIn();
+			jQuery('#' + base_id + '_normal').fadeOut();
+			jQuery('#' + base_id + '_google_own_link').fadeOut();
+			jQuery('#' + base_id + '_google_own_font').fadeOut();
+			jQuery('#' + base_id + '_google_own_link_label').fadeOut();
+			jQuery('#' + base_id + '_google_own_font_label').fadeOut();
+			jQuery('#' + base_id + '_squirrel').fadeOut();
 		}
 		
-		document.id(base_id + '_type').addEvents({
-			'change' : function() { 
-				var values = (base_el.value).split(';');
+		jQuery('#' + base_id + '_type').change(function() {
+				var values = (base_el.val()).split(';');
 				
-				if(document.id(base_id + '_type').value == 'standard') {
-					document.id(base_id + '_normal').setStyle('display', 'block');
-					document.id(base_id + '_normal').fireEvent('change');
-					document.id(base_id + '_google_own_link').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font').setStyle('display', 'none');
-					document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
-					document.id(base_id + '_squirrel').setStyle('display', 'none');
-				} else if(document.id(base_id + '_type').value == 'google') {
-					document.id(base_id + '_normal').setStyle('display', 'none');
-					document.id(base_id + '_google_own_link').setStyle('display', 'block');
-					document.id(base_id + '_google_own_font').setStyle('display', 'block');
-					document.id(base_id + '_google_own_font').fireEvent('change');
-					document.id(base_id + '_google_own_link_label').setStyle('display', 'block');
-					document.id(base_id + '_google_own_font_label').setStyle('display', 'block');
-					document.id(base_id + '_squirrel').setStyle('display', 'none');				
-				} else if(document.id(base_id + '_type').value == 'squirrel') {
-					document.id(base_id + '_normal').setStyle('display', 'none');
-					document.id(base_id + '_google_own_link').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font').setStyle('display', 'none');
-					document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
-					document.id(base_id + '_squirrel').setStyle('display', 'block');
-					document.id(base_id + '_squirrel').fireEvent('change');
-				}
-			},
-			'blur' :function() { 
-				var values = (base_el.value).split(';');
+				if(jQuery('#' + base_id + '_type').val() == 'standard') {
+					jQuery('#' + base_id + '_normal').fadeIn();
+					jQuery('#' + base_id + '_normal').trigger('change');
+					jQuery('#' + base_id + '_google_own_link').fadeOut();
+					jQuery('#' + base_id + '_google_own_font').fadeOut();
+					jQuery('#' + base_id + '_google_own_link_label').fadeOut();
+					jQuery('#' + base_id + '_google_own_font_label').fadeOut();
+					jQuery('#' + base_id + '_squirrel').fadeOut();
+					jQuery('#' + base_id + '_adobe_edge_url_label').fadeOut();
+				} else if(jQuery('#' + base_id + '_type').val() == 'google') {
+					jQuery('#' + base_id + '_normal').fadeOut();
+					jQuery('#' + base_id + '_google_own_link').fadeIn();
+					jQuery('#' + base_id + '_google_own_font').fadeIn();
+					jQuery('#' + base_id + '_google_own_font').trigger('change');
+					jQuery('#' + base_id + '_google_own_link_label').fadeIn();
+					jQuery('#' + base_id + '_google_own_font_label').fadeIn();
+					jQuery('#' + base_id + '_squirrel').fadeOut();
+					jQuery('#' + base_id + '_adobe_edge_url_label').fadeOut();
+				} else if(jQuery('#' + base_id + '_type').val() == 'squirrel') {
+					jQuery('#' + base_id + '_normal').fadeOut();
+					jQuery('#' + base_id + '_google_own_link').fadeOut();
+					jQuery('#' + base_id + '_google_own_font').fadeOut();
+					jQuery('#' + base_id + '_google_own_link_label').fadeOut();
+					jQuery('#' + base_id + '_google_own_font_label').fadeOut();
+					jQuery('#' + base_id + '_adobe_edge_url_label').fadeOut();
+					jQuery('#' + base_id + '_squirrel').fadeIn();
+					jQuery('#' + base_id + '_squirrel').trigger('change');
+				} else if(jQuery('#' + base_id + '_type').val() == 'adobe') {
+	               jQuery('#' + base_id + '_normal').fadeOut();
+	               jQuery('#' + base_id + '_google_own_link').fadeOut();
+	               jQuery('#' + base_id + '_google_own_font').fadeOut();
+	               jQuery('#' + base_id + '_google_own_link_label').fadeOut();
+	               jQuery('#' + base_id + '_google_own_font_label').fadeOut();
+	               jQuery('#' + base_id + '_squirrel').fadeOut();
+	               jQuery('#' + base_id + '_adobe_edge_url_label').fadeIn();
+	               jQuery('#' + base_id + '_adobe_edge_url').trigger('change');
+	           }
 				
-				if(document.id(base_id + '_type').value == 'standard') {
-					document.id(base_id + '_normal').set('display', 'block');
-					document.id(base_id + '_normal').fireEvent('change');
-					document.id(base_id + '_google_own_link').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font').setStyle('display', 'none');
-					document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
-					document.id(base_id + '_squirrel').setStyle('display', 'none');
-				} else if(document.id(base_id + '_type').value == 'google') {
-					document.id(base_id + '_normal').set('display', 'none');
-					document.id(base_id + '_google_own_link').setStyle('display', 'block');
-					document.id(base_id + '_google_own_font').setStyle('display', 'block');
-					document.id(base_id + '_google_own_font').fireEvent('change');
-					document.id(base_id + '_google_own_link_label').setStyle('display', 'block');
-					document.id(base_id + '_google_own_font_label').setStyle('display', 'block');
-					document.id(base_id + '_squirrel').setStyle('display', 'none');				
-				} else if(document.id(base_id + '_type').value == 'squirrel') {
-					document.id(base_id + '_normal').set('display', 'none');
-					document.id(base_id + '_google_own_link').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font').setStyle('display', 'none');
-					document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
-					document.id(base_id + '_squirrel').setStyle('display', 'block');
-					document.id(base_id + '_squirrel').fireEvent('change');
+			});
+			jQuery('#' + base_id + '_type').blur(function() {
+				var values = (base_el.val()).split(';');
+				
+				if(jQuery('#' + base_id + '_type').val() == 'standard') {
+					jQuery('#' + base_id + '_normal').fadeIn();
+					jQuery('#' + base_id + '_normal').trigger('change');
+					jQuery('#' + base_id + '_google_own_link').fadeOut();
+					jQuery('#' + base_id + '_google_own_font').fadeOut();
+					jQuery('#' + base_id + '_google_own_link_label').fadeOut();
+					jQuery('#' + base_id + '_google_own_font_label').fadeOut();
+					jQuery('#' + base_id + '_squirrel').css('display', 'none');
+					jQuery('#' + base_id + '_adobe_edge_url_label').fadeOut();
+				} else if(jQuery('#' + base_id + '_type').val() == 'google') {
+					jQuery('#' + base_id + '_normal').fadeOut();
+					jQuery('#' + base_id + '_google_own_link').fadeIn();
+					jQuery('#' + base_id + '_google_own_font').fadeIn();
+					jQuery('#' + base_id + '_google_own_font').trigger('change');
+					jQuery('#' + base_id + '_google_own_link_label').fadeIn();
+					jQuery('#' + base_id + '_google_own_font_label').fadeIn();
+					jQuery('#' + base_id + '_squirrel').css('display', 'none');
+					jQuery('#' + base_id + '_adobe_edge_url_label').fadeOut();
+				} else if(jQuery('#' + base_id + '_type').val() == 'squirrel') {
+					jQuery('#' + base_id + '_normal').fadeOut();
+					jQuery('#' + base_id + '_google_own_link').fadeOut();
+					jQuery('#' + base_id + '_google_own_font').fadeOut();
+					jQuery('#' + base_id + '_google_own_link_label').fadeOut();
+					jQuery('#' + base_id + '_google_own_font_label').fadeOut();
+					jQuery('#' + base_id + '_adobe_edge_url_label').fadeOut();
+					jQuery('#' + base_id + '_squirrel').fadeIn();
+					jQuery('#' + base_id + '_squirrel').trigger('change');
+					
+				} else if(jQuery('#' + base_id + '_type').val() == 'adobe') {
+				    jQuery('#' + base_id + '_normal').fadeOut();
+				    jQuery('#' + base_id + '_google_own_link').fadeOut();
+				    jQuery('#' + base_id + '_google_own_font').fadeOut();
+				    jQuery('#' + base_id + '_google_own_link_label').fadeOut();
+				    jQuery('#' + base_id + '_google_own_font_label').fadeOut();
+				    jQuery('#' + base_id + '_squirrel').fadeOut();
+					jQuery('#' + base_id + '_adobe_edge_url_label').fadeIn();
 				}
-			}
 		});
 		
-		document.id(base_id + '_normal').addEvents({
-			'change' : function() { base_el.set('value', document.id(base_id + '_type').value + ';' + document.id(base_id + '_normal').value); },
-			'blur' : function() { base_el.set('value', document.id(base_id + '_type').value + ';' + document.id(base_id + '_normal').value); }
+		jQuery('#' + base_id + '_normal').change(function() { 
+			base_el.attr('value', jQuery('#' + base_id + '_type').val() + ';' + jQuery('#' + base_id + '_normal').val()); 
+		});
+		jQuery('#' + base_id + '_normal').blur(function()  { 
+			base_el.attr('value', jQuery('#' + base_id + '_type').val() + ';' + jQuery('#' + base_id + '_normal').val());
 		});
 		
-		document.id(base_id + '_google_own_link').addEvents({
-			'keydown' : function() { 
-				base_el.set(
-					'value', 
-					document.id(base_id + '_type').value + ';' + 
-					'own;' + 
-					document.id(base_id + '_google_own_link').value + ';' + 
-					document.id(base_id + '_google_own_font').value
-				); 
-			},
-			'blur' : function() { 
-				base_el.set(
-					'value', 
-					document.id(base_id + '_type').value + ';' + 
-					'own;' + 
-					document.id(base_id + '_google_own_link').value + ';' + 
-					document.id(base_id + '_google_own_font').value
-				); 
-			}
+		
+		jQuery('#' + base_id + '_google_own_link').keydown(function() {
+			base_el.attr(
+				'value',
+				jQuery('#' + base_id + '_type').val() + ';' +
+				'own;' +
+				jQuery('#' + base_id + '_google_own_link').val() + ';' +
+				jQuery('#' + base_id + '_google_own_font').val()
+			);
+		});
+		jQuery('#' + base_id + '_google_own_link').blur(function() {
+			base_el.attr(
+				'value',
+				jQuery('#' + base_id + '_type').val() + ';' +
+				'own;' +
+				jQuery('#' + base_id + '_google_own_link').val() + ';' +
+				jQuery('#' + base_id + '_google_own_font').val()
+			);
 		});
 		
-		document.id(base_id + '_google_own_font').addEvents({
-			'keydown' : function() { 
-				base_el.set(
-					'value', 
-					document.id(base_id + '_type').value + ';' + 
-					'own;' + 
-					document.id(base_id + '_google_own_link').value + ';' + 
-					document.id(base_id + '_google_own_font').value
-				); 
-			},
-			'blur' : function() { 
-				base_el.set(
-					'value', 
-					document.id(base_id + '_type').value + ';' + 
-					'own;' + 
-					document.id(base_id + '_google_own_link').value + ';' + 
-					document.id(base_id + '_google_own_font').value
-				); 
-			}
+		jQuery('#' + base_id + '_google_own_font').keydown(function() {
+			base_el.attr(
+				'value',
+				jQuery('#' + base_id + '_type').val() + ';' +
+				'own;' +
+				jQuery('#' + base_id + '_google_own_link').val() + ';' +
+				jQuery('#' + base_id + '_google_own_font').val()
+			);
+		});
+		jQuery('#' + base_id + '_google_own_font').blur(function() {
+			base_el.attr(
+				'value',
+				jQuery('#' + base_id + '_type').val() + ';' +
+				'own;' +
+				jQuery('#' + base_id + '_google_own_link').val() + ';' +
+				jQuery('#' + base_id + '_google_own_font').val()
+			);
+		});
+	
+		
+		jQuery('#' + base_id + '_squirrel').change(function() { 
+			base_el.attr('value', jQuery('#' + base_id + '_type').val() + ';' + jQuery('#' + base_id + '_squirrel').val()); 
+		});
+		jQuery('#' + base_id + '_squirrel').blur(function() { base_el.attr('value', jQuery('#' + base_id + '_type').val() + ';' + jQuery('#' + base_id + '_squirrel').val());
 		});
 		
-		document.id(base_id + '_squirrel').addEvents({
-			'change' : function() { base_el.set('value', document.id(base_id + '_type').value + ';' + document.id(base_id + '_squirrel').value); },
-			'blur' : function() { base_el.set('value', document.id(base_id + '_type').value + ';' + document.id(base_id + '_squirrel').value); }
+		
+		jQuery('#' + base_id + '_adobe_edge_url').change(function() { 
+			base_el.attr('value', jQuery('#' + base_id + '_type').val() + ';' + jQuery('#' + base_id + '_adobe_edge_url').val()); 
 		});
+		jQuery('#' + base_id + '_adobe_edge_url').blur(function()  { 
+			base_el.attr('value', jQuery('#' + base_id + '_type').val() + ';' + jQuery('#' + base_id + '_adobe_edge_url').val());
+		});
+		
 	});
 	
-	// overrides 
-	['layout_override', 'tools_for_pages', 'suffix_override', 'module_override'/*, 'menu_override'*/, 'mootools_for_pages', 'content_width_for_pages'].each(function(txt) {
-		var rules = document.id(txt + '_rules');
-		var textarea = document.id('jform_params_' + txt);
-		var items = textarea.innerHTML.split( /\r\n|\r|\n/ );
+	
+	jQuery('.gkFormLine').each(function(i, el) {
+		el = jQuery(el);
+		el.parent().css('margin', '0');
+		el.parents().eq(1).find('.control-label').css('display', 'none');
+		el.parents().eq(1).css('border', 'none');
+		//el.parents().eq(2).find('.control-label').css('display', 'none');
+	
+	});
+	
+	// overrides
+	var elements = ['layout_override', 'tools_for_pages', 'suffix_override', 'module_override'/*, 'menu_override'*/, 'mootools_for_pages', 'content_width_for_pages'];
+	jQuery.each(elements, function(i, txt) {	
+		var rules = jQuery("#"+txt + '_rules');
+		var textarea = jQuery("#jform_params_"+txt+"");
+		
+		var items = textarea.val().split( /\r\n|\r|\n/ );
 		
 		for(var i = 0; i < items.length; i++) {
 			if(items[i] != "") {
-				var item = new Element('div');
+				var item = jQuery('<div>');
 				var type = items[i].split('=')[0].test(/^\d+$/) ? 'ItemID' : 'Option';
-				item.innerHTML = '<em>' + type + '</em> <strong>' + items[i].split('=')[0] + '</strong> - <strong>' + items[i].split('=')[1] + '</strong> <a href="#" class="' + txt + '_remove_rule">' + $lang['tpl_js_remove_rule'] + '</a>';
-				item.inject(rules, 'bottom');
+				item.html('<em>' + type + '</em> <strong>' + items[i].split('=')[0] + '</strong> - <strong>' + items[i].split('=')[1] + '</strong> <a href="#" class="' + txt + '_remove_rule">' + $lang['tpl_js_remove_rule'] + '</a>');
+				item.append(rules);
 			}
 		}
 	
-		rules.addEvent('click', function(e){
-			var evt = new Event(e);
-			evt.stop();
+		rules.click(function(e){
+			e.stopPropagation();
+			e.preventDefault();
+
 			if(e.target.hasClass(txt + '_remove_rule')) {
-				var parent = e.target.getParent();
-				var values = parent.getElements('strong');
-				textarea.innerHTML = textarea.innerHTML.replace(values[0].innerHTML + "=" + values[1].innerHTML + "\n", '');
-				parent.destroy();
+				var parent = e.target.parent();
+				var values = parent.find('strong');
+				textarea.html(textarea.html().replace(values[0].html() + "=" + values[1].html() + "\n", ''));
+				parent.remove();
 			}
 		});
 	
-		document.id(txt + '_add_btn').addEvent('click', function(){
-			var rule = document.id(txt + '_input').value + "=" + ((document.id(txt + '_select')) ? document.id(txt + '_select').value : 'enabled') + "\n";
+		jQuery("#" + txt + '_add_btn').click(function(){
+			var rule = jQuery("#" + txt + '_input').attr('value') + "=" + ((jQuery("#" + txt + '_select')) ? jQuery("#" + txt + '_select').attr('value') : 'enabled') + "\n";
 			
-			if(textarea.innerHTML.contains(rule)) {
+			if(textarea.html().contains(rule)) {
 				alert($lang['tpl_js_specified_rule_exists']);
 			} else {
-				textarea.innerHTML += rule;
-				var item = new Element('div');
-				var type = document.id(txt + '_input').value.test(/^\d+$/) ? 'ItemID' : 'Option';
-				var value = document.id(txt + '_input').value;
-				var layout = document.id(txt + '_select') ? document.id(txt + '_select').value : '';
-				item.innerHTML = '<em>' + type + '</em> <strong>' + value + '</strong> <strong>' + layout + '</strong> <a href="#" class="' + txt + '_remove_rule">' + $lang['tpl_js_remove_rule'] + '</a>';
-				item.inject(rules, 'bottom');
+				textarea.append(rule);
+				var item = jQuery('<div>');
+				var type = jQuery("#" + txt + '_input').attr('value').test(/^\d+$/) ? 'ItemID' : 'Option';
+				var value = jQuery("#" + txt + '_input').attr('value');
+				var layout = jQuery("#" + txt + '_select') ? jQuery("#" + txt + '_select').attr('value') : '';
+				item.html('<em>' + type + '</em> <strong>' + value + '</strong> <strong>' + layout + '</strong> <a href="#" class="' + txt + '_remove_rule">' + $lang['tpl_js_remove_rule'] + '</a>');
+				item.append(rules);
 			}
 		});
 	});
 	
-	// layout override 
-	var grules = document.id('google_analytics_rules');
-	var gtextarea = document.id('jform_params_google_analytics');
-	var gitems = gtextarea.innerHTML.split( /\r\n|\r|\n/ );
+	// layout override
+	var grules = jQuery('#google_analytics_rules');
+	var gtextarea = jQuery('#jform_params_google_analytics');
+	var gitems = gtextarea.val().split( /\r\n|\r|\n/ );
 	
 	for(var i = 0; i < gitems.length; i++) {
 		if(gitems[i] != "") {
-			var gitem = new Element('div');
-			gitem.innerHTML = '<strong>' + gitems[i] + '</strong> <a href="#" class="google_analytics_remove_rule">' + $lang['tpl_js_remove_rule'] + '</a>';
-			gitem.inject(grules, 'bottom');
+			var gitem = new jQuery('<div>');
+			gitem.html('<strong>' + gitems[i] + '</strong> <a href="#" class="google_analytics_remove_rule">' + $lang['tpl_js_remove_rule'] + '</a>');
+			gitem.append(grules);
 		}
 	}
-
-	grules.addEvent('click', function(e){
-		var evt = new Event(e);
-		evt.stop();
+	grules.click( function(e){
+		e.stopPropagation();
+		e.preventDefault();
 		if(e.target.hasClass('google_analytics_remove_rule')) {
-			var parent = e.target.getParent();
-			var values = parent.getElement('strong');
-			gtextarea.innerHTML = gtextarea.innerHTML.replace(values.innerHTML + "\n", '');
-			parent.destroy();
+			var parent = e.target.parent();
+			var values = parent.find('strong');
+			gtextarea.html(gtextarea.html().replace(values.html() + "\n", ''));
+			parent.remove();
 		}
 	});
-
-	document.id('google_analytics_add_btn').addEvent('click', function(){
-		var rule = document.id('google_analytics_input').value + "\n";
+	jQuery('#google_analytics_add_btn').click(function(){
+		var rule = jQuery('#google_analytics_input').attr('value') + "\n";
 		
-		if(gtextarea.innerHTML.contains(rule)) {
+		if(gtextarea.html().contains(rule)) {
 			alert($lang['tpl_js_specified_rule_exists']);
 		} else {
-			gtextarea.innerHTML += rule;
-			var item = new Element('div');
-			var value = document.id('google_analytics_input').value;
-			item.innerHTML = '<strong>' + value + '</strong> <a href="#" class="google_analytics_remove_rule">' + $lang['tpl_js_remove_rule'] + '</a>';
-			item.inject(grules, 'bottom');
+			gtextarea.append(rule);
+			var item = jQuery('<div>');
+			var value = jQuery('#google_analytics_input').attr('value');
+			item.html('<strong>' + value + '</strong> <a href="#" class="google_analytics_remove_rule">' + $lang['tpl_js_remove_rule'] + '</a>');
+			item.append(grules);
 		}
 	});
-	// hide
-	document.id('jform_params_startlevel-lbl').getParent().setStyle('display','none');
 	// other form operations
-	$$('.input-pixels').each(function(el){
-		el.getParent().innerHTML = el.getParent().innerHTML + "<span class=\"unit\">px</span>";
-	});
-});
-// function to get the translations
-function getTranslations() {
-	var translations = [];
-	
-	document.id('template_options_translations').getElements('span').each(function(el){
-		translations[el.getProperty('id')] = el.innerHTML;
+	jQuery('.input-pixels').each(function(i, el){
+		el = jQuery(el);
+		el.parent().html("<div class=\"input-prepend\">" + el.parent().html() + "<span class=\"add-on\">px</span></div>");
 	});
 	
-	return translations;
-}
-// function to generate the updates list
-// function to generate the updates list
-function getUpdates() {    
-     document.id('jform_params_template_updates-lbl').destroy(); // remove unnecesary label
-     var update_url = 'https://www.gavick.com/updates/json/tmpl,component/query,product/product,gk_music_free_j16';
-     var update_div = document.id('gk_template_updates');
-     update_div.innerHTML = '<div id="gk_update_div"><span id="gk_loader"></span>Loading update data from GavickPro Update service...</div>';
-    
-     new Asset.javascript(update_url,{
-          id: "new_script",
-          onload: function(){
-               content = '';
-             var templateVersion = document.id('gk_template_updates').getAttribute("data-gktplversion").split('.');
-             templateVersion = templateVersion.map(function(version, i) { return version.toInt(); });
-              
-               $GK_UPDATE.each(function(el){
-                    var updateVersion = el.version.split('.');
-                 updateVersion = updateVersion.map(function(version, i) { return version.toInt(); });
-                 var isNewer = false;
-    
-               if(updateVersion[0] > templateVersion[0]) {
-                isNewer = true;
-            } else if((updateVersion[0] >= templateVersion[0]) && (updateVersion[1] > templateVersion[1])) {
-                isNewer = true;
-            } else if(updateVersion.length > 2) {
-                if(templateVersion.length > 2) {
-                    if(updateVersion[0] >= templateVersion[0] && updateVersion[1] >= templateVersion[1] && updateVersion[2] > templateVersion[2]) {
-                        isNewer = true;
-                    }
-                } else {
-                         if(updateVersion[1] >= templateVersion[1]) {
-                    isNewer = true;
-                         }
-                }
-            }
-            //
-            if(isNewer) {
-                    content += '<li><span class="gk_update_version"><strong>Version:</strong> ' + el.version + ' </span><span class="gk_update_data"><strong>Date:</strong> ' + el.date + ' </span><span class="gk_update_link"><a href="' + el.link + '" target="_blank">Download</a></span></li>';
-                    }
-               });
-               update_div.innerHTML = '<ul class="gk_updates">' + content + '</ul>';
-               if(update_div.innerHTML == '<ul class="gk_updates"></ul>') {
-            update_div.innerHTML = '<p>Your template is up to date</p>'; 
-        }
-          }
-     });
-}
-// function to generate the additional elements
-function generateFormElements() {
-	// remove next label
-	var buf = null;
-	$$('.next-remove').each(function(el, i) {
-        if(i % 2 == 0) {
-            el.getParent().getElement('label').destroy();
-            buf = el.getParent().innerHTML;
-            el.getParent().destroy();
-        } else {
-            el.getParent().innerHTML += buf;
-        }
+	jQuery('.input-percents').each(function(i, el){
+		el = jQuery(el);
+		el.parent().html("<div class=\"input-prepend\">" + el.parent().html() + "<span class=\"add-on\">%</span></div>");
 	});
-	// create suffix labels
-	$$('.suffix-px').each(function(el) {
-		new Element('span', {'class' : 'gkFormSuffixPx', 'html' : 'px'}).inject(el, 'after');
+	jQuery('.input-ms').each(function(i, el){
+		el = jQuery(el);
+		el.parent().html("<div class=\"input-prepend\">" + el.parent().html() + "<span class=\"add-on\">ms</span></div>");
 	});
-	$$('.suffix-percents').each(function(el) {
-		new Element('span', {'class' : 'gkFormSuffixPercents', 'html' : '%'}).inject(el, 'after');
-	});
-	$$('.suffix-pxorpercents').each(function(el) {
-		new Element('span', {'class' : 'gkFormSuffixPxOrPercents', 'html' : ''}).inject(el, 'after');
-	});
-	// switchers
-	$$('.gk_switch').each(function(el){
-		el.setStyle('display','none');
-		var style = (el.value == 1) ? 'on' : 'off';
-		var switcher = new Element('div',{'class' : 'switcher-'+style});
-		switcher.inject(el, 'after');
-		switcher.addEvent("click", function(){
-			if(el.value == 1){
-				switcher.setProperty('class','switcher-off');
-				el.value = 0;
-			}else{
-				switcher.setProperty('class','switcher-on');
-				el.value = 1;
+	jQuery('#gk_template_updates').parent().css('margin-left', '10px');	
+	jQuery('#config_manager_form').parent().css('margin-left', '10px');	
+	jQuery('#jform_params_asset_js-lbl').parents().eq(1).css('display', 'none');
+	jQuery('#jform_params_asset_css-lbl').parents().eq(1).css('display', 'none');
+	jQuery('#jform_params_js_translations-lbl').parents().eq(1).css('display', 'none');
+	
+	// function to generate the help icons
+	function generateHelpIcons() {
+		
+		var urls = [
+			'https://wiki.gavick.com/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-page-layout-part-1/',
+			'https://wiki.gavick.com/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-page-layout-part-2/',
+			'https://wiki.gavick.com/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-fonts/',
+			'https://wiki.gavick.com/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-features/',
+			'https://wiki.gavick.com/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-menu/',			
+			'https://wiki.gavick.com/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-social-api/',
+			'https://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/cookie-law/',
+			'https://wiki.gavick.com/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-advanced-settings/',
+			'https://www.gavick.com/support/updates.html'
+		]
+		
+		jQuery('div.accordion-group').each(function(i, el) {
+			if(i > urls.length) { return true; }
+			var link = jQuery('<a>', { 
+				class : 'gkHelpLink', 
+				href : urls[i-1], 
+				target : '_blank' 
+			});
+			el = jQuery(el);
+			el.find('div.accordion-heading strong').append(link);
+			link.click(function(e) { e.stopPropagation();});
+		
+		});
+	}
+	
+	if(jQuery('#jform_params_tools').val() != 'selected' && jQuery('#jform_params_tools').val() != 'selected_disabled') jQuery('#jform_params_tools_for_pages-lbl').parent().css('display','none');
+	
+	  jQuery('#jform_params_tools').change(function(){
+		if(jQuery('#jform_params_tools').val() == 'selected' || jQuery('#jform_params_tools').val() == 'selected_disabled') jQuery('#jform_params_tools_for_pages-lbl').parents().eq(1).fadeIn();
+		else jQuery('#jform_params_tools_for_pages-lbl').parents().eq(1).fadeOut();
+	  });
+	
+	
+	
+	// function to generate the updates list
+	function getUpdates() {
+		jQuery('#jform_params_template_updates-lbl').remove(); // remove unnecesary label
+		var update_url = 'https://www.gavick.com/updates/json/tmpl,component/query,product/product,gk_music_free_j30';
+		var update_div = jQuery('#gk_template_updates');
+		update_div.html('<div id="gk_update_div"><span id="gk_loader"></span>Loading update data from GavicPro Update service...</div>');
+		
+		jQuery.getScript(update_url, function(data, textStatus, jqxhr) {
+		   	
+		   	var content = '';
+		   	var templateVersion = jQuery('#gk_template_updates').attr("data-gktplversion").split('.');
+		   	templateVersion = templateVersion.map(function(version, i) { return version.toInt(); });
+			jQuery.map(templateVersion, function(version, i) { return parseInt(version); }); 	
+				
+			jQuery($GK_UPDATE).each(function(i, el){
+									
+		   		var updateVersion = el.version.split('.');
+   		        updateVersion = updateVersion.map(function(version, i) { return version.toInt(); });
+   		        var isNewer = false;
+   				
+   		        if(updateVersion[0] > templateVersion[0]) {
+   		            isNewer = true;
+   		        } else if((updateVersion[0] >= templateVersion[0]) && (updateVersion[1] > templateVersion[1])) {
+   		            isNewer = true;
+   		        } else if(updateVersion.length > 2) {
+   		            if(templateVersion.length > 2) {
+   		                if(updateVersion[0] >= templateVersion[0] && updateVersion[1] >= templateVersion[1] && updateVersion[2] > templateVersion[2]) {
+   		                    	isNewer = true;
+   		                }
+   		            } else {
+   		                     if(updateVersion[1] >= templateVersion[1]) {
+   		                		isNewer = true;
+   		                     }
+   		            }
+   		        }
+   		        //
+   		        if(isNewer) {
+   		                content += '<li><span class="gk_update_version"><strong>Version:</strong> ' + el.version + ' </span><span class="gk_update_data"><strong>Date:</strong> ' + el.date + ' </span><span class="gk_update_link"><a href="' + el.link + '" target="_blank">Download</a></span></li>';
+   		                }
+   		           });
+   		           update_div.html('<ul class="gk_updates">' + content + '</ul>');
+   		           if(update_div.html() == '<ul class="gk_updates"></ul>') {
+   		        		update_div.html('<p>Your template is up to date</p>'); 
+   		    		}
+   		  });	
+	}
+	
+	function getTranslations() {
+		var translations = [];
+		
+		jQuery('#template_options_translations span').each(function(i,el){
+			el = jQuery(el);
+			translations[el.attr('id')] = el.html();
+		});
+		
+		return translations;
+	}
+	
+	function generateFormElements() {
+		// remove next label
+		var buf = null;
+		jQuery('.next-remove').each(function(i, el) {
+			if(i % 2 == 0) {
+				el.parent().find('label').remove();
+				buf = el.parent().hmtl();
+				el.parent().remove();
+			} else {
+				el.parent().append(buf);
 			}
 		});
-	});
-}
-// function to generate the help icons
-function generateHelpIcons() {
-	var urls = [
-          'http://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-page-layout-part-1/',
-          'http://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/gavern-3-0/responsive-layout/',
-          'http://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-fonts/',
-          'http://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-features/',
-          'http://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-menu/',
-          'http://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-social-api/',
-		  'https://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/cookie-law/',
-          'http://www.gavick.com/documentation/joomla-templates/templates-for-joomla-1-6/gavern-framework/gavern-framework-advanced-settings/',
-          'http://www.gavick.com/support/updates.html'
-     ]
+		// create suffix labels
+		jQuery('.suffix-px').each(function(i, el) {
+			var suff = jQuery('<span>', {'class' : 'gkFormSuffixPx', 'html' : 'px'});
+			el.append(suff);
+		});
+		jQuery('.suffix-percents').each(function(i, el) {
+			var suff = jQuery('span', {'class' : 'gkFormSuffixPercents', 'html' : '%'});
+			el.append(suff);
+		});
+		jQuery('.suffix-pxorpercents').each(function(i, el) {
+			var suff = jQuery('span', {'class' : 'gkFormSuffixPxOrPercents', 'html' : ''});
+			el.append(suff);
+		});
+	}
 	
-	$$('div.panel').each(function(el, i) {
-		var link = new Element('a', { 'class' : 'gkHelpLink', 'href' : urls[i], 'target' : '_blank' })
-		link.inject(el.getElement('h3'), 'bottom');
-		link.addEvent('click', function(e) { e.stopPropagation(); });
-	});
-}
-// init config manager
-function initConfigManager() {
-     var loadbtn = document.id('config_manager_load');
-     var savebtn = document.id('config_manager_save');
-    
-     loadbtn.addEvent('click', function(e) {
-          e.stop();
-          loadSaveOperation('load');
-     });
-    
-     savebtn.addEvent('click', function(e) {
-          e.stop();
-          loadSaveOperation('save');
-     });
-}
-// function to load/save settings
-function loadSaveOperation(type) {
-     var current_url = window.location;
-     if((current_url + '').indexOf('#', 0) === -1) {
-          current_url = current_url + '&gk_template_task='+type+'&gk_template_file=' + document.id('config_manager_'+type+'_filename').value;    
-     } else {
-          current_url = current_url.substr(0, (current_url + '').indexOf('#', 0) - 1);
-          current_url = current_url + '&gk_template_task='+type+'&gk_template_file=' + document.id('config_manager_'+type+'_filename').value;
-     }
-     window.location = current_url;
-}
-// generate top banner
-function createTopBanner() {
-	var banner = new Element('div', {'id': 'gkTopBanner'});
-	banner.innerHTML = '<h3><a href="https://github.com/GavickPro/Music-Free-Responsive-Joomla-Template/issues?state=open">We are waiting for your feedback!</a></h3><p><a href="https://github.com/GavickPro/Music-Free-Responsive-Joomla-Template/">Music Free on github</a><a href="https://github.com/GavickPro/Music-Free-Responsive-Joomla-Template/commits/master">Latest commits</a></p>';
-	banner.inject($$('div[id^="template-sliders-"]')[0], 'before');
-}
+	
+	// init config manager
+	function initConfigManager() {
+		var loadbtn = jQuery('#config_manager_load');
+		var savebtn = jQuery('#config_manager_save');
+		var deletebtn = jQuery('#config_manager_delete');
+			
+		loadbtn.click(function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			loadSaveOperation('load');
+		});
+		savebtn.click(function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			loadSaveOperation('save');
+		});
+		deletebtn.click(function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			loadSaveOperation('delete');
+		});
+	}
+	// function to load/save settings
+	function loadSaveOperation(type) {
+		var current_url = window.location;
+		if((current_url + '').indexOf('#', 0) === -1) {
+			current_url = current_url + '&gk_template_task='+type+'&gk_template_file=' + jQuery('#config_manager_'+type+'_filename').val();
+		} else {
+			current_url = current_url.substr(0, (current_url + '').indexOf('#', 0) - 1);
+			current_url = current_url + '&gk_template_task='+type+'&gk_template_file=' + jQuery('config_manager_'+type+'_filename').val();
+		}
+		window.location = current_url;
+	}
+	
+	function createTopBanner() {     
+		
+		jQuery('#config_manager_form').before('<div id="gkTopBanner"><h3><a href="https://github.com/GavickPro/Music-Free-Responsive-Joomla-Template/issues?state=open">We are waiting for your feedback!</a></h3><p><a href="https://github.com/GavickPro/Music-Free-Responsive-Joomla-Template/">Music Free on github</a><a href="https://github.com/GavickPro/Music-Free-Responsive-Joomla-Template/commits/master">Latest commits</a></p></div>');
+	}
+	
+	
+	
+});
+
+

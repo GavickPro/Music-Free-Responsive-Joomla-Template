@@ -21,4 +21,4 @@ class JFormFieldUpdate extends JFormField {
 	}
 }
 
-// EOF
+?>

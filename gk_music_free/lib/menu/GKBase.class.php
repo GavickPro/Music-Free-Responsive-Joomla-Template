@@ -185,7 +185,7 @@ if (!defined('_GK_BASE_MENU_CLASS')) {
             
             $title = str_replace(array('%open%', '%close%'), array('[', ']'), $title);
             $desc = str_replace(array('%open%', '%close%'), array('[', ']'), $desc);
-            $result = new JParameter('');
+            $result = new JRegistry('');
             $result->set('title', trim($title));
             $result->set('desc', trim($desc));
             
@@ -267,7 +267,7 @@ if (!defined('_GK_BASE_MENU_CLASS')) {
 			$query->where('m.id = '.$id);
 			
 			$date = JFactory::getDate();
-			$now = $date->toMySQL();
+			$now = $date->toSql();
 			$nullDate = $db->getNullDate();
 			$query->where('(m.publish_up = '.$db->Quote($nullDate).' OR m.publish_up <= '.$db->Quote($now).')');
 			$query->where('(m.publish_down = '.$db->Quote($nullDate).' OR m.publish_down >= '.$db->Quote($now).')');

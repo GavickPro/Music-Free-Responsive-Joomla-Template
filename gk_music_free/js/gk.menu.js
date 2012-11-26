@@ -1,95 +1,147 @@
-window.addEvent('load', function() {
-    if(document.id('gkExtraMenu')) {
-        // fix for the iOS devices     
-        document.getElements('#gkExtraMenu ul li span').each(function(el) {
-            el.setProperty('onmouseover', '');
-        });
+jQuery(document).ready(function() {
 
-        document.getElements('#gkExtraMenu ul li a').each(function(el) {
-            el.setProperty('onmouseover', '');
 
-            if(el.getParent().hasClass('haschild') && document.getElement('body').getProperty('data-tablet') != null) {
-                el.addEvent('click', function(e) {
-                    if(el.retrieve("dblclick", 0) === 0) {
-                        e.stop();
-                        el.store("dblclick", new Date().getTime());
-                    } else {
-                        var now = new Date().getTime();
-                        if(now - el.retrieve("dblclick", 0) < 500) {
-                            window.location = el.getProperty('href');
-                        } else {
-                            e.stop();
-                            el.store("dblclick", new Date().getTime());
-                        }
-                    }
-                });
-            }
-        });
+	if(jQuery('#gkExtraMenu')) {
+	        // fix for the iOS devices     
+	        jQuery('#gkExtraMenu ul li span').each(function(el) {
+	            el.attr('onmouseover', '');
+	        });
+	
+	        jQuery('#gkExtraMenu ul li a').each(function(el) {
+	            el = jQuery(el);
+	            el.attr('onmouseover', '');
+	
+	            if(el.parent().hasClass('haschild') && jQuery(document.body).attr('data-tablet') != null) {
+	                el.click(function(e) {
+	                    if(el.attr("dblclick") == undefined) {
+	                        e.preventDefault();
+	                        e.stopPropagation();
+	                        el.attr("dblclick", new Date().getTime());
+	                    } else {
+	                        var now = new Date().getTime();
+	                        if(now - attr("dblclick", 0) < 500) {
+	                            window.location = el.attr('href');
+	                        } else {
+	                           e.preventDefault();
+	                           e.stopPropagation();
+	                           el.attr("dblclick", new Date().getTime());
+	                        }
+	                    }
+	                });
+	            }
+	        });
+	
+	        var base = jQuery('#gkExtraMenu');
 
-        var base = document.id('gkExtraMenu');
+	        if($GKMenu && ($GKMenu.height || $GKMenu.width)) {    
+	      	  	 
+	            base.find('li.haschild').each(function(i, el){   
+	            	el = jQuery(el);  
+	               
+	                if(el.children('.childcontent').length > 0) {
+	                    var content = el.children('.childcontent').first();
+	                    var prevh = content.height();
+	                    var prevw = content.width();
+						var duration = $GKMenu.duration;
+						var heightAnim = $GKMenu.height;
+						var widthAnim = $GKMenu.width;
+						
 
-        if($GKMenu && ($GKMenu.height || $GKMenu.width)) {     
-            base.getElements('li.haschild').each(function(el){     
-                if(el.getElement('.childcontent')) {
-                    var content = el.getElement('.childcontent');
-                    var prevh = content.getSize().y;
-                    var prevw = content.getSize().x;
+	                    var fxStart = { 
+							'height' : heightAnim ? 0 : prevh, 
+							'width' : widthAnim ? 0 : prevw, 
+							'opacity' : 0 
+						};
+						var fxEnd = { 
+							'height' : prevh, 
+							'width' : prevw, 
+							'opacity' : 1 
+						};	
+						
+						
+	                    content.css(fxStart);
+	                    content.css({'left' : 'auto', 'overflow' : 'hidden' });
+												
+	                    el.mouseenter(function(){
+                    			                    
+                            var content = el.children('.childcontent').first();
+                            content.css('display', 'block');
+							
+							if(content.attr('data-base-margin') != null) {
+								content.css({
+									'margin-left': content.attr('data-base-margin') + "px"
+								});
+							}
+								
+							var pos = content.offset();
+							var winWidth = jQuery(window).outerWidth();
+							var winScroll = jQuery(window).scrollLeft();
+								
+							if(pos.left + prevw > (winWidth + winScroll)) {
+								var diff = (winWidth + winScroll) - (pos.left + prevw) - 5;
+								var base = parseInt(content.css('margin-left'));
+								var margin = base + diff;
+								
+								if(base > 0) {
+									margin = -prevw + 10;	
+								}
+								content.css('margin-left', margin + "px");
+								
+								if(content.attr('data-base-margin') == null) {
+									content.attr('data-base-margin', base);
+								}
+							}
+							//
+							content.animate(
+								fxEnd, 
+								duration, 
+								function() { 
+									if(content.outerHeight() == 0){ 
+										content.css('overflow', 'hidden'); 
+									} else if(
+										content.outerHeight() - prevh < 30 && 
+										content.outerHeight() - prevh >= 0
+									) {
+										content.css('overflow', 'visible');
+									}
+								}
+							);
+						});
+					el.mouseleave(function(){
+					
+							content.css({
+								'overflow': 'hidden'
+							});
+							//
+							content.animate(
+								fxStart, 
+								duration, 
+								function() { 
+									if(content.outerHeight() == 0){ 
+										content.css('overflow', 'hidden'); 
+									} else if(
+										content.outerHeight() - prevh < 30 && 
+										content.outerHeight() - prevh >= 0
+									) {
+										content.css('overflow', 'visible');
+									}
+									
+									content.css('display', 'none');
+								}
+							);
+						});
+					}
+				});
+	            
+	            base.find('li.haschild').each(function(i, el) {
+	            						el = jQuery(el);
+	            						content = jQuery(el.children('.childcontent').first());
+	            						content.css({ 'display': 'none' });
+	            					});
+	            
+	        }
+	    }
+	
 
-                    var fxStart = { 'height' : $GKMenu.height ? 0 : prevh, 'width' : $GKMenu.width ? 0 : prevw, 'opacity' : 0 };
-                    var fxEnd = { 'height' : prevh, 'width' : prevw, 'opacity' : 1 };
 
-                    var fx = new Fx.Morph(content, {
-                        duration: $GKMenu.duration,
-                        link: 'cancel',
-                        onComplete: function() {
-                            if(content.getSize().y == 0){
-                                content.setStyle('overflow', 'hidden');
-                            } else if(content.getSize().y - prevh < 30 && content.getSize().y - prevh >= 0) {
-                                content.setStyle('overflow', 'visible');
-                            }
-                        }
-                    });
-
-                    fx.set(fxStart);
-                    content.setStyles({'left' : 'auto', 'overflow' : 'hidden' });
-
-                    el.addEvents({
-                        'mouseenter': function(){
-                            var content = el.getElement('.childcontent');
-
-                            if(content.getProperty('data-base-margin') != null) {
-                                content.setStyle('margin-left', content.getProperty('data-base-margin') + "px");
-                            }
-
-                            var pos = content.getCoordinates();
-                            var winWidth = window.getCoordinates().width;
-                            var winScroll = window.getScroll().x;
-
-                            if(pos.left + prevw > (winWidth + winScroll)) {
-                                var diff = (winWidth + winScroll) - (pos.left + prevw) - 5;
-                                var base = content.getStyle('margin-left').toInt();
-                                var margin = base + diff;
-
-                                if(base > 0) {
-                                    margin = -prevw + 10;  
-                                }
-                                content.setStyle('margin-left', margin + "px");
-
-                                if(content.getProperty('data-base-margin') == null) {
-                                    content.setProperty('data-base-margin', base);
-                                }
-                            }
-
-                            fx.start(fxEnd);
-                        },
-
-                        'mouseleave': function(){
-                            content.setStyle('overflow', 'hidden');
-                            fx.start(fxStart);
-                        }
-                    });
-                }
-            });
-        }
-    }
-}); 
+});

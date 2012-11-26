@@ -21,7 +21,7 @@ class JFormFieldMooToolsOverride extends JFormField
 		$html .= '<input type="text" id="mootools_for_pages_input" />';
 		$html .= '<div class="label">' . JText::_('TPL_GK_LANG_ADD_RULE_STATE') . '</div>';
 		$html .= JHtml::_('select.genericlist', $options, 'name', '', 'value', 'text', 'default', 'mootools_for_pages_select');
-		$html .= '<input type="button" value="'.JText::_('TPL_GK_LANG_ADD_RULE').'" id="mootools_for_pages_add_btn" />';
+		$html .= '<input class="btn" type="button" value="'.JText::_('TPL_GK_LANG_ADD_RULE').'" id="mootools_for_pages_add_btn" />';
 		$html .= '<textarea name="'.$this->name.'" id="'.$this->id.'">' . htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '</textarea>';
 		$html .= '<div id="mootools_for_pages_rules"></div>';
 		$html .= '</div>';

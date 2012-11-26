@@ -2,6 +2,7 @@
 
 // no direct access
 defined('_JEXEC') or die;
+JHtml::_('behavior.caption'); 
 
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 

@@ -19,7 +19,7 @@ class JFormFieldToolsOverride extends JFormField
 		$html .= '<div id="tools_for_pages_form">';
 		$html .= '<div class="label">' . JText::_('TPL_GK_LANG_ADD_RULE_ITEMID_OPTION') . '</div>';
 		$html .= '<input type="text" id="tools_for_pages_input" />';
-		$html .= '<input type="button" value="'.JText::_('TPL_GK_LANG_ADD_RULE').'" id="tools_for_pages_add_btn" />';
+		$html .= '<input class="btn" type="button" value="'.JText::_('TPL_GK_LANG_ADD_RULE').'" id="tools_for_pages_add_btn" />';
 		$html .= '<textarea name="'.$this->name.'" id="'.$this->id.'">' . htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '</textarea>';
 		$html .= '<div id="tools_for_pages_rules"></div>';
 		$html .= '</div>';

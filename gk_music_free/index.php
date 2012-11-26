@@ -13,6 +13,9 @@
  
 // No direct access.
 defined('_JEXEC') or die;
+if(!defined('DS')){
+   define('DS',DIRECTORY_SEPARATOR);
+}
 // include framework classes and files
 require_once('lib/gk.framework.php');
 require_once('lib/framework/gk.const.php');

@@ -33,7 +33,7 @@ class JFormFieldModuleOverride extends JFormField
 		$html .= JHtml::_('select.genericlist', $options_mp, 'name', '', 'value', 'text', 'default', 'module_override_input');
 		$html .= '<div class="label">' . JText::_('TPL_GK_LANG_ADD_RULE_STYLE') . '</div>';
 		$html .= JHtml::_('select.genericlist', $options_ms, 'name', '', 'value', 'text', 'default', 'module_override_select');
-		$html .= '<input type="button" value="'.JText::_('TPL_GK_LANG_ADD_RULE').'" id="module_override_add_btn" />';
+		$html .= '<input class="btn" type="button" value="'.JText::_('TPL_GK_LANG_ADD_RULE').'" id="module_override_add_btn" />';
 		$html .= '<textarea name="'.$this->name.'" id="'.$this->id.'">' . htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '</textarea>';
 		$html .= '<div id="module_override_rules"></div>';
 		$html .= '</div>';

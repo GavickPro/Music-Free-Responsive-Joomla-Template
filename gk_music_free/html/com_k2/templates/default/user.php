@@ -44,9 +44,9 @@ $user = JFactory::getUser();
 				<?php foreach ($this->items as $item): ?>
 				<article class="itemView<?php if(!$item->published || ($item->publish_up != $this->nullDate && $item->publish_up > $this->now) || ($item->publish_down != $this->nullDate && $item->publish_down < $this->now)) echo ' itemViewUnpublished'; ?><?php echo ($item->featured) ? ' itemIsFeatured' : ''; ?> clearfix"> <?php echo $item->event->BeforeDisplay; ?> <?php echo $item->event->K2BeforeDisplay; ?>
 						<header>
-								<?php if($item->params->get('userItemTitle')): ?>
+								<?php if($this->params->get('userItemTitle')): ?>
 								<h1>
-										<?php if ($item->params->get('userItemTitleLinked') && $item->published): ?>
+										<?php if ($this->params->get('userItemTitleLinked') && $item->published): ?>
 										<a href="<?php echo $item->link; ?>"> <?php echo $item->title; ?> </a>
 										<?php else: ?>
 										<?php echo $item->title; ?>
@@ -57,15 +57,15 @@ $user = JFactory::getUser();
 								</h1>
 								<?php endif; ?>
 								<ul>
-										<?php if($item->params->get('userItemDateCreated')): ?>
+										<?php if($this->params->get('userItemDateCreated')): ?>
 										<li>
 												<time datetime="<?php echo JHTML::_('date', $item->created , JText::_('d M Y h:i')); ?>"> <?php echo JHTML::_('date', $item->created , JText::_('d F, Y')); ?> </time>
 										</li>
 										<?php endif; ?>
-										<?php if($item->params->get('userItemCategory')): ?>
+										<?php if($this->params->get('userItemCategory')): ?>
 										<li class="itemCategory"> <span><?php echo JText::_('K2_PUBLISHED_IN'); ?></span> <a href="<?php echo $item->category->link; ?>"><?php echo $item->category->name; ?></a> </li>
 										<?php endif; ?>
-										<?php if($item->params->get('userItemCommentsAnchor') && ( ($item->params->get('comments') == '2' && !$this->user->guest) || ($item->params->get('comments') == '1')) ): ?>
+										<?php if($this->params->get('userItemCommentsAnchor') && ( ($item->params->get('comments') == '2' && !$this->user->guest) || ($item->params->get('comments') == '1')) ): ?>
 										<li class="itemComments">
 												<?php if(!empty($item->event->K2CommentsCounter)): ?>
 												<!-- K2 Plugins: K2CommentsCounter --> 
@@ -82,15 +82,15 @@ $user = JFactory::getUser();
 								</ul>
 						</header>
 						<?php echo $item->event->AfterDisplayTitle; ?> <?php echo $item->event->K2AfterDisplayTitle; ?>
-						<?php if($item->params->get('userItemImage') && !empty($item->imageGeneric)): ?>
+						<?php if($this->params->get('userItemImage') && !empty($item->imageGeneric)): ?>
 						<div class="itemImageBlock"> <a class="itemImage" href="<?php echo $item->link; ?>" title="<?php if(!empty($item->image_caption)) echo K2HelperUtilities::cleanHtml($item->image_caption); else echo K2HelperUtilities::cleanHtml($item->title); ?>"> <img src="<?php echo $item->imageGeneric; ?>" alt="<?php if(!empty($item->image_caption)) echo K2HelperUtilities::cleanHtml($item->image_caption); else echo K2HelperUtilities::cleanHtml($item->title); ?>" style="width:<?php echo $item->params->get('itemImageGeneric'); ?>px; height:auto;" /> </a> </div>
 						<?php endif; ?>
 						<div class="itemBody"> <?php echo $item->event->BeforeDisplayContent; ?> <?php echo $item->event->K2BeforeDisplayContent; ?>
-								<?php if($item->params->get('userItemIntroText')): ?>
+								<?php if($this->params->get('userItemIntroText')): ?>
 								<div class="itemIntroText"><?php echo $item->introtext; ?></div>
 								<?php endif; ?>
 								<?php echo $item->event->AfterDisplayContent; ?> <?php echo $item->event->K2AfterDisplayContent; ?>
-								<?php if($item->params->get('userItemTags') && count($item->tags)): ?>
+								<?php if($this->params->get('userItemTags') && count($item->tags)): ?>
 								<div class="itemTagsBlock">
 										<ul class="itemTags">
 												<?php foreach ($item->tags as $tag): ?>

@@ -1,3 +1,47 @@
+/**
+ * jQuery Cookie plugin
+ *
+ * Copyright (c) 2010 Klaus Hartl (stilbuero.de)
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ */
+jQuery.noConflict();
+jQuery.cookie = function (key, value, options) {
+
+    // key and at least value given, set cookie...
+    if (arguments.length > 1 && String(value) !== "[object Object]") {
+        options = jQuery.extend({}, options);
+
+        if (value === null || value === undefined) {
+            options.expires = -1;
+        }
+
+        if (typeof options.expires === 'number') {
+            var days = options.expires, t = options.expires = new Date();
+            t.setDate(t.getDate() + days);
+        }
+
+        value = String(value);
+
+        return (document.cookie = [
+            encodeURIComponent(key), '=',
+            options.raw ? value : encodeURIComponent(value),
+            options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+            options.path ? '; path=' + options.path : '',
+            options.domain ? '; domain=' + options.domain : '',
+            options.secure ? '; secure' : ''
+        ].join(''));
+    }
+
+    // key and possibly options given, get cookie...
+    options = value || {};
+    var result, decode = options.raw ? function (s) { return s; } : decodeURIComponent;
+    return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
+};
+
+
 window.addEvent('domready', function(){
 	// add loader
 	if(document.id('gkPage').getChildren('.box').length > 2) {
@@ -22,101 +66,113 @@ window.addEvent('domready', function(){
 			loader.inject(content, 'after');
 		}
 	}
-	// smooth anchor scrolling
-	new SmoothScroll({ wheelStops: false, duration: 125 }); 
+	
 	// style area
-	if(document.id('gkStyleArea')){
-		$$('#gkStyleArea a').each(function(element,index){
-			element.addEvent('click',function(e){
-	            e.stop();
-				changeStyle(index+1);
+	if(jQuery('#gkStyleArea')){
+		jQuery('#gkStyleArea').find('a').each(function(i, element){
+			jQuery(element).click(function(e){
+	            e.preventDefault();
+	            e.stopPropagation();
+				changeStyle(i+1);
 			});
 		});
 	}
+	
 	// font-size switcher
-	if(document.id('gkTools') && document.id('gkMainbody')) {
+	if(jQuery('#gkTools') && jQuery('#gkMainbody')) {
 		var current_fs = 100;
-		var content_fx = new Fx.Tween(document.id('gkMainbody'), { property: 'font-size', unit: '%', duration: 200 }).set(100);
-		document.id('gkToolsInc').addEvent('click', function(e){ 
-			e.stop(); 
-			if(current_fs < 150) { 
-				content_fx.start(current_fs + 10); 
+		
+		jQuery('#gkMainbody').css('font-size', current_fs+"%");
+		
+		jQuery('#gkToolsInc').click(function(e){ 
+			e.stopPropagation();
+			e.preventDefault(); 
+			if(current_fs < 150) {  
+				jQuery('#gkMainbody').animate({ 'font-size': (current_fs + 10) + "%"}, 200); 
 				current_fs += 10; 
 			} 
 		});
-		document.id('gkToolsReset').addEvent('click', function(e){ 
-			e.stop(); 
-			content_fx.start(100); 
+		jQuery('#gkToolsReset').click(function(e){ 
+			e.stopPropagation();
+			e.preventDefault(); 
+			jQuery('#gkMainbody').animate({ 'font-size' : "100%"}, 200); 
 			current_fs = 100; 
 		});
-		document.id('gkToolsDec').addEvent('click', function(e){ 
-			e.stop(); 
+		jQuery('#gkToolsDec').click(function(e){ 
+			e.stopPropagation();
+			e.preventDefault(); 
 			if(current_fs > 70) { 
-				content_fx.start(current_fs - 10); 
+				jQuery('#gkMainbody').animate({ 'font-size': (current_fs - 10) + "%"}, 200); 
 				current_fs -= 10; 
 			} 
 		});
 	}
+	
 	// K2 font-size switcher fix
-	if(document.id('fontIncrease') && document.getElement('.itemIntroText')) {
-		document.id('fontIncrease').addEvent('click', function() {
-			document.getElement('.itemIntroText').set('class', 'itemIntroText largerFontSize');
+	if(jQuery('#fontIncrease') && jQuery('.itemIntroText')) {
+		jQuery('#fontIncrease').click(function() {
+			jQuery('.itemIntroText').attr('class', 'itemIntroText largerFontSize');
 		});
 		
-		document.id('fontDecrease').addEvent('click', function() {
-			document.getElement('.itemIntroText').set('class', 'itemIntroText smallerFontSize');
+		jQuery('#fontDecrease').click( function() {
+			jQuery('.itemIntroText').attr('class', 'itemIntroText smallerFontSize');
 		});
 	}
 	// Tablet menu button
-	if(document.id('gkTabletMenu') && document.id('gkInset')) {
-		document.id('gkTabletMenu').addEvent('click', function() {
-			document.id('gkInset').toggleClass('visible');
+	if(jQuery('#gkTabletMenu') && jQuery('#gkInset')) {
+		jQuery('#gkTabletMenu').click( function() {
+			jQuery('#gkInset').toggleClass('visible');
 		});
 	}
+	
 	// login popup
-	if(document.id('gkPopupLogin')) {
-		var popup_overlay = document.id('gkPopupOverlay');
-		popup_overlay.setStyles({'display': 'block', 'opacity': '0'});
-		popup_overlay.fade('out');
-
+	if(jQuery('#gkPopupLogin')) {
+		var popup_overlay = jQuery('#gkPopupOverlay');
+		popup_overlay.css({'display': 'block'});
+		popup_overlay.fadeOut();
+		
+		jQuery('#gkPopupLogin').css({'display': 'block', 'opacity': 0, 'height' : 0});
 		var opened_popup = null;
 		var popup_login = null;
 		var popup_login_h = null;
 		var popup_login_fx = null;
 		
-		if(document.id('gkPopupLogin') && document.id('btnLogin')) {
-			popup_login = document.id('gkPopupLogin');
-			popup_login.setStyle('display', 'block');
-			popup_login_h = popup_login.getElement('.gkPopupWrap').getSize().y;
-			popup_login_fx = new Fx.Morph(popup_login, {duration:200, transition: Fx.Transitions.Circ.easeInOut}).set({'opacity': 0, 'height': 0 }); 
-			document.id('btnLogin').addEvent('click', function(e) {
-				new Event(e).stop();
-				popup_overlay.fade(0.45);
-				popup_login_fx.start({'opacity':1, 'height': popup_login_h});
+		if(jQuery('#gkPopupLogin') && jQuery('#btnLogin')) {
+			popup_login = jQuery('#gkPopupLogin');
+			popup_login.css('display', 'block');
+			popup_login_h = popup_login.find('.gkPopupWrap').outerHeight();
+			 
+			jQuery('#btnLogin').click( function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				popup_overlay.fadeIn('slow');
+				popup_login.css({'opacity':1, 'height': popup_login_h});
 				opened_popup = 'login';
 				
 				(function() {
-					if(document.id('modlgn-username')) {
-						document.id('modlgn-username').focus();
+					if(jQuery('#modlgn-username')) {
+						jQuery('#modlgn-username').focus();
 					}
 				}).delay(600);
 			});
 		}
 		
-		popup_overlay.addEvent('click', function() {
+		popup_overlay.click( function() {
 			if(opened_popup == 'login')	{
-				popup_overlay.fade('out');
-				popup_login_fx.start({
+				popup_overlay.fadeOut('slow');
+				popup_login.css({
 					'opacity' : 0,
 					'height' : 0
 				});
 			}
 		});
 	}
+	
 	// toolbar action
-	if(document.id('gkToolbar') && document.id('gkToolbar').getElement('ul')) {
-		var el = document.id('gkToolbar').getElement('ul');
-		el.addEvent('click', function() {
+	if(jQuery('#gkToolbar') && jQuery('#gkToolbar').find('ul')) {
+		var el = jQuery('#gkToolbar').find('ul');
+		el = jQuery(el);
+		el.click(function() {
 			if(el.hasClass('hover')) {
 				el.removeClass('hover');
 			} else {
@@ -125,32 +181,28 @@ window.addEvent('domready', function(){
 		});
 	}
 	// footer menu
-	if(document.id('gkFooter').getElement('ul.menu')) {
-		var menu_items = document.id('gkFooter').getElements('ul.menu a');
+	if(jQuery('#gkFooter').find('ul.menu')) {
+		var menu_items = jQuery('#gkFooter').find('ul.menu a');
 		var selectInner = '';
 		//
 		for(var i = 0; i < menu_items.length; i++) {
-			selectInner += '<option value="' + menu_items[i].getProperty('href') + '">' + menu_items[i].innerHTML + "</option>";
+			selectInner += '<option value="' + jQuery(menu_items[i]).attr('href') + '">' + jQuery(menu_items[i]).html() + "</option>";
 		}
 		//
-		var footerSelect = new Element('select', {
-			'id': 'gkFooterMenu',
-			'html': selectInner
-		});
-		//
-		footerSelect.addEvent('change', function(e) {
+		
+		jQuery('#gkFooter').find('ul.menu').after('<select id="gkFooterMenu">'+selectInner+'</select>');		
+		
+		jQuery('#gkFooterMenu').change(function(e) {
 			window.location = e.target.value;
 		});
-		//
-		footerSelect.inject(document.id('gkFooter').getElement('ul.menu'), 'after');	
 	}
 });
 // initial animation
 window.addEvent('load', function() {
 	var boxes = [];
 	
-	document.id('gkPage').getElements('.box').each(function(box, i){		
-		if(i > 0 && box.getParent().getAttribute('id') == 'gkPage') {
+	jQuery('#gkPage').find('.box').each(function(i, box){		
+		if(i > 0 && box.parentNode.id == 'gkPage') {
 			boxes.push(box);
 		}
 	});
@@ -168,6 +220,7 @@ window.addEvent('load', function() {
 				boxes.each(function(box, i) {
 					if(box) {
 						(function() {
+							box = jQuery(box);
 							box.addClass('loaded');
 						}).delay(i * 100);
 					}
@@ -176,19 +229,14 @@ window.addEvent('load', function() {
 		}
 	}
 });
-// function to set cookie
-function setCookie(c_name, value, expire) {
-	var exdate=new Date();
-	exdate.setDate(exdate.getDate()+expire);
-	document.cookie=c_name+ "=" +escape(value) + ((expire==null) ? "" : ";expires=" + exdate.toUTCString());
-}
+
 // Function to change styles
 function changeStyle(style){
 	var file1 = $GK_TMPL_URL+'/css/style'+style+'.css';
 	var file2 = $GK_TMPL_URL+'/css/typography/typography.style'+style+'.css';
 	var file3 = $GK_TMPL_URL+'/css/typography/typography.iconset.style'+style+'.css';
-	new Asset.css(file1);
-	new Asset.css(file2);
-	new Asset.css(file3);
-	Cookie.write('gk_music_free_j25_style', style, { duration:365, path: '/' });
+	jQuery('head').append('<link rel="stylesheet" href="'+file1+'" type="text/css" />');
+	jQuery('head').append('<link rel="stylesheet" href="'+file2+'" type="text/css" />');
+	jQuery('head').append('<link rel="stylesheet" href="'+file3+'" type="text/css" />');
+	jQuery.cookie('gk_music_free_j30_style', style, { expires: 365, path: '/' });
 }
