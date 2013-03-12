@@ -1123,5 +1123,9 @@ div.mod-languages > ul.lang-inline > li {
      -ms-transform: scale(1.1);
      transform: scale(1.1);
 }
-
+/* page links */
+div.articleContent div.content-links ul li {
+	background:none !important;
+	padding-left:0 !important;
+}
 

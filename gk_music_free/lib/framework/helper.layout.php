@@ -81,34 +81,36 @@ class GKTemplateLayout {
     	$iPad = stripos($_SERVER['HTTP_USER_AGENT'],"iPad");
     	$tablet_width = $min_content_width;
     	$mobile_width = 480;
-    	// set media query for the tablet.css
-    	if($iPod || $iPhone || $iPad) {
-    		$this->API->addCSS($this->API->URLtemplate() . '/css/tablet.css','text/css','only screen and (max-width: '.$tablet_width.'px), only screen and (max-device-width: '.$tablet_width.'px)');	
-    	} else {
-    		$this->API->addCSS($this->API->URLtemplate() . '/css/tablet.css','text/css','only screen and (max-width: '.$tablet_width.'px), only screen and (max-device-width: '.$tablet_width.'px) and (-moz-max-device-pixel-ratio: 1.5), only screen and (max-device-width: '.$tablet_width.'px) and (-o-max-device-pixel-ratio: 1.5/1), only screen  and (max-device-width: '.$tablet_width.'px) and (-webkit-max-device-pixel-ratio: 1.5), only screen and (max-device-width: '.$tablet_width.'px) and (max-device-pixel-ratio: 1.5), only screen and (max-device-width: '.($tablet_width * 2).'px) and (-moz-min-device-pixel-ratio: 2), only screen and (max-device-width: '.($tablet_width * 2).'px) and (-o-min-device-pixel-ratio: 2/1), only screen and (max-device-width: '.($tablet_width * 2).'px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-device-width: '.($tablet_width * 2).'px) and (min-device-pixel-ratio: 2)');
-    	}
-    	// set media query for the mobile.css
-    	if($iPod || $iPhone || $iPad) {
-    		$this->API->addCSS($this->API->URLtemplate() . '/css/mobile.css','text/css','
-    		only screen and (max-width: '.$mobile_width.'px), only screen and (max-device-width: '.$mobile_width.'px)');
-    	} else {
-	    	$this->API->addCSS($this->API->URLtemplate() . '/css/mobile.css','text/css','
-	    	only screen and (max-width: '.$mobile_width.'px),
-	    	only screen and (max-device-width: '.$mobile_width.'px) and (-moz-max-device-pixel-ratio: 1.5), 
-	    	only screen and (max-device-width: '.$mobile_width.'px) and (-o-max-device-pixel-ratio: 1.5/1), 
-	    	only screen and (max-device-width: '.$mobile_width.'px) and (-webkit-max-device-pixel-ratio: 1.5),
-	    	only screen and (max-device-width: '.$mobile_width.'px) and (max-device-pixel-ratio: 1.5), 
-	    	only screen and (max-device-width: '.($mobile_width * 2).'px) and (-webkit-min-device-pixel-ratio: 2), 
-	    	only screen and (max-device-width: '.($mobile_width * 2).'px) and (-moz-min-device-pixel-ratio: 2),
-	    	only screen and (max-device-width: '.($mobile_width * 2).'px) and (-o-min-device-pixel-ratio: 2/1),
-	    	only screen and (max-device-width: '.($mobile_width * 2).'px) and (min-device-pixel-ratio: 2)');
-    	}
+    	
+	    	// set media query for the tablet.css
+	    	if($iPod || $iPhone || $iPad) {
+	    		$this->API->addCSS($this->API->URLtemplate() . '/css/tablet.css','text/css','only screen and (max-width: '.$tablet_width.'px), only screen and (max-device-width: '.$tablet_width.'px)');	
+	    	} else {
+	    		$this->API->addCSS($this->API->URLtemplate() . '/css/tablet.css','text/css','only screen and (max-width: '.$tablet_width.'px), only screen and (max-device-width: '.$tablet_width.'px) and (-moz-max-device-pixel-ratio: 1.5), only screen and (max-device-width: '.$tablet_width.'px) and (-o-max-device-pixel-ratio: 1.5/1), only screen  and (max-device-width: '.$tablet_width.'px) and (-webkit-max-device-pixel-ratio: 1.5), only screen and (max-device-width: '.$tablet_width.'px) and (max-device-pixel-ratio: 1.5), only screen and (max-device-width: '.($tablet_width * 2).'px) and (-moz-min-device-pixel-ratio: 2), only screen and (max-device-width: '.($tablet_width * 2).'px) and (-o-min-device-pixel-ratio: 2/1), only screen and (max-device-width: '.($tablet_width * 2).'px) and (-webkit-min-device-pixel-ratio: 2), only screen and (max-device-width: '.($tablet_width * 2).'px) and (min-device-pixel-ratio: 2)');
+	    	}
+	    	// set media query for the mobile.css
+	    	if($iPod || $iPhone || $iPad) {
+	    		$this->API->addCSS($this->API->URLtemplate() . '/css/mobile.css','text/css','
+	    		only screen and (max-width: '.$mobile_width.'px), only screen and (max-device-width: '.$mobile_width.'px)');
+	    	} else {
+		    	$this->API->addCSS($this->API->URLtemplate() . '/css/mobile.css','text/css','
+		    	only screen and (max-width: '.$mobile_width.'px),
+		    	only screen and (max-device-width: '.$mobile_width.'px) and (-moz-max-device-pixel-ratio: 1.5), 
+		    	only screen and (max-device-width: '.$mobile_width.'px) and (-o-max-device-pixel-ratio: 1.5/1), 
+		    	only screen and (max-device-width: '.$mobile_width.'px) and (-webkit-max-device-pixel-ratio: 1.5),
+		    	only screen and (max-device-width: '.$mobile_width.'px) and (max-device-pixel-ratio: 1.5), 
+		    	only screen and (max-device-width: '.($mobile_width * 2).'px) and (-webkit-min-device-pixel-ratio: 2), 
+		    	only screen and (max-device-width: '.($mobile_width * 2).'px) and (-moz-min-device-pixel-ratio: 2),
+		    	only screen and (max-device-width: '.($mobile_width * 2).'px) and (-o-min-device-pixel-ratio: 2/1),
+		    	only screen and (max-device-width: '.($mobile_width * 2).'px) and (min-device-pixel-ratio: 2)');
+	    	}
     	
     	
     	
     	// CSS to add spaces between modules on the mainbody postion
     	$this->API->addCSSRule('#gkContent .box { padding: '.(2* $grid_spaces).'px 0 0 0!important; }');
     	
+    
     	// CSS to add spaces for the page top
     	$this->API->addCSSRule('body #gkPageTop, body #gkToolbar, #gkFooter { padding-left: '.$body_padding.'px; padding-right: '.$body_padding.'px; margin-left: '.(-1 * $body_padding).'px!important; }');
 		
@@ -124,7 +126,8 @@ class GKTemplateLayout {
     	.demo-typo-col3,
     	.demo-typo-col4 {width: 100%; }
     	}');
-    	
+	    
+	    	
     	// module suffixes for the right column, #gkTop and #gkBottom
     	$this->API->addCSSRule('
     		.masonry > .box.half { width: '.(0.5 * $grid_base).'px; max-width: 100%; }

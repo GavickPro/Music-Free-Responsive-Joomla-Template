@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install PUBLIC "-//Joomla! 1.6//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
-<extension version="1.6" type="template" client="site" method="upgrade">
+<extension version="3.0" type="template" client="site" method="upgrade">
 		<name>gk_music_free</name>
-		<creationDate>20 Sep 2012</creationDate>
+		<creationDate>12 Mar 2013</creationDate>
 		<author>GavickPro</author>
 		<authorEmail>support@gavick.com</authorEmail>
 		<authorUrl>http://gavick.com</authorUrl>
-		<copyright>Copyright (C) 2007 - 2012 GavickPro. All rights reserved.</copyright>
+		<copyright>Copyright (C) 2007 - 2013 GavickPro. All rights reserved.</copyright>
 		<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-		<version>3.6</version>
+		<version>3.8</version>
 		<description>
 				<![CDATA[<link rel="stylesheet" type="text/css" href="../templates/gk_music_free/admin/style.css" />
 						<style type="text/css" media="all">
 						<!--
 						#wrap1 {padding:0px 0px 4px 0px;}
-						h1 {clear:both;font-family: Georgia, sans-serif;font-size:38px;margin:30px 20px 12px ;padding:0px 0px 24px 10px;color:#333; border-bottom: 1px solid #ccc; font-weight: normal;}
-						h4 { border: none;  margin: 0 0 12px; padding:0; font: italic 20px/32px Georgia, sans-serif; color: #333; }
-						sup { font-style: italic; font-size: }
-						.wrap2 {background:#fff;padding: 20px; font-family: Arial; font-size:13px; text-align: justify; color: #4d4d4d; line-height: 24px;}
-						.leftart {margin: 16px 0 0 176px; font-weight:normal!important; }
-						.livedemo { margin-top: 28px; }
+						#wrap1 h1 {clear:both;font-family: Georgia, sans-serif;font-size:38px;margin:30px 20px 12px ;padding:0px 0px 24px 10px;color:#333; border-bottom: 1px solid #ccc; font-weight: normal;}
+						#wrap1 h4 { border: none;  margin: 0 0 12px; padding:0; font: italic 20px/32px Georgia, sans-serif; color: #333; }
+						#wrap1 sup { font-style: italic; font-size: }
+						#wrap1 .wrap2 {background:#fff;padding: 20px; font-family: Arial; font-size:13px; text-align: justify; color: #4d4d4d; line-height: 24px;}
+						#wrap1 .leftart {margin: 16px 0 0 176px; font-weight:normal!important; }
+						#wrap1 .livedemo { margin-top: 28px; }
 						-->
 						</style>	
 						
@@ -41,7 +41,7 @@
 						
 						<p>Even more, this free template supports the mooMasonry script which blocks modules to be positioned such that the available space is optimized for the target device.</p>
 						
-						<p class="livedemo">View Music Free in action <a href="http://demo.gavick.com/index.php?month=May&year=2012&type=free" target="_blank">here</a>...</p><small>Gavern v.3.6</small></div>
+						<p class="livedemo">View Music Free in action <a href="http://demo.gavick.com/index.php?month=May&year=2012&type=free" target="_blank">here</a>...</p><small>Gavern v.3.8</small></div>
 						</div>
 						</div>]]>
 		</description>
@@ -498,10 +498,6 @@
 								</field>
 								<field name="css_custom" type="textarea" rows="6" cols="40" label="TPL_GK_LANG_CSS_CUSTOM" description="TPL_GK_LANG_CSS_CUSTOM_DESC" />
 								<field name="gk_line_13" type="line" text="" />
-								<field name="chrome_frame_support" type="radio" class="btn-group" default="0" label="TPL_GK_LANG_CHROME_FRAME_SUPPORT" description="TPL_GK_LANG_CHROME_FRAME_SUPPORT_DESC">
-										<option value="1">TPL_GK_LANG_ENABLED</option>
-										<option value="0">TPL_GK_LANG_DISABLED</option>
-								</field>
 								<field name="top_banner" type="radio" class="btn-group" default="1" label="TPL_GK_LANG_TOP_BANNER" description="TPL_GK_LANG_TOP_BANNER_DESC">
 										<option value="1">TPL_GK_LANG_ENABLED</option>
 										<option value="0">TPL_GK_LANG_DISABLED</option>

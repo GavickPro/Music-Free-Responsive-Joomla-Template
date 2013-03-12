@@ -9,7 +9,7 @@ defined('_JEXEC') or die;
 	<a href="#gkPageWrap" id="gkTopLink">Top</a>
 	
 	<?php if($this->API->get('framework_logo', '0') == '1') : ?>
-	<a href="http://gavick.com" id="gkFrameworkLogo" title="Gavern Framework">Gavern Framework</a>
+	<a href="//gavick.com" id="gkFrameworkLogo" title="Gavern Framework">Gavern Framework</a>
 	<?php endif; ?>
 	
 	<?php if($this->API->modules('footer_nav')) : ?>
@@ -19,11 +19,11 @@ defined('_JEXEC') or die;
 	<?php if($this->API->get('copyrights', '') !== '') : ?>
 	<p>
 		<?php echo $this->API->get('copyrights', ''); ?> 
-		<a href="http://www.gavick.com" title="Joomla Templates">Free Responsive Joomla! Template</a>
+		<a href="//www.gavick.com" title="Joomla Templates">Free Responsive Joomla! Template</a>
 	</p>
 	<?php else : ?>
 	<p>
-		Template Design &copy; <a href="http://www.gavick.com" title="Joomla Templates">Free Responsive Joomla! Template</a> GavickPro
+		Template Design &copy; <a href="//www.gavick.com" title="Joomla Templates">Free Responsive Joomla! Template</a> GavickPro
 	</p>
 	<?php endif; ?>
 	

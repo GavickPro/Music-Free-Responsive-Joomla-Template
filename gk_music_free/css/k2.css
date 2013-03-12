@@ -958,3 +958,11 @@ article header .itemRatingBlock > div {
 	clear: both;
 	font-size: 46px;
 }
+.itemIntroText ol,
+.itemFullText ol {
+	list-style:decimal;
+	list-style-position:inside;
+}
+.itemAuthorContent { 
+	clear: both; 
+}

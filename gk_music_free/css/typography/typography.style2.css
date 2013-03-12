@@ -163,7 +163,10 @@ ul.gkCircle1,
 ul.gkCircle2,
 ul.gkSquare1,
 ul.gkSquare2,
-ul.gkSquare3 {
+ul.gkSquare3,
+div.articleContent ul,
+#k2Container .itemFullText ul,
+#k2Container .itemIntroText ul {
 	margin: 2em 0;
 	padding: 0;
 }
@@ -177,7 +180,10 @@ ul.gkBullet4 li,
 ul.gkCircle1 li,
 ul.gkCircle2 li,
 ul.gkSquare1 li,
-ul.gkSquare2 li {
+ul.gkSquare2 li,
+div.articleContent ul li,
+#k2Container .itemFullText ul li,
+#k2Container .itemIntroText ul li {
 	line-height: 1.8em !important;
 	list-style: none;
 	margin: 0 !important;
@@ -649,7 +655,10 @@ div.gkLegend3 h4 {
 }
 
 /* list */
-ul.gkBullet1 li {
+ul.gkBullet1 li,
+div.articleContent ul li,
+#k2Container .itemFullText ul li,
+#k2Container .itemIntroText ul li {
 	background: url('../../images/style2/typography/bullet1.png') no-repeat 0 8px !important;
 }
 ul.gkBullet2 li {

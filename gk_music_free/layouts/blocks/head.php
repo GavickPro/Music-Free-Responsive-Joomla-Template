@@ -49,7 +49,7 @@ while($this->API->get('font_name_group'.$font_iter, 'gkFontNull') !== 'gkFontNul
                if($font_type == 'standard') {
                     $this->API->addCSSRule($this->API->get('font_rules_group'.$font_iter, '') . ' { font-family: ' . $font_name . '; }'."\n");
                } elseif($font_type == 'google') {
-                    $font_link = $font_data[2];
+                    $font_link = preg_replace('/https?:/m', '', $font_data[2]);
                     $font_family = $font_data[3];
                     $this->API->addCSS($font_link);
                     $this->API->addCSSRule($this->API->get('font_rules_group'.$font_iter, '') . ' { font-family: \''.$font_family.'\', Arial, sans-serif; }'."\n");
@@ -57,9 +57,11 @@ while($this->API->get('font_name_group'.$font_iter, 'gkFontNull') !== 'gkFontNul
                     $this->API->addCSS($this->API->URLtemplate() . '/fonts/' . $font_name . '/stylesheet.css');
                     $this->API->addCSSRule($this->API->get('font_rules_group'.$font_iter, '') . ' { font-family: ' . $font_name . ', Arial, sans-serif; }'."\n");
                } elseif($font_type == 'adobe') {
-                    $this->API->addJS('//use.edgefonts.net/'.$font_name.'.js');
-                    $this->API->addCSSRule($this->API->get('font_rules_group'.$font_iter, '') . ' { font-family: ' . $font_name . ', Arial, sans-serif; }'."\n");
-               }
+	               $this->API->addJS('//use.edgefonts.net/'.$font_name.'.js');
+	               $font_name = explode(":", $font_name);
+	               $font_name = $font_name[0];
+	               $this->API->addCSSRule($this->API->get('font_rules_group'.$font_iter, '') . ' { font-family: ' . $font_name . ', Arial, sans-serif; }'."\n");
+	           }
           }
      }
      $font_iter++;

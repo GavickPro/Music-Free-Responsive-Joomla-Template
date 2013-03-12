@@ -12,6 +12,7 @@
 ::selection {
 	color: #fff;
 }
+html { -webkit-font-smoothing: antialiased; }
 body {
 	background: #f5f5f5;
 	color: #7d7b7a;
@@ -28,7 +29,7 @@ a {
 	-ms-transition: color 0.2s linear;
 	-o-transition: color 0.2s linear;
 	transition: color 0.2s linear;
-	-webkit-transform: translateZ(0);
+	-webkit-font-smoothing: antialiased;
 }
 a:hover,
 a:active,

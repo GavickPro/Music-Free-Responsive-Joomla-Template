@@ -11,11 +11,17 @@ defined('_JEXEC') or die('Restricted access');
 ?>
 
 <section id="k2Container" class="genericView<?php if($this->params->get('pageclass_sfx')) echo ' '.$this->params->get('pageclass_sfx'); ?>">
-		<?php if($this->params->get('show_page_title')): ?>
+		<?php if($this->params->get('show_page_title') || JRequest::getCmd('task')=='search' || JRequest::getCmd('task')=='date'): ?>
 		<header>
 				<h1><?php echo $this->escape($this->params->get('page_title')); ?></h1>
 		</header>
 		<?php endif; ?>
+		
+		<?php if(JRequest::getCmd('task')=='search' && $this->params->get('googleSearch')): ?>
+		<!-- Google Search container -->
+		<div id="<?php echo $this->params->get('googleSearchContainer'); ?>"></div>
+		<?php endif; ?>
+		
 		<?php if(count($this->items)): ?>
 		<div class="itemList">
 				<?php foreach($this->items as $item): ?>
@@ -76,7 +82,7 @@ defined('_JEXEC') or die('Restricted access');
 				</article>
 				<?php endforeach; ?>
 		</div>
-		<?php if($this->params->get('genericFeedIcon',1)): ?>
+		<?php if(count($this->items) && $this->params->get('genericFeedIcon',1)): ?>
 		<a class="k2FeedIcon" href="<?php echo $this->feed; ?>"><?php echo JText::_('K2_SUBSCRIBE_TO_THIS_RSS_FEED'); ?></a>
 		<?php endif; ?>
 		<?php if($this->pagination->getPagesLinks()): ?>

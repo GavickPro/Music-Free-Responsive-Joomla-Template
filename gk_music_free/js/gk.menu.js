@@ -18,6 +18,9 @@ jQuery(document).ready(function() {
 	                        e.stopPropagation();
 	                        el.attr("dblclick", new Date().getTime());
 	                    } else {
+	                    	if(el.parent().find('div.childcontent').eq(0).css('overflow') == 'visible') {
+		                    	window.location = el.attr('href');
+		                    }
 	                        var now = new Date().getTime();
 	                        if(now - attr("dblclick", 0) < 500) {
 	                            window.location = el.attr('href');

@@ -16,7 +16,7 @@ class JFormFieldGoogleAnalytics extends JFormField
 	protected function getInput() {
 		$html = '<div id="google_analytics_form">';
 		$html .= '<div class="label">' . JText::_('TPL_GK_LANG_ADD_RULE_GA_CODE') . '</div>';
-		$html .= '<input type="text" id="google_analytics_input" />';
+		$html .= '<input type="text" placeholder="UA-XXXXXX" id="google_analytics_input" />';
 		$html .= '<input class="btn" type="button" value="'.JText::_('TPL_GK_LANG_ADD_RULE').'" id="google_analytics_add_btn" />';
 		$html .= '<textarea name="'.$this->name.'" id="'.$this->id.'">' . htmlspecialchars($this->value, ENT_COMPAT, 'UTF-8') . '</textarea>';
 		$html .= '<div id="google_analytics_rules"></div>';
