@@ -22,12 +22,14 @@ $user		= JFactory::getUser();
 
 //
 $cur_url = (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+$cur_url = preg_replace('@%[0-9A-Fa-f]{1,2}@mi', '', htmlspecialchars($cur_url, ENT_QUOTES, 'UTF-8'));
 
 // OpenGraph support
 $template_config = new JConfig();
 $uri = JURI::getInstance();
 $article_attribs = json_decode($this->item->attribs, true);
 
+$pin_image = '';
 $og_title = $this->escape($this->item->title);
 $og_type = 'article';
 $og_url = $cur_url;

@@ -197,17 +197,24 @@ $k2ContainerClasses = (($this->item->featured) ? ' itemIsFeatured' : '') . ($par
 								<?php endif; ?>
 								<?php if($params->get('itemFacebookButton',1)): ?>
 								<div class="itemFacebookButton">
-										<div id="fb-root"></div>
-										<script type="text/javascript">
-		                            (function(d, s, id) {
-		                              var js, fjs = d.getElementsByTagName(s)[0];
-		                              if (d.getElementById(id)) {return;}
-		                              js = d.createElement(s); js.id = id;
-		                              js.src = "//connect.facebook.net/en_US/all.js#appId=177111755694317&xfbml=1";
-		                              fjs.parentNode.insertBefore(js, fjs);
-		                            }(document, 'script', 'facebook-jssdk'));
-		                    </script>
-										<div class="fb-like" data-send="false" data-width="260" data-show-faces="true"></div>
+										<script type="text/javascript">                                                         
+										window.addEvent('load', function(){
+										      (function(){
+										                  if(document.id('fb-auth') == null) {
+										                  var root = document.createElement('div');
+										                  root.id = 'fb-root';
+										                  $$('.itemFacebookButton')[0].appendChild(root);
+										                  (function(d, s, id) {
+										                    var js, fjs = d.getElementsByTagName(s)[0];
+										                    if (d.getElementById(id)) {return;}
+										                    js = d.createElement(s); js.id = id;
+										                    js.src = "//connect.facebook.net/en_US/all.js#appId=177111755694317&xfbml=1";
+										                    fjs.parentNode.insertBefore(js, fjs);
+										                  }(document, 'script', 'facebook-jssdk')); 
+										              }
+										      }());
+										  });
+										</script>										<div class="fb-like" data-send="false" data-width="260" data-show-faces="true"></div>
 								</div>
 								<?php endif; ?>
 								<?php if($params->get('itemGooglePlusOneButton',1)): ?>

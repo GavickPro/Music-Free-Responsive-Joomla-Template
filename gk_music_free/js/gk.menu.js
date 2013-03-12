@@ -14,6 +14,9 @@ window.addEvent('load', function() {
                         e.stop();
                         el.store("dblclick", new Date().getTime());
                     } else {
+                    	if(el.getParent().getElements('div.childcontent')[0].getStyle('overflow') == 'visible') {
+                    		window.location = el.getProperty('href');
+                    	}
                         var now = new Date().getTime();
                         if(now - el.retrieve("dblclick", 0) < 500) {
                             window.location = el.getProperty('href');

@@ -75,7 +75,7 @@ $logo_slogan = $templateParams->get('logo_slogan', '');
 	<p class="errorboxbody">
 	<?php echo JText::_('TPL_GK_LANG_ERROR_INFO'); ?> <?php echo JText::_('TPL_GK_LANG_ERROR_DESC'); ?>
 	</p>
-	<p class="errorboxbody"><a href="<?php echo $this->baseurl; ?>/index.php" title="<?php echo JText::_('JERROR_LAYOUT_GO_TO_THE_HOME_PAGE'); ?>"><?php echo JText::_('JERROR_LAYOUT_HOME_PAGE'); ?></a> <span> | </span>
+	<p class="errorboxbody"><a href="<?php echo JURI::base(); ?>" title="<?php echo JText::_('JERROR_LAYOUT_GO_TO_THE_HOME_PAGE'); ?>"><?php echo JText::_('JERROR_LAYOUT_HOME_PAGE'); ?></a> <span> | </span>
 			<?php if($templateParams->get('webmaster_contact_type') == 'email') : echo $webmaster_contact_email; ?>
 			 <?php elseif($templateParams->get('webmaster_contact_type') == 'url') : ?>
 				  <a href="<?php echo $webmaster_contact; ?>"><?php  echo JText::_('TPL_GK_LANG_CONTACT_WEBMASTER'); ?></a>

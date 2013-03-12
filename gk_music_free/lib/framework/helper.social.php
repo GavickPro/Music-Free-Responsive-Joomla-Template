@@ -147,7 +147,7 @@ class GKTemplateSocial {
 			for ($i = 0; $i < count($exploded_data); $i++) {
 			    if(isset($exploded_data[$i])) {
 			        $key = $exploded_data[$i];
-			        if(preg_match('/UA(.*)/i', $key)) {
+			        if(preg_match('/^UA(.*)/i', $key)) {
 			        	if($this->parent->API->get('cookie_consent', '0') == 0) {
                         	$script_code .= '<script type="text/javascript">';
                         } else {

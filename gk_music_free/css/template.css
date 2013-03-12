@@ -9,6 +9,7 @@
  */
  
 /* Basic elements */
+html { -webkit-font-smoothing: antialiased; }
 ::selection {
 	color: #fff;
 }

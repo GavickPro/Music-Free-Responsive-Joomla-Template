@@ -75,150 +75,192 @@ window.addEvent('domready', function(){
             else document.id('jform_params_tools_for_pages-lbl').getParent().setStyle('display','none');
         }
     });
+	
 	// fonts forms
-	$$('.gkfont_form').each(function(el) {
-		var base_id = el.getElement('input').getProperty('id');
-		var base_el = document.id(base_id);
-		if(base_el.value == '') base_el.value = 'standard;Arial, Helvetica, sans-serif';
-		var values = (base_el.value).split(';');
-		// id of selectbox are different from input id
-		base_id = base_id.replace('jform_params_font_', 'jformparamsfont_');
-		document.id(base_id + '_type').set('value', values[0]);
-		
-		if(values[0] == 'standard') {
-			document.id(base_id + '_normal').set('value', values[1]);
-			document.id(base_id + '_google_own_link').setStyle('display', 'none');
-			document.id(base_id + '_google_own_font').setStyle('display', 'none');
-			document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
-			document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
-			document.id(base_id + '_squirrel').setStyle('display', 'none');
-		} else if(values[0] == 'google') {
-			document.id(base_id + '_google_own_link').set('value', values[2]);
-			document.id(base_id + '_google_own_font').set('value', values[3]);
-			document.id(base_id + '_normal').setStyle('display', 'none');
-			document.id(base_id + '_squirrel').setStyle('display', 'none');
-		} else if(values[0] == 'squirrel') {
-			document.id(base_id + '_squirrel').set('value', values[1]);
-			document.id(base_id + '_normal').setStyle('display', 'none');
-			document.id(base_id + '_google_own_link').setStyle('display', 'none');
-			document.id(base_id + '_google_own_font').setStyle('display', 'none');
-			document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
-			document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
-		}
-		
-		document.id(base_id + '_type').addEvents({
-			'change' : function() { 
-				var values = (base_el.value).split(';');
-				
-				if(document.id(base_id + '_type').value == 'standard') {
-					document.id(base_id + '_normal').setStyle('display', 'block');
-					document.id(base_id + '_normal').fireEvent('change');
-					document.id(base_id + '_google_own_link').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font').setStyle('display', 'none');
-					document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
-					document.id(base_id + '_squirrel').setStyle('display', 'none');
-				} else if(document.id(base_id + '_type').value == 'google') {
-					document.id(base_id + '_normal').setStyle('display', 'none');
-					document.id(base_id + '_google_own_link').setStyle('display', 'block');
-					document.id(base_id + '_google_own_font').setStyle('display', 'block');
-					document.id(base_id + '_google_own_font').fireEvent('change');
-					document.id(base_id + '_google_own_link_label').setStyle('display', 'block');
-					document.id(base_id + '_google_own_font_label').setStyle('display', 'block');
-					document.id(base_id + '_squirrel').setStyle('display', 'none');				
-				} else if(document.id(base_id + '_type').value == 'squirrel') {
-					document.id(base_id + '_normal').setStyle('display', 'none');
-					document.id(base_id + '_google_own_link').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font').setStyle('display', 'none');
-					document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
-					document.id(base_id + '_squirrel').setStyle('display', 'block');
-					document.id(base_id + '_squirrel').fireEvent('change');
-				}
-			},
-			'blur' :function() { 
-				var values = (base_el.value).split(';');
-				
-				if(document.id(base_id + '_type').value == 'standard') {
-					document.id(base_id + '_normal').set('display', 'block');
-					document.id(base_id + '_normal').fireEvent('change');
-					document.id(base_id + '_google_own_link').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font').setStyle('display', 'none');
-					document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
-					document.id(base_id + '_squirrel').setStyle('display', 'none');
-				} else if(document.id(base_id + '_type').value == 'google') {
-					document.id(base_id + '_normal').set('display', 'none');
-					document.id(base_id + '_google_own_link').setStyle('display', 'block');
-					document.id(base_id + '_google_own_font').setStyle('display', 'block');
-					document.id(base_id + '_google_own_font').fireEvent('change');
-					document.id(base_id + '_google_own_link_label').setStyle('display', 'block');
-					document.id(base_id + '_google_own_font_label').setStyle('display', 'block');
-					document.id(base_id + '_squirrel').setStyle('display', 'none');				
-				} else if(document.id(base_id + '_type').value == 'squirrel') {
-					document.id(base_id + '_normal').set('display', 'none');
-					document.id(base_id + '_google_own_link').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font').setStyle('display', 'none');
-					document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
-					document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
-					document.id(base_id + '_squirrel').setStyle('display', 'block');
-					document.id(base_id + '_squirrel').fireEvent('change');
-				}
-			}
-		});
-		
-		document.id(base_id + '_normal').addEvents({
-			'change' : function() { base_el.set('value', document.id(base_id + '_type').value + ';' + document.id(base_id + '_normal').value); },
-			'blur' : function() { base_el.set('value', document.id(base_id + '_type').value + ';' + document.id(base_id + '_normal').value); }
-		});
-		
-		document.id(base_id + '_google_own_link').addEvents({
-			'keydown' : function() { 
-				base_el.set(
-					'value', 
-					document.id(base_id + '_type').value + ';' + 
-					'own;' + 
-					document.id(base_id + '_google_own_link').value + ';' + 
-					document.id(base_id + '_google_own_font').value
-				); 
-			},
-			'blur' : function() { 
-				base_el.set(
-					'value', 
-					document.id(base_id + '_type').value + ';' + 
-					'own;' + 
-					document.id(base_id + '_google_own_link').value + ';' + 
-					document.id(base_id + '_google_own_font').value
-				); 
-			}
-		});
-		
-		document.id(base_id + '_google_own_font').addEvents({
-			'keydown' : function() { 
-				base_el.set(
-					'value', 
-					document.id(base_id + '_type').value + ';' + 
-					'own;' + 
-					document.id(base_id + '_google_own_link').value + ';' + 
-					document.id(base_id + '_google_own_font').value
-				); 
-			},
-			'blur' : function() { 
-				base_el.set(
-					'value', 
-					document.id(base_id + '_type').value + ';' + 
-					'own;' + 
-					document.id(base_id + '_google_own_link').value + ';' + 
-					document.id(base_id + '_google_own_font').value
-				); 
-			}
-		});
-		
-		document.id(base_id + '_squirrel').addEvents({
-			'change' : function() { base_el.set('value', document.id(base_id + '_type').value + ';' + document.id(base_id + '_squirrel').value); },
-			'blur' : function() { base_el.set('value', document.id(base_id + '_type').value + ';' + document.id(base_id + '_squirrel').value); }
-		});
-	});
+     $$('.gkfont_form').each(function(el) {
+          var base_id = el.getElement('input').getProperty('id');
+          var base_el = document.id(base_id);
+          if(base_el.value == '') base_el.value = 'standard;Arial, Helvetica, sans-serif';
+          var values = (base_el.value).split(';');
+          // id of selectbox are different from input id
+          base_id = base_id.replace('jform_params_font_', 'jformparamsfont_');
+          document.id(base_id + '_type').set('value', values[0]);
+         
+          if(values[0] == 'standard') {
+               document.id(base_id + '_normal').set('value', values[1]);
+               document.id(base_id + '_google_own_link').setStyle('display', 'none');
+               document.id(base_id + '_google_own_font').setStyle('display', 'none');
+               document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
+               document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
+               document.id(base_id + '_squirrel').setStyle('display', 'none');
+               document.id(base_id + '_adobe_edge_url_label').setStyle('display', 'none');
+          } else if(values[0] == 'google') {
+               document.id(base_id + '_google_own_link').set('value', values[2]);
+               document.id(base_id + '_google_own_font').set('value', values[3]);
+               document.id(base_id + '_normal').setStyle('display', 'none');
+               document.id(base_id + '_squirrel').setStyle('display', 'none');
+               document.id(base_id + '_adobe_edge_url_label').setStyle('display', 'none');
+          } else if(values[0] == 'squirrel') {
+               document.id(base_id + '_squirrel').set('value', values[1]);
+               document.id(base_id + '_normal').setStyle('display', 'none');
+               document.id(base_id + '_google_own_link').setStyle('display', 'none');
+               document.id(base_id + '_google_own_font').setStyle('display', 'none');
+               document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
+               document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
+               document.id(base_id + '_adobe_edge_url_label').setStyle('display', 'none');
+          } else if(values[0] == 'adobe') {
+               document.id(base_id + '_adobe_edge_url').set('value', values[1]);
+               document.id(base_id + '_normal').setStyle('display', 'none');
+               document.id(base_id + '_google_own_link').setStyle('display', 'none');
+               document.id(base_id + '_google_own_font').setStyle('display', 'none');
+               document.id(base_id + '_squirrel').setStyle('display', 'none');
+               document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
+               document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
+               document.id(base_id + '_adobe_edge_url_label').setStyle('display', 'block');
+         
+          }
+         
+          document.id(base_id + '_type').addEvents({
+               'change' : function() {
+                    var values = (base_el.value).split(';');
+                   
+                    if(document.id(base_id + '_type').value == 'standard') {
+                         document.id(base_id + '_normal').setStyle('display', 'block');
+                         document.id(base_id + '_normal').fireEvent('change');
+                         document.id(base_id + '_google_own_link').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_font').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
+                         document.id(base_id + '_squirrel').setStyle('display', 'none');
+                         document.id(base_id + '_adobe_edge_url_label').setStyle('display', 'none');
+                    } else if(document.id(base_id + '_type').value == 'google') {
+                         document.id(base_id + '_normal').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_link').setStyle('display', 'block');
+                         document.id(base_id + '_google_own_font').setStyle('display', 'block');
+                         document.id(base_id + '_google_own_font').fireEvent('change');
+                         document.id(base_id + '_google_own_link_label').setStyle('display', 'block');
+                         document.id(base_id + '_google_own_font_label').setStyle('display', 'block');
+                         document.id(base_id + '_squirrel').setStyle('display', 'none');
+                         document.id(base_id + '_adobe_edge_url_label').setStyle('display', 'none');                   
+                    } else if(document.id(base_id + '_type').value == 'squirrel') {
+                         document.id(base_id + '_normal').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_link').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_font').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
+                         document.id(base_id + '_squirrel').setStyle('display', 'block');
+                         document.id(base_id + '_squirrel').fireEvent('change');
+                         document.id(base_id + '_adobe_edge_url_label').setStyle('display', 'none');
+                    } else if(document.id(base_id + '_type').value == 'adobe') {
+                         document.id(base_id + '_normal').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_link').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_font').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
+                         document.id(base_id + '_squirrel').setStyle('display', 'none');
+                         document.id(base_id + '_adobe_edge_url_label').setStyle('display', 'block');
+                         document.id(base_id + '_adobe_edge_url').fireEvent('change');
+                    }
+               },
+               'blur' :function() {
+                    var values = (base_el.value).split(';');
+                   
+                    if(document.id(base_id + '_type').value == 'standard') {
+                         document.id(base_id + '_normal').set('display', 'block');
+                         document.id(base_id + '_normal').fireEvent('change');
+                         document.id(base_id + '_google_own_link').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_font').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
+                         document.id(base_id + '_squirrel').setStyle('display', 'none');
+                    } else if(document.id(base_id + '_type').value == 'google') {
+                         document.id(base_id + '_normal').set('display', 'none');
+                         document.id(base_id + '_google_own_link').setStyle('display', 'block');
+                         document.id(base_id + '_google_own_font').setStyle('display', 'block');
+                         document.id(base_id + '_google_own_font').fireEvent('change');
+                         document.id(base_id + '_google_own_link_label').setStyle('display', 'block');
+                         document.id(base_id + '_google_own_font_label').setStyle('display', 'block');
+                         document.id(base_id + '_squirrel').setStyle('display', 'none');                   
+                    } else if(document.id(base_id + '_type').value == 'squirrel') {
+                         document.id(base_id + '_normal').set('display', 'none');
+                         document.id(base_id + '_google_own_link').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_font').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
+                         document.id(base_id + '_squirrel').setStyle('display', 'block');
+                         document.id(base_id + '_squirrel').fireEvent('change');
+                    } else if(document.id(base_id + '_type').value == 'adobe') {
+                         document.id(base_id + '_normal').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_link').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_font').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_link_label').setStyle('display', 'none');
+                         document.id(base_id + '_google_own_font_label').setStyle('display', 'none');
+                         document.id(base_id + '_squirrel').setStyle('display', 'none');
+                         document.id(base_id + '_adobe_edge_url_label').setStyle('display', 'block');
+                         document.id(base_id + '_adobe_edge_url').fireEvent('change');
+                    }
+               }
+          });
+         
+          document.id(base_id + '_normal').addEvents({
+               'change' : function() { base_el.set('value', document.id(base_id + '_type').value + ';' + document.id(base_id + '_normal').value); },
+               'blur' : function() { base_el.set('value', document.id(base_id + '_type').value + ';' + document.id(base_id + '_normal').value); }
+          });
+         
+          document.id(base_id + '_google_own_link').addEvents({
+               'keydown' : function() {
+                    base_el.set(
+                         'value',
+                         document.id(base_id + '_type').value + ';' +
+                         'own;' +
+                         document.id(base_id + '_google_own_link').value + ';' +
+                         document.id(base_id + '_google_own_font').value
+                    );
+               },
+               'blur' : function() {
+                    base_el.set(
+                         'value',
+                         document.id(base_id + '_type').value + ';' +
+                         'own;' +
+                         document.id(base_id + '_google_own_link').value + ';' +
+                         document.id(base_id + '_google_own_font').value
+                    );
+               }
+          });
+         
+          document.id(base_id + '_google_own_font').addEvents({
+               'keydown' : function() {
+                    base_el.set(
+                         'value',
+                         document.id(base_id + '_type').value + ';' +
+                         'own;' +
+                         document.id(base_id + '_google_own_link').value + ';' +
+                         document.id(base_id + '_google_own_font').value
+                    );
+               },
+               'blur' : function() {
+                    base_el.set(
+                         'value',
+                         document.id(base_id + '_type').value + ';' +
+                         'own;' +
+                         document.id(base_id + '_google_own_link').value + ';' +
+                         document.id(base_id + '_google_own_font').value
+                    );
+               }
+          });
+         
+          document.id(base_id + '_squirrel').addEvents({
+               'change' : function() { base_el.set('value', document.id(base_id + '_type').value + ';' + document.id(base_id + '_squirrel').value); },
+               'blur' : function() { base_el.set('value', document.id(base_id + '_type').value + ';' + document.id(base_id + '_squirrel').value); }
+          });
+         
+          document.id(base_id + '_adobe_edge_url').addEvents({
+               'change' : function() { base_el.set('value', document.id(base_id + '_type').value + ';' + document.id(base_id + '_adobe_edge_url').value); },
+               'blur' : function() { base_el.set('value', document.id(base_id + '_type').value + ';' + document.id(base_id + '_adobe_edge_url').value); }
+          });
+     });
+
+
 	
 	// overrides 
 	['layout_override', 'tools_for_pages', 'suffix_override', 'module_override'/*, 'menu_override'*/, 'mootools_for_pages', 'content_width_for_pages'].each(function(txt) {
