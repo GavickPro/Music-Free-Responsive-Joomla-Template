@@ -2,7 +2,7 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 1.6//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
 <extension version="2.5" type="template" client="site" method="upgrade">
 		<name>gk_music_free</name>
-		<creationDate>12 Feb 2013</creationDate>
+		<creationDate>12 Mar 2013</creationDate>
 		<author>GavickPro</author>
 		<authorEmail>support@gavick.com</authorEmail>
 		<authorUrl>http://gavick.com</authorUrl>
