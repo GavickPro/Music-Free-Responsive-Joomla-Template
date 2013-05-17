@@ -45,3 +45,8 @@ table tbody,
 table thead {
      vertical-align: top!important;
 }
+
+/* Fix for IE8 NSP images problem */
+a.nspImageWrapper {
+	max-width: 100%;
+}
