@@ -698,7 +698,9 @@ div.bannerfooter {
 #gkSocialAPI > #___plus_0 {
 	margin-right: 15px;
 }
-
+.fb_iframe_widget iframe {
+	max-width: none !important;
+}
 /* reCAPTCHA */
 #dynamic_recaptcha_1,
 #recaptcha_area {

@@ -74,7 +74,9 @@ ul li {
 p {
 	margin: 0.5em 0 1.5em;
 }
-
+iframe {
+	max-width: 100%!important;
+}
 /* Containers */
 #gkPageContent {
 	width: 100%;
@@ -83,6 +85,9 @@ p {
 	display: block;
 	margin: 0 auto;
 	overflow: visible;
+}
+#gkContent {
+	overflow: visible
 }
 #gkContent > div {
 	background: #fff;
