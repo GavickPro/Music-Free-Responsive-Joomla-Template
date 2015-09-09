@@ -8,7 +8,7 @@
 ?>
 <?php if ($type == 'logout') : ?>
 
-<form action="index.php" method="post" id="login-form">
+<form action="<?php echo JRoute::_(htmlspecialchars(JUri::getInstance()->toString()), true, $params->get('usesecure')); ?>" method="post" id="login-form" class="form-inline">
 		<div class="logout-button">
 				<?php if ($params->get('greeting')) : ?>
 				<div class="login-greeting">
@@ -27,7 +27,7 @@
 		<?php echo JHtml::_('form.token'); ?>
 </form>
 <?php else : ?>
-<form action="<?php echo JRoute::_('index.php', true, $params->get('usesecure')); ?>" method="post" id="login-form" >
+<form action="<?php echo JRoute::_(htmlspecialchars(JUri::getInstance()->toString()), true, $params->get('usesecure')); ?>" method="post" id="login-form" class="form-inline">
 		<fieldset class="userdata">
 				<p id="form-login-username">
 						<label for="modlgn-username"><?php echo JText::_('MOD_LOGIN_VALUE_USERNAME') ?></label>
